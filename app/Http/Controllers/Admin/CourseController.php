@@ -31,7 +31,7 @@ class CourseController extends Controller
 	public function postAdd() {
 		$image = new  Image(Request::file('logo'));
 		if($image->hasFile()) {
-			$image->toImageFolder();
+			$image->toImageFolder('images');
 			$this->request['logo'] = $image->getName();
 		}
 
@@ -56,8 +56,8 @@ class CourseController extends Controller
 
 		$image = new  Image(Request::file('logo'));
 		if($image->hasFile()) {
-			$image->toImageFolder();
-			Image::deleteImage($course->logo);
+			$image->toImageFolder('images');
+			Image::deleteImage($course->logo, 'images');
 			$this->request['logo'] = $image->getName();
 		}
 

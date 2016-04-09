@@ -4,8 +4,14 @@
   </a>
 </li>
 
-<li >
+<li>
   <a href="/admin/course">
     <i class="fa fa-book"></i> <span>Курсы</span>
+  </a>
+</li>
+
+<li>
+  <a href="/admin/news">
+    <i class="fa fa-newspaper-o"></i> <span>Новости</span>
   </a>
 </li>

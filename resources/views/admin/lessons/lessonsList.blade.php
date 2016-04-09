@@ -33,11 +33,11 @@
 						</tr>
 						@foreach($course->lessons as $lesson)
 						<tr>
-							<td><a href="/admin/lessons/edit/{{$course->id}}">{{$lesson->name}}</a></td>
+							<td><a href="/admin/lessons/edit/{{$lesson->id}}">{{$lesson->name}}</a></td>
 							<td>
 								<form action="/admin/lessons/delete" method="POST" onsubmit="return confirm('Вы точно хотите удалить товар: {{$lesson->name}} ?')">
 									<input type="hidden" name="_token" value="{{ csrf_token() }}">
-									<input type="hidden" name="course_id" value="{{$lesson->id}}">
+									<input type="hidden" name="lesson_id" value="{{$lesson->id}}">
 									<button type="submit" class="btn btn-block btn-danger btn-flat">Удалить</button>
 								</form>
 							</td>

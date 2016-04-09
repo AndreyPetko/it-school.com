@@ -11,6 +11,11 @@
 |
 */
 
+
 Route::controller('admin/lessons', 'Admin\LessonController');
 Route::controller('admin/course', 'Admin\CourseController');
+Route::controller('admin/news', 'Admin\NewsController');
 Route::controller('admin', 'Admin\AdminController');
+
+
+Route::controller('/', 'Site\HomeController');

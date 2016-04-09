@@ -12,14 +12,14 @@ class Image {
 	}
 
 
-	public function toImageFolder() {
-		$this->image->move('images', $this->image->getClientOriginalName());
+	public function toImageFolder($folder) {
+		$this->image->move($folder, $this->image->getClientOriginalName());
 		$this->name = $this->image->getClientOriginalName();
 	}
 
 
-	public static function deleteImage($oldImage) {
-		$filename = './images/' . $oldImage;
+	public static function deleteImage($oldImage, $folder) {
+		$filename = './' . $folder . '/' . $oldImage;
 
 		if(file_exists($filename)) {
 			unlink($filename);

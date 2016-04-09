@@ -35,7 +35,17 @@ class LessonController extends Controller
 
 	public function getEdit($lesson_id) {
 		$lesson = Lesson::find($lesson_id);
-		return view('admin.lessons.edit', compact('lesson'));
+		return view('admin.lessons.lessonEdit', compact('lesson'));
+	}
+
+	public function postEdit($lesson_id) {
+		Lesson::find($lesson_id)->update($this->request);
+		return Redirect::to('/admin/course/lessons/' . $this->request['course_id']);
+	}
+
+	public function postDelete() {
+		Lesson::find($this->request['lesson_id'])->delete();
+		return Redirect::back();
 	}
 
 }

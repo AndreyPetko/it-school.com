@@ -33,12 +33,12 @@
 
 							<div class="form-group">
 								<label for="text">Текст урока:</label>
-								<textarea name="text" id="text" class="form-control" rows="10"></textarea>
+								<textarea name="text" id="text" class="form-control"  rows="10"></textarea>
 							</div>
 
 							<div class="form-group">
 								<label for="text">Текст домашнего задания:</label>
-								<textarea name="text" id="text" class="form-control" rows="10"></textarea>
+								<textarea name="home_text" id="text" class="form-control" rows="10"></textarea>
 							</div>
 
 							<div class="form-group">
