@@ -59,10 +59,7 @@
 			<div class="col-sm-4"><img src="{{ url('site_images/irina.png') }}"></div>
 			<div class="col-sm-8"><img src="{{ url('site_images/logo-blue.png') }}"><h2>ИРИНА БУЗИКОВА</h2><h6>О создателе школы</h6>
 				<div class="clear"></div>
-				<p>Cras laoreet ipsum ut diam porta, in varius augue lobortis. Aliquam posuere leo dui, ut eleifend sem dictum sed. Maecenas porta pellentesque purus eu ullamcorper. Donec tristique congue orci nec hendrerit. Nunc a porta felis, ut aliquam nunc. Nulla laoreet lacus libero, et sodales enim rutrum at. Praesent elit enim, placerat finibus porta in, tincidunt sed mauris. Integer eros felis, facilisis quis placerat tempor, posuere consectetur lacus. 
-					Sed at malesuada magna, nec vulputate sapien. Curabitur eget dolor orci. Curabitur ac sem arcu. Proin finibus bibendum turpis sit amet tristique. Vestibulum luctus id urna nec cursus. 
-					Curabitur nec odio dui.
-					Curabitur in sem orci. Vestibulum suscipit velit sed purus convallis, sit amet aliquet orci aliquet. Nunc elementum ornare leo sed vulputate. Nunc metus nulla, egestas a augue at, fermentum vestibulum ligula. </p></div>
+				<p>{!! $mainText !!} </p></div>
 				</div>
 			</div>
 		</div>
@@ -81,7 +78,7 @@
 </div>
 <div class="courses-slider">
 	<div id="slider-inside">
-	@foreach($courses as $course)
+		@foreach($courses as $course)
 		<div class="course-item-slider">
 			<a href=""><div class="course-logo">
 				<img src="{{url('images/' . $course->logo)}}">
@@ -117,7 +114,7 @@
 			</div></a>
 		</div>
 	</div>
-@endforeach
+	@endforeach
 
 </div>
 
@@ -342,9 +339,12 @@
 					</div>
 					<div class="col-md-1 hidden-sm"><img src="{{ url('site_images/arrow-present.png') }}"></div>
 					<div class="col-md-4 col-sm-5">
-						<input type="text" placeholder="Имя">
-						<input type="text" placeholder="Email">
-						<button type="submit">Получить урок</button>
+					<form method="POST" action="/bid-add">
+							{{csrf_field()}}
+							<input type="text" name="name" placeholder="Имя">
+							<input type="text" name="email" placeholder="Email">
+							<button type="submit">Получить урок</button>
+						</form>
 					</div>
 					<div class="col-md-1 hidden-sm"></div>
 				</div>
@@ -384,36 +384,18 @@
 					<div class="row lead-title"><h2>НОВОСТИ</h2></div>
 					<div class="row">
 						<div class="col-md-3 col-sm-6">
-							<a href="#">
-								<div class="image-news"></div>
-								<div class="title-bg"><div class="title-bg-inside">Название новости</div></div></a>
-								<p>Nulla laoreet lacus libero, et sodales enim rutrum at. Praesent elit enim, placerat finibus porta in, tincidunt sed mauris. Integer eros felis, facilisis quis placerat tempor, posuere consectetur lacus. </p>
-								<div class="more-info"><a href="#">Узнать больше</a></div>
+							@foreach($news as $newItem)
+							<a href="/new/{{$newItem->url}}">
+								<div class="image-news" style="background-image: url(/news_images/{{$newItem->image}});"></div>
+								<div class="title-bg"><div class="title-bg-inside">{{$newItem->name}}</div></div></a>
+								<p>{{$newItem->description}}</p>
+								<div class="more-info"><a href="/new/{{$newItem->url}}">Узнать больше</a></div>
 							</div>
-							<div class="col-md-3 col-sm-6">
-								<a href="#">
-									<div class="image-news"></div>
-									<div class="title-bg"><div class="title-bg-inside">Название новости</div></div></a>
-									<p>Nulla laoreet lacus libero, et sodales enim rutrum at. Praesent elit enim, placerat finibus porta in, tincidunt sed mauris. Integer eros felis, facilisis quis placerat tempor, posuere consectetur lacus. </p>
-									<div class="more-info"><a href="#">Узнать больше</a></div>
-								</div>
-								<div class="col-md-3 col-sm-6">
-									<a href="#">
-										<div class="image-news"></div>
-										<div class="title-bg"><div class="title-bg-inside">Очень очень длинное название вашей новости</div></div></a>
-										<p>Nulla laoreet lacus libero, et sodales enim rutrum at. Praesent elit enim, placerat finibus porta in, tincidunt sed mauris. Integer eros felis, facilisis quis placerat tempor, posuere consectetur lacus. </p>
-										<div class="more-info"><a href="#">Узнать больше</a></div>
-									</div>
-									<div class="col-md-3 col-sm-6">
-										<a href="#">
-											<div class="image-news"></div>
-											<div class="title-bg"><div class="title-bg-inside">Название новости</div></div></a>
-											<p>Nulla laoreet lacus libero, et sodales enim rutrum at. Praesent elit enim, placerat finibus porta in, tincidunt sed mauris. Integer eros felis, facilisis quis placerat tempor, posuere consectetur lacus. </p>
-											<div class="more-info"><a href="#">Узнать больше</a></div>
-										</div>
-									</div>
-									<div class="row"><a href="news.html"><div class="button-to-all">Все новости</div></a></div>
-									
-								</div>
-							</div>
-							@stop
+							@endforeach
+							
+						</div>
+						<div class="row"><a href="news.html"><div class="button-to-all">Все новости</div></a></div>
+
+					</div>
+				</div>
+				@stop

@@ -48,6 +48,12 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="row">
+		<div class="col-lg-12">
+			<?php echo $news->render() ?>
+		</div>
+	</div>
 </section>
 
 

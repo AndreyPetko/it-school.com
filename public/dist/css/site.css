@@ -172,13 +172,66 @@
 }
 
 .auth-block {
-	position: absolute;
 	width: 40%;
-	left: 30%;
+	margin-left: 30%;
 	background: white;
 	z-index: 999;
 	border: 3px solid #007236;
+	font-family: Roboto;
+	padding-bottom: 10px;
+}
+
+.auth-page-block {
+	margin-top: 20px;
+}
+
+
+#auth-block {
+	display: none;
+	position: fixed;
 	margin-top: 200px;
+}
+
+.auth-label {
+	margin-left: 5px;
+	font-family: Roboto;
+}
+
+.auth-input input {
+	margin-left: 2.5%;
+	width: 95%;
+	height: 30px;
+	border: 2px solid #dddddd;
+}
+
+.auth-submit input {
+	margin-top: 10px;
+	margin-left: 10px;
+	border: 2px solid #d7d7d7;
+	background: white;
+	padding: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.auth-close {
+	right: 10px;
+	position: absolute;
+	margin-top: 5px;
+	cursor: pointer;
+}
+
+
+.auth-submit input:hover {
+	background: #007236;
+	color:white;
+}
+
+.auth-title {
+	text-align: center;
+	font-weight: bold;
+	font-family: Roboto;
+	margin-top: 10px;
 }
 
 
@@ -539,8 +592,16 @@
 	font-size: 25px;
 	margin-bottom: 30px;
 }
+
+.errors {
+	text-align: center;
+	margin: 10px;
+	color: red;
+}
+
+
 .image-news{
-	background-image: url(../../site_images/image-news.png);
+
 	background-size: cover;
 	width: 100%;
 	height: 200px;
@@ -1317,7 +1378,7 @@
 	text-align: center;
 }
 
-.pagination  li{
+.pagination  li span, .pagination  li a{
 	background-color: #ebebeb;
 	color: #e28500;
 	padding-left: 7px;
@@ -1328,7 +1389,7 @@
 	font: 400 14px Roboto;
 }
 
-.pagination  li.active {
+.pagination  li.active  span{
 	background-color: #e28500;
 	color: #fefefe;
 }

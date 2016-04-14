@@ -15,3 +15,16 @@
     <i class="fa fa-newspaper-o"></i> <span>Новости</span>
   </a>
 </li>
+
+<li>
+  <a href="/admin/feedback">
+    <i class="fa fa-send"></i> <span>Обратная связь</span>
+  </a>
+</li>
+
+
+<li>
+  <a href="/admin/variables">
+    <i class="fa fa-file-text-o"></i> <span>Переменные</span>
+  </a>
+</li>

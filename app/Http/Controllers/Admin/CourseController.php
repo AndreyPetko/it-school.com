@@ -12,7 +12,7 @@ use Redirect;
 class CourseController extends Controller
 {
 	public function __construct() {
-		// $this->middleware('isAdmin');
+		$this->middleware('isAdmin');
 		$this->request = Request::all();
 		unset($this->request['_token']);
 	}

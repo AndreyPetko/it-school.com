@@ -3,7 +3,13 @@ document.addEventListener("DOMContentLoaded",function(){
 
 
 document.getElementById('student').addEventListener('click', function(){
-	document.getElementById('auth-block').css.display = 'block';
+	document.getElementById('auth-block').style.display = 'block';
+});
+
+
+document.getElementById('auth-close').addEventListener('click', function(){
+	console.log(document.getElementById('auth-block'));
+	document.getElementById('auth-block').style.display = 'none';
 });
 
 

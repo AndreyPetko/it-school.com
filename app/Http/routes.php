@@ -15,7 +15,17 @@
 Route::controller('admin/lessons', 'Admin\LessonController');
 Route::controller('admin/course', 'Admin\CourseController');
 Route::controller('admin/news', 'Admin\NewsController');
+Route::controller('admin/feedback', 'Admin\FeedbackController');
+Route::controller('admin/variables', 'Admin\VariableController');
 Route::controller('admin', 'Admin\AdminController');
 
 
+
+
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@logout');
+
+
 Route::controller('/', 'Site\HomeController');
+

@@ -13,14 +13,14 @@ use App\News;
 class NewsController extends Controller
 {
 	public function __construct() {
-		// $this->middleware('isAdmin');
+		$this->middleware('isAdmin');
 		$this->request = Request::all();
 		unset($this->request['_token']);
 	}
 
 
 	public function getIndex() {
-		$news = News::list();
+		$news = News::items();
 		return view('admin.news.newsList', compact('news'));
 	}
 

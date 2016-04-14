@@ -1,16 +1,17 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 
 use Request;
+use App\Course;
+use App\Image;
+use Redirect;
+use App\Bid;
 
 
-
-class AdminController extends Controller
+class FeedbackController extends Controller
 {
-
 	public function __construct() {
 		$this->middleware('isAdmin');
 		$this->request = Request::all();
@@ -19,7 +20,7 @@ class AdminController extends Controller
 
 
 	public function getIndex() {
-		return view('admin.index');
+		$bids = Bid::items();
+		return view('admin.feedback.bidList', compact('bids'));
 	}
-
 }

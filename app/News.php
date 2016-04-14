@@ -11,8 +11,12 @@ class News extends Model
 	protected $fillable = ['name', 'text', 'image', 'description', 'url'];
 
 
-	public static function list() {
-		return DB::table('news')->orderBy('id', 'desc')->get();
+	public static function items() {
+		return DB::table('news')->orderBy('id', 'desc')->paginate(3);
 	}
 
+
+	public static function getLast() {
+		return DB::table('news')->orderBy('id', 'desc')->take(4)->get();
+	}
 }

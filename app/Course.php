@@ -20,8 +20,8 @@ class Course extends Model
 		return DB::select('SELECT  courses.*, count(lessons.id) as lessonsCount FROM courses LEFT JOIN lessons ON lessons.course_id = courses.id GROUP BY courses.id');
 	}
 
-	public static function getTop() {
-		return self::orderBy('rate', 'desc')->take(5)->get();
+	public static function getTop($count) {
+		return self::orderBy('rate', 'desc')->take($count)->get();
 	}
 
 

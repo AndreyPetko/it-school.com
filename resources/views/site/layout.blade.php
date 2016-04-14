@@ -12,22 +12,26 @@
 
 
 	<div id="auth-block" class="auth-block">
-		<div class="auth-title">Войти</div>
-		<div class="auth-label">
-			Логин
-		</div>
-		<div class="auth-input">
-			<input></input>
-		</div>
-		<div class="auth-label">
-			Пароль
-		</div>
-		<div class="auth-input">
-			<input></input>
-		</div>
-		<div class="auth-submit">
-			<input type="submit"></input>
-		</div>
+		<form method="POST" action="auth/login">
+			{!! csrf_field() !!}
+			<div class="auth-close" id="auth-close">X</div>
+			<div class="auth-title">Войти</div>
+			<div class="auth-label">
+				Логин
+			</div>
+			<div class="auth-input">
+				<input name="email"></input>
+			</div>
+			<div class="auth-label">
+				Пароль
+			</div>
+			<div class="auth-input">
+				<input name="password" type="password"></input>
+			</div>
+			<div class="auth-submit">
+				<input type="submit" value="Войти"></input>
+			</div>
+		</form>
 	</div>
 
 
