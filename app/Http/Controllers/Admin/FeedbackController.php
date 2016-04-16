@@ -8,6 +8,8 @@ use App\Course;
 use App\Image;
 use Redirect;
 use App\Bid;
+use Carbon\Carbon;
+use App\Feedback;
 
 
 class FeedbackController extends Controller
@@ -22,5 +24,10 @@ class FeedbackController extends Controller
 	public function getIndex() {
 		$bids = Bid::items();
 		return view('admin.feedback.bidList', compact('bids'));
+	}
+
+	public function getFeedback() {
+		$feedbacks = Feedback::latest()->get();
+		return view('admin.feedback.feedbackList', compact('feedbacks'));
 	}
 }

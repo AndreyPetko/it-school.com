@@ -3,13 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<link rel="stylesheet" href="{{ url('bootstrap/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url('bootstrap/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" href="{{ url('dist/css/site.css') }}">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
 
 	<div id="auth-block" class="auth-block">
 		<form method="POST" action="auth/login">
@@ -35,51 +34,31 @@
 	</div>
 
 
-
 	<div id="nav-bg"></div>
 
 
 	<div id="nav">
 		<ul>
-			<li><a href="index.html" >Главная</a></li>
+			<li><a href="/" >Главная</a></li>
 			<li><a href="#" >О школе</a></li>
-			<li id="subMenuButton"><a href="courses.html" >Курсы</a></li>
+			<li id="subMenuButton"><a href="courses" >Курсы</a></li>
 			<ul id="subMenu">
+
+				@foreach($menuDirections as $direction)
 				<ul class="ulList">
-					<a href=""><li>Название курса </li></a>
-					<a  href=""><li>Название курса</li></a>
-					<a  href=""><li>Название курса </li></a>
-					<a  href=""> <li>Название курса </li></a>
+					@foreach($direction->courses as $menuCourse)
+					<a href="/course/{{$menuCourse->url}}"><li>{{$menuCourse->name}}</li></a>
+					@endforeach
+				</ul>
+				<a href="/courses"  class="subMenuA" > <li>{{$direction->name}}</li></a>
+				@endforeach
 
 
-				</ul>
-				<a href=""  class="subMenuA" > <li>Название категории Название категории Название категории Название категории Название категории  </li></a>
-				<ul class="ulList">
-					<a class="subMenuA" href=""><li>Название курса </li></a>
-					<a class="subMenuA" href=""><li>Название курса</li></a>
-					<a class="subMenuA" href=""><li>Название курса </li></a>
-					<a class="subMenuA" href=""> <li>Название курса </li></a>
-				</ul>
-				<a href=""  class="subMenuA" > <li>Название категории </li></a>
-				<ul class="ulList">
-					<a  href=""><li>Название курса </li></a>
-					<a  href=""><li>Название курса</li></a>
-					<a  href=""><li>Название курса </li></a>
-					<a   href=""> <li>Название курса </li></a>
-				</ul>
-				<a href=""  class="subMenuA" > <li>Название категории </li></a>
-				<ul class="ulList">
-					<a  href=""><li>Название курса </li></a>
-					<a  href=""><li>Название курса</li></a>
-					<a  href=""><li>Название курса </li></a>
-					<a  href=""> <li>Название курса </li></a>
-				</ul>
-				<a href=""  class="subMenuA" > <li>Название категории </li></a>
 
 			</ul>
 			<li><a href="#" >Партнерам</a></li>
-			<li><a href="news.html" >Новости</a></li>
-			<li><a href="contacts.html" >Контакты</a></li>
+			<li><a href="/news-list" >Новости</a></li>
+			<li><a href="/contacts" >Контакты</a></li>
 		</ul>
 		<div id="mobile-button">
 			<div></div>
@@ -105,13 +84,13 @@
 
 	@yield('content')
 
-	<div id="arrow-up"><img src="{{ url('site_images/arrow-up.png') }}"></div>
+	<div id="arrow-up"><img src="{{ url('/site_images/arrow-up.png') }}"></div>
 	<div class="footer">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-2 hidden-xs">
 					<div class="footer-logo">
-						<img src="{{ url('site_images/logo-footer.png') }}" alt="">
+						<img src="{{ url('/site_images/logo-footer.png') }}" alt="">
 					</div>
 				</div>
 				<div class="col-md-10">
@@ -141,12 +120,12 @@
 					</div>
 					<div class="col-md-6 col-sm-12">
 						<div class="footer-social">
-							<a href="#"><img src="{{ url('site_images/icon-insta.jpg') }}" alt=""></a>
-							<a href="#"><img src="{{ url('site_images/icon-google.png') }}" alt=""></a>
-							<a href="#"><img src="{{ url('site_images/icon-vk.png') }}" alt=""></a>
-							<a href="#"><img src="{{ url('site_images/icon-ok.png') }}" alt=""></a>
-							<a href="#"><img src="{{ url('site_images/icon-fb.jpg') }}" alt=""></a>
-							<a href="#"><img src="{{ url('site_images/icon-tw.jpg') }}" alt=""></a>
+							<a href="#"><img src="{{ url('/site_images/icon-insta.jpg') }}" alt=""></a>
+							<a href="#"><img src="{{ url('/site_images/icon-google.png') }}" alt=""></a>
+							<a href="#"><img src="{{ url('/site_images/icon-vk.png') }}" alt=""></a>
+							<a href="#"><img src="{{ url('/site_images/icon-ok.png') }}" alt=""></a>
+							<a href="#"><img src="{{ url('/site_images/icon-fb.jpg') }}" alt=""></a>
+							<a href="#"><img src="{{ url('/site_images/icon-tw.jpg') }}" alt=""></a>
 						</div>
 					</div>
 				</div>
@@ -164,8 +143,8 @@
 			</div>
 		</div>
 	</div>
-
-	<script src="{{ url('plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+	<script src="{{ url('plugins/jQuery/jQuery-2.1.4.min.js')}}"></script>
+	<script src="{{ url('dist/js/main.js') }}"></script>
 	@yield('js')
 </body>
 </html>

@@ -11,6 +11,10 @@
 |
 */
 
+view()->composer('site.layout', function ($view) {
+	$menuDirections = App\Course::groupByDirection(App\Direction::all());
+	$view->with('menuDirections', $menuDirections);
+});
 
 Route::controller('admin/lessons', 'Admin\LessonController');
 Route::controller('admin/course', 'Admin\CourseController');

@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests;
+
 use Request;
 use App\Course;
 use App\Image;
 use Redirect;
+use App\Direction;
 
 
 class CourseController extends Controller
@@ -25,7 +28,8 @@ class CourseController extends Controller
 
 
 	public function getAdd() {
-		return view('admin.courses.courseAdd');
+		$directions = Direction::all();
+		return view('admin.courses.courseAdd', compact('directions'));
 	}
 
 	public function postAdd() {
@@ -46,8 +50,9 @@ class CourseController extends Controller
 
 
 	public function getEdit($course_id) {
+		$directions = Direction::all();
 		$course = Course::find($course_id);
-		return view('admin.courses.courseEdit', compact('course'));
+		return view('admin.courses.courseEdit', compact('course', 'directions'));
 	}
 
 
@@ -79,6 +84,37 @@ class CourseController extends Controller
 	public function getLessons($course_id) {
 		$course = Course::find($course_id);
 		return view('admin.lessons.lessonsList', compact('course'));
+	}
+
+	public function getDirections() {
+		$directions = Direction::all();
+		return view('admin.directions.directionsList', compact('directions'));
+	}
+
+	public function getDirectionAdd() {
+		return view('admin.directions.directionAdd');
+	}
+
+	public function postDirectionAdd(Requests\DirectionRequest $request) {
+		Direction::create($this->request);
+		return Redirect::to('admin/course/directions');
+	}
+
+	public function getDirectionEdit($id) {
+		$direction = Direction::find($id);
+		return view('admin.directions.directionEdit', compact('direction'));
+	}
+
+	public function postDirectionEdit($id) {
+		Direction::find($id)->update($this->request);
+		return Redirect::to('admin/course/directions');
+	}
+
+
+	public function postDirectionDelete() {
+		$id = $this->request['id'];
+		Direction::find($id)->delete();
+		return Redirect::back();
 	}
 
 

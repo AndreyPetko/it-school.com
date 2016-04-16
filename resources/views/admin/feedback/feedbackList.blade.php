@@ -62,18 +62,19 @@
                 <thead>
                   <th>Имя</th>
                   <th>Email</th>
+                  <th>Сообщение</th>
                   <th>Дата</th>
                 </thead>
                   <tbody>
                   <tr>
-                  @foreach($bids as $bid)
+                  @foreach($feedbacks as $feedback)
                     <!-- <td><input type="checkbox"></td> -->
                     <!-- <td class="mailbox-star"><a href="#"><i class="fa fa-star text-yellow"></i></a></td> -->
-                    <td class="mailbox-name">{{$bid->name}}</td>
-                    <td class="mailbox-subject">{{$bid->email}}
-                    </td>
+                    <td class="mailbox-name">{{$feedback->name}}</td>
+                    <td class="mailbox-subject">{{$feedback->email}}</td>
+                    <td class="mailbox-subject">{{$feedback->text}}</td>
                     <!-- <td class="mailbox-attachment"></td> -->
-                    <td class="mailbox-date">{{$bid->created_at->format('h:i:s - d/m')}}</td>
+                    <td class="mailbox-date">{{$feedback->created_at->format('h:i:s - d/m')}}</td>
                   </tr>
                   @endforeach
                   </tbody>

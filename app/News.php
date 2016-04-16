@@ -12,7 +12,12 @@ class News extends Model
 
 
 	public static function items() {
-		return DB::table('news')->orderBy('id', 'desc')->paginate(3);
+		return DB::table('news')
+		->select(DB::raw('count(comments.id) as comments, news.*'))
+		->leftjoin('comments', 'news.id', '=', 'comments.item_id')
+		->orderBy('id', 'desc')
+		->groupBy('news.id')
+		->paginate(3);
 	}
 
 

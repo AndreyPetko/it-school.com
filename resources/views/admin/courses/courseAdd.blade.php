@@ -26,14 +26,35 @@
 								<label for="name">Название</label>
 								<input type="text" placeholder="Введите название курса" class="form-control" name="name" id="name" value="{{old('name')}}"/>
 							</div>
+
+							<div class="form-group">
+								<label for="name">Url</label>
+								<input type="text" placeholder="Введите url курса" class="form-control" name="url" id="url" value="{{old('url')}}"/>
+							</div>
+
+							<div class="form-group">
+								<label>Выберите направление</label>
+								<select name="direction_id" class="form-control">
+									@foreach($directions as $direction)
+										<option value="{{$direction->id}}">{{$direction->name}}</option>
+									@endforeach
+								</select>
+							</div>
+
+
 							<div class="form-group">
 								<label for="price">Цена:</label>
 								<input type="text" placeholder="Введите цену курса" class="form-control" name="price" id="price" value="{{old('price')}}"/>
 							</div>
 
 							<div class="form-group">
-								<label for="description">Описание курса:</label>
+								<label for="description">Короткое описание курса:</label>
 								<textarea name="description" id="description" class="form-control" rows="10"></textarea>
+							</div>
+
+							<div class="form-group">
+								<label for="description">Полное описание курса:</label>
+								<textarea name="fullDescription" class="form-control" rows="10"></textarea>
 							</div>
 
 							<div class="form-group">
