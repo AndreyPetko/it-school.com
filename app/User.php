@@ -2,6 +2,8 @@
 
 namespace App;
 
+use DB;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -23,4 +25,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function addCourses($courses) {
+        foreach ($courses as $course) {
+            DB::table('user_courses')->insert([
+                'user_id' => $this->id,
+                'course_id' => $course,
+                'current_lesson_id' => 1
+                ]);
+        }
+    }
 }

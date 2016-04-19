@@ -40,7 +40,7 @@
 	<div id="nav">
 		<ul>
 			<li><a href="/" >Главная</a></li>
-			<li><a href="#" >О школе</a></li>
+			<li><a href="{{ url('about') }}" >О школе</a></li>
 			<li id="subMenuButton"><a href="courses" >Курсы</a></li>
 			<ul id="subMenu">
 
@@ -56,7 +56,7 @@
 
 
 			</ul>
-			<li><a href="#" >Партнерам</a></li>
+			<li><a href="/partners" >Партнерам</a></li>
 			<li><a href="/news-list" >Новости</a></li>
 			<li><a href="/contacts" >Контакты</a></li>
 		</ul>
@@ -67,7 +67,7 @@
 		</div>
 
 		<div id="student" class="button-student">Я УЧЕНИК</div>
-		<a href="zayavka.html"><div id="new-student" class="button-new-student">ПОДАТЬ ЗАЯВКУ</div></a>
+		<a href="{{ url('zayavka') }}"><div id="new-student" class="button-new-student">ПОДАТЬ ЗАЯВКУ</div></a>
 	</div>
 
 

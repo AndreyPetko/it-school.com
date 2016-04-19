@@ -10,7 +10,9 @@ use Redirect;
 use App\Bid;
 use Carbon\Carbon;
 use App\Feedback;
-
+use App\Order;
+use App\User;
+use DB;
 
 class FeedbackController extends Controller
 {
@@ -29,5 +31,33 @@ class FeedbackController extends Controller
 	public function getFeedback() {
 		$feedbacks = Feedback::latest()->get();
 		return view('admin.feedback.feedbackList', compact('feedbacks'));
+	}
+
+	public function getOrders() {
+		$orders = Order::latest()->get();
+		return view('admin.feedback.orders', compact('orders'));
+	}
+
+	public function getSetOrderPaid($orderId) {
+		$order = Order::find($orderId);
+
+		$user = new User();
+		$user->email = $order->email;
+		$user->password = bcrypt('123');
+		$user->name = $order->name;
+
+		$courses = $order->getCourses();
+
+
+		DB::beginTransaction();
+		$user->save();
+
+		$user->addCourses($courses);
+
+
+		$order->update(['paid' => 1 ]);
+		DB::commit();
+
+		return Redirect::back();
 	}
 }

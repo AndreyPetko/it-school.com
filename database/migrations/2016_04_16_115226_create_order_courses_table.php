@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFeedbackTable extends Migration
+class CreateOrderCoursesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,12 @@ class CreateFeedbackTable extends Migration
      */
     public function up()
     {
-        Schema::create('feedback', function (Blueprint $table) {
+        Schema::create('order_courses', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email');
-            $table->textph('text');
+            $table->integer('order_id');
+            $table->integer('course_id');
+            $table->string('course_name');
+            $table->string('price');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateFeedbackTable extends Migration
      */
     public function down()
     {
-        Schema::drop('feedback');
+        Schema::drop('order_courses');
     }
 }

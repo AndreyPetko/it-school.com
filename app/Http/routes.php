@@ -31,5 +31,6 @@ Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@logout');
 
 
+Route::controller('/ajax', 'Site\AjaxController');
 Route::controller('/', 'Site\HomeController');
 

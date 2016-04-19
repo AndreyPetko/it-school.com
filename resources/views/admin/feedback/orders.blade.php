@@ -27,9 +27,9 @@
           <h3 class="box-title">Заявки на урок</h3>
 
           <div class="box-tools pull-right">
-            <div class="has-feedback">
+            <div class="has-order">
               <input type="text" class="form-control input-sm" placeholder="Search Mail">
-              <span class="glyphicon glyphicon-search form-control-feedback"></span>
+              <span class="glyphicon glyphicon-search form-control-order"></span>
             </div>
           </div>
           <!-- /.box-tools -->
@@ -61,17 +61,25 @@
             <table class="table table-hover table-striped">
               <thead>
                 <th>Имя</th>
-                <th>Email</th>
-                <th>Сообщение</th>
+                <th>skype</th>
+                <th>Обшая стоимость</th>
                 <th>Дата</th>
               </thead>
               <tbody>
-                @foreach($feedbacks as $feedback)
+                @foreach($orders as $order)
                 <tr>
-                  <td class="mailbox-name">{{$feedback->name}}</td>
-                  <td class="mailbox-subject">{{$feedback->email}}</td>
-                  <td class="mailbox-subject">{{$feedback->text}}</td>
-                  <td class="mailbox-date">{{$feedback->created_at->format('H:i:s - d/m')}}</td>
+                  <td class="mailbox-name">{{$order->name}}</td>
+                  <td class="mailbox-subject">{{$order->skype}}</td>
+                  <td class="mailbox-subject">{{$order->totalprice}}р</td>
+                  <td class="mailbox-date">{{$order->created_at->format('H:i:s - d/m')}}</td>
+                  <td>
+                    @if($order->paid == 0)
+                    <a href="/admin/feedback/set-order-paid/{{$order->id}}"><button type="button" class="btn btn-block btn-success btn-flat">Активировать</button></a>
+                    @else 
+                    Активирована
+                    @endif
+                  </td>
+                  <td><button type="button" class="btn btn-block btn-danger btn-flat">Удалить</button></td>
                 </tr>
                 @endforeach
               </tbody>

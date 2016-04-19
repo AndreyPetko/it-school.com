@@ -25,6 +25,7 @@
 
 <li>
   <a href="/admin/variables">
-    <i class="fa fa-file-text-o"></i> <span>Переменные</span>
+    <i class="fa fa-file-text-o"></i> <span>Переменные и страницы</span>
   </a>
 </li>
+

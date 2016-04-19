@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFeedbackTable extends Migration
+class AddCityToOrder extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,8 @@ class CreateFeedbackTable extends Migration
      */
     public function up()
     {
-        Schema::create('feedback', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email');
-            $table->textph('text');
-            $table->timestamps();
+        Schema::table('orders', function (Blueprint $table) {
+            $table->string('city');
         });
     }
 
@@ -28,6 +24,8 @@ class CreateFeedbackTable extends Migration
      */
     public function down()
     {
-        Schema::drop('feedback');
+        Schema::table('orders', function (Blueprint $table) {
+            $table->dropColumn('city');
+        });
     }
 }

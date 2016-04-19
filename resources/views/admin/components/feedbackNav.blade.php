@@ -9,9 +9,8 @@
             </div>
             <div class="box-body no-padding">
               <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="#"><i class="fa fa-inbox"></i> Заявки на урок
-                  <!-- <span class="label label-primary pull-right">12</span></a> --></li>
-                <li><a href="#"><i class="fa fa-envelope-o"></i> Заявки на получение курса</a></li>
+                <li class="active"><a href="/admin/feedback"><i class="fa fa-inbox"></i> Заявки на урок </a></li>
+                <li><a href="/admin/feedback/orders"><i class="fa fa-envelope-o"></i> Заявки на получение курса</a></li>
                 <li><a href="#"><i class="fa fa-file-text-o"></i> Отызывы о курсах</a></li>
                 <li><a href="#"><i class="fa fa-filter"></i> Обратная связь <!-- <span class="label label-warning pull-right">65</span> --></a>
                 <!-- </li> -->

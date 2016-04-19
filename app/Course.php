@@ -46,5 +46,9 @@ class Course extends Model
 		return $directions;
 	}
 
+	public static function totalPrice($coursesIds) {
+		return DB::table('courses')->whereIn('id', $coursesIds)->sum('price');
+	}
+
 
 }

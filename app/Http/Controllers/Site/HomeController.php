@@ -15,6 +15,9 @@ use App\Direction;
 use App\Comment;
 use App\Feedback;
 use App\Sendmail;
+use App\Pages;
+use Session;
+use App\Order;
 
 class HomeController extends Controller
 {
@@ -84,6 +87,39 @@ class HomeController extends Controller
 
 	public function getContacts() {
 		return view('site.contacts');
+	}
+
+	public function getP($url) {
+		$page = Pages::where('url', $url)->first();
+		return view('site.staticPage', compact('page'));
+	}
+
+	public function getAbout() {
+		$page = Pages::where('url', 'about')->first();
+		return view('site.staticPage', compact('page'));
+	}
+
+	public function getPartners() {
+		$page = Pages::where('url', 'partners')->first();
+		return view('site.staticPage', compact('page'));
+	}
+
+	public function getZayavka() {
+		$directions = Course::groupByDirection(Direction::all());
+		$coursesIds = Session::get('courses');
+
+		$currentCourses = Course::whereIn('id', $coursesIds)->get();
+		$totalprice = Course::totalPrice($coursesIds);
+
+		return view('site.zayavka', compact('directions', 'currentCourses', 'totalprice'));
+	}
+
+	public function postZayavka() {
+		$coursesId = Session::get('courses');
+		$courses = Course::whereIn('id', $coursesId)->get();
+		Order::createItem($this->request, $courses);
+		Session::put('courses', []);
+		return Redirect::back();
 	}
 
 }

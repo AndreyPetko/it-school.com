@@ -1115,6 +1115,10 @@ html{
 	display: inline-block;
 }
 
+.course-list-logo img {
+	width: 40px;
+}
+
 .course-name {
 	margin-left: 20px;
 	display: inline-block;
@@ -1122,13 +1126,10 @@ html{
 }
 
 .course-list-item2 {
-
 	height: 0px;
-	overflow: hidden; 
-	cursor: pointer; 
+	overflow: hidden;
+	cursor: pointer;
 	transition:0.4s All;
-	/* padding:10px 0 10px 24px;
-	border: 2px solid white;  */
 }
 
 
@@ -1238,6 +1239,14 @@ html{
 	background-color: #b66b00;
 }
 
+
+.bid-price-button {
+	float: left;
+	font-family: Roboto;
+	margin-left: 10px;
+	line-height: 30px;
+	color: #dc8100;
+}
 
 .bid-delete-button {
 	float: right;
@@ -1612,4 +1621,15 @@ html{
 	padding: 5px;
 	font-size: 12px;
 	font-family: Roboto;
+}
+
+.page-text {
+	font-family: Roboto;
+	line-height: 20px;
+}
+
+.bid-form-totalprice {
+	color: #dc8100;
+	font-size: 20px;
+	text-align: right;
 }

@@ -148,7 +148,10 @@ window.onscroll = function() {
 	var pageY = window.pageYOffset || document.documentElement.scrollTop;
 	if (pageY > 500) {
 		arrowUp.style.display ="block";
-		irina.style.opacity = "100"
+		// if(irina !== 'undefined') {
+			if (typeof(irina) != 'undefined') {
+			irina.style.opacity = "100";
+		}
 	}
 	else{
 		arrowUp.style.display ="none";
