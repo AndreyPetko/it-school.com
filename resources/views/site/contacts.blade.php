@@ -66,8 +66,7 @@
 				<img src="{{ url('/site_images/logo-copy.png') }}" alt="">
 			</div>
 			<div class="contacts-text-block col-md-8">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. At non beatae, iure, iusto sed, doloribus ut odio dicta, velit alias eos quia. Ad libero, ipsa aperiam, beatae quam rerum sunt excepturi eligendi a assumenda qui, laboriosam inventore voluptates veritatis facere debitis autem officiis eos, placeat officia quaerat maiores esse accusamus.
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, id. Ad laborum, eius earum fuga dolores veritatis officia hic deleniti?
+				{!!$contactsText!!}
 			</div>
 		</div>
 	</div>

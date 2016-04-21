@@ -82,7 +82,7 @@ viewBox="0 0 18 57" width="17px" xml:space="preserve">
 		@foreach($courses as $course)
 
 		<div class="course-item-slider">
-			<a href="">
+			<a href="{{ url('/course/' . $course->url)}}">
 				<div class="course-logo">
 					<img src="{{ url('images/' . $course->logo) }}" alt="">
 				</div>
@@ -96,10 +96,11 @@ viewBox="0 0 18 57" width="17px" xml:space="preserve">
 				<img src="{{ url('/site_images/star.png') }}" alt="">
 			</div>
 
-
-			<div class="course-title">
-				{{$course->name}}
-			</div>
+			<a href="{{ url('/course/' . $course->url)}}">
+				<div class="course-title">
+					{{$course->name}}
+				</div>
+			</a>
 
 
 
@@ -109,14 +110,16 @@ viewBox="0 0 18 57" width="17px" xml:space="preserve">
 
 
 			<div class=" course-buttons">
-				<a href="/course/{{$course->url}}">
+				<a href="{{ url('/course/' . $course->url)}}">
 					<div class="course-more">
 						Подробнее
 					</div>
 				</a>
-				<a href="zayavka.html"><div class="course-buy">
-					Записаться на курс
-				</div></a>
+				<a href="/add-zayavka/{{$course->id}}">
+					<div class="course-buy">
+						Записаться на курс
+					</div>
+				</a>
 			</div>
 		</div>
 		@endforeach
@@ -127,149 +130,48 @@ viewBox="0 0 18 57" width="17px" xml:space="preserve">
 <div class="slider-mobile">
 	<div class="container">
 		<div class="row">
+			@foreach($courses as $course)
 			<div class=" col-md-6">
-				
-				<a href=""><div class="course-logo">
-					<img src="{{ url('/site_images/logo_excel.png') }}" alt="">
+				<a href="{{ url('course/' . $course->url) }}">
+					<div class="course-logo">
+						<img src="{{ url('/images/' . $course->logo) }}" alt="">
+					</div>
+				</a>
+
+				<div class="course-stars">
+					<img src="{{ url('/site_images/star.png') }}" alt="">
+					<img src="{{ url('/site_images/star.png') }}" alt="">
+					<img src="{{ url('/site_images/star.png') }}" alt="">
+					<img src="{{ url('/site_images/star.png') }}" alt="">
+					<img src="{{ url('/site_images/star.png') }}" alt="">
 				</div>
-			</a>
-			
-			<div class="course-stars">
-				<img src="{{ url('/site_images/star.png') }}" alt="">
-				<img src="{{ url('/site_images/star.png') }}" alt="">
-				<img src="{{ url('/site_images/star.png') }}" alt="">
-				<img src="{{ url('/site_images/star.png') }}" alt="">
-				<img src="{{ url('/site_images/star.png') }}" alt="">
-			</div>
-			
-			
-			<div class="course-title">
-				Онлайн курс Microsoft Exel 5
-			</div>
-			
-			
-			
-			<div class="course-text">
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate illo provident aliquam sit? Repellat aliquam nam alias sed suscipit similique soluta voluptates odit, enim, adipisci eaque beatae. 
-			</div>
-			
-			
-			<div class=" course-buttons">
-				<div class="course-more">
-					Подробнее
+
+
+				<a href="{{ url('course/' . $course->url) }}">
+					<div class="course-title">
+						{{$course->name}}
+					</div>
+				</a>
+
+				<div class="course-text">
+					{!!$course->description!!}
 				</div>
-				<a href="zayavka.html"><div class="course-buy">
-					Записаться на курс
-				</div></a>
+
+				<div class=" course-buttons">
+					<a href="{{ url('course/' . $course->url) }}">
+						<div class="course-more">
+							Подробнее
+						</div>
+					</a>
+					<a href="{{ url('add-zayavka/' . $course->id) }}"><div class="course-buy">
+						Записаться на курс
+					</div></a>
+				</div>
 			</div>
-		</div>
-		<div class="col-md-6">
-			<a href=""><div class="course-logo">
-				<img src="{{ url('/site_images/logo_excel.png') }}" alt="">
-			</div>
-		</a>
-		
-		<div class="course-stars">
-			<img src="{{ url('/site_images/star.png') }}" alt="">
-			<img src="{{ url('/site_images/star.png') }}" alt="">
-			<img src="{{ url('/site_images/star.png') }}" alt="">
-			<img src="{{ url('/site_images/star.png') }}" alt="">
-			<img src="{{ url('/site_images/star.png') }}" alt="">
-		</div>
-		
-		
-		<div class="course-title">
-			Онлайн курс Microsoft Exel 5
-		</div>
-		
-		
-		
-		<div class="course-text">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate illo provident aliquam sit? Repellat aliquam nam alias sed suscipit similique soluta voluptates odit, enim, adipisci eaque beatae. 
-		</div>
+			@endforeach
 
-		<div class=" course-buttons">
-			<div class="course-more">
-				Подробнее
-			</div>
-			<a href="zayavka.html"><div class="course-buy">
-				Записаться на курс
-			</div></a>
 		</div>
 	</div>
-	<div class=" col-md-6">
-		<a href=""><div class="course-logo">
-			<img src="{{ url('/site_images/logo_excel.png') }}" alt="">
-		</div>
-	</a>
-	
-	<div class="course-stars">
-		<img src="{{ url('/site_images/star.png') }}" alt="">
-		<img src="{{ url('/site_images/star.png') }}" alt="">
-		<img src="{{ url('/site_images/star.png') }}" alt="">
-		<img src="{{ url('/site_images/star.png') }}" alt="">
-		<img src="{{ url('/site_images/star.png') }}" alt="">
-	</div>
-	
-	
-	<div class="course-title">
-		Онлайн курс Microsoft Exel 5
-	</div>
-	
-	
-	
-	<div class="course-text">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate illo provident aliquam sit? Repellat aliquam nam alias sed suscipit similique soluta voluptates odit, enim, adipisci eaque beatae. 
-	</div>
-	
-	
-	<div class=" course-buttons">
-		<div class="course-more">
-			Подробнее
-		</div>
-		<a href="zayavka.html"><div class="course-buy">
-			Записаться на курс
-		</div></a>
-	</div>
-</div>
-<div class=" col-md-6">
-	<a href=""><div class="course-logo">
-		<img src="{{ url('/site_images/logo_excel.png') }}" alt="">
-	</div>
-</a>
-
-<div class="course-stars">
-	<img src="{{ url('/site_images/star.png') }}" alt="">
-	<img src="{{ url('/site_images/star.png') }}" alt="">
-	<img src="{{ url('/site_images/star.png') }}" alt="">
-	<img src="{{ url('/site_images/star.png') }}" alt="">
-	<img src="{{ url('/site_images/star.png') }}" alt="">
-</div>
-
-
-<div class="course-title">
-	Онлайн курс Microsoft Exel 5
-</div>
-
-
-
-<div class="course-text">
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate illo provident aliquam sit? Repellat aliquam nam alias sed suscipit similique soluta voluptates odit, enim, adipisci eaque beatae. 
-</div>
-
-
-<div class=" course-buttons">
-	<div class="course-more">
-		Подробнее
-	</div>
-	<a href="zayavka.html"><div class="course-buy">
-		Записаться на курс
-	</div></a>
-</div>
-</div>
-
-</div>
-</div>
 </div>
 <div class="container"><div class="row"><a href="courses"><div class="button-to-all">Все курсы</div></a></div></div>
 
@@ -381,7 +283,7 @@ viewBox="0 0 18 57" width="17px" xml:space="preserve">
 					<div class="col-md-2 hidden-sm"></div>
 					<div class="col-md-8 col-sm-12">
 						{!! $giftText2 !!}
-						<div class="button-iphone"><a href="zayavka.html">Подать заявку на курс</a></div>
+						<div class="button-iphone"><a href="{{ url('zayavka') }}">Подать заявку на курс</a></div>
 					</div>
 					<div class="col-md-2 hidden-sm"></div>
 				</div>

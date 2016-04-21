@@ -1,3 +1,4 @@
+
 @extends('site.pageLayout')
 
 
@@ -124,9 +125,11 @@
 									Подробнее
 								</div>
 							</a>
-							<div class="course-buy">
-								Записаться на курс
-							</div>
+							<a href="{{ url('add-zayavka/' . $course->id) }}">
+								<div class="course-buy">
+									Записаться на курс
+								</div>
+							</a>
 						</div>
 					</div>
 				</div>

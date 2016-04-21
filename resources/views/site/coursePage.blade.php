@@ -66,8 +66,8 @@
 			</div>
 			<div class="row mt10">
 
-				<div class="col-md-5">
-					<a href="">
+				<div class="col-md-5 sub-button-link">
+					<a href="{{ url('/add-zayavka/' . $course->id) }}">
 						<div class="sub-button">
 							Записаться на курс
 						</div>
@@ -90,10 +90,11 @@
 		@foreach($topCourses as $topCourse)
 		<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 grid-item category">
 			<div class="course-item">
-				<a href=""><div class="course-logo">
+				<a href="{{ url('/course/' . $topCourse->url)}}">
+					<div class="course-logo">
 					<img src="{{ url('/images/' . $topCourse->logo) }}" alt="">
-
-				</div></a>
+					</div>
+				</a>
 				<div class="row">
 					<div class="course-stars">
 						<img src="{{ url('/site_images/star.png') }}" alt="">
@@ -105,36 +106,37 @@
 				</div>
 
 				<div class="row">
-					<a href=""><div class="course-title">
-						{{$topCourse->name}}
-					</div>
-				</a>
-			</div>
+					<a href="{{ url('/course/' . $topCourse->url)}}">
+						<div class="course-title">
+							{{$topCourse->name}}
+						</div>
+					</a>
+				</div>
 
-			<div class="row">
-				<div class="course-text">
-					{!!$topCourse->description!!}
+				<div class="row">
+					<div class="course-text">
+						{!!$topCourse->description!!}
+					</div>
+				</div>
+
+				<div class="row course-buttons">
+					<a href="/course/{{$topCourse->url}}">
+						<div class="course-more">
+							Подробнее
+						</div>
+					</a>
+					<a href="{{ url('/add-zayavka/' . $topCourse->id) }}">
+						<div class="course-buy">
+							Записаться на курс
+						</div>
+					</a>
 				</div>
 			</div>
-
-			<div class="row course-buttons">
-				<a href="/course/{{$topCourse->url}}">
-					<div class="course-more">
-						Подробнее
-					</div>
-				</a>
-				<a href="zayavka.html">
-					<div class="course-buy">
-						Записаться на курс
-					</div>
-				</a>
-			</div>
 		</div>
+		@endforeach
+
+
 	</div>
-	@endforeach
-
-
-</div>
 
 </div>
 <!-- /content-->

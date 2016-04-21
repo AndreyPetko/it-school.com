@@ -39,26 +39,26 @@
 
 	<div id="nav">
 		<ul>
-			<li><a href="/" >Главная</a></li>
+			<li><a href="{{ url('/') }}" >Главная</a></li>
 			<li><a href="{{ url('about') }}" >О школе</a></li>
-			<li id="subMenuButton"><a href="courses" >Курсы</a></li>
+			<li id="subMenuButton"><a href="{{ url('courses') }}" >Курсы</a></li>
 			<ul id="subMenu">
 
 				@foreach($menuDirections as $direction)
 				<ul class="ulList">
 					@foreach($direction->courses as $menuCourse)
-					<a href="/course/{{$menuCourse->url}}"><li>{{$menuCourse->name}}</li></a>
+					<a href="{{ url('/course/' . $menuCourse->url) }}"><li>{{$menuCourse->name}}</li></a>
 					@endforeach
 				</ul>
-				<a href="/courses"  class="subMenuA" > <li>{{$direction->name}}</li></a>
+				<a href="{{ url('/courses') }}"  class="subMenuA" > <li>{{$direction->name}}</li></a>
 				@endforeach
 
 
 
 			</ul>
-			<li><a href="/partners" >Партнерам</a></li>
-			<li><a href="/news-list" >Новости</a></li>
-			<li><a href="/contacts" >Контакты</a></li>
+			<li><a href="{{ url('partners') }}" >Партнерам</a></li>
+			<li><a href="{{ url('news-list') }}" >Новости</a></li>
+			<li><a href="{{ url('contacts') }}" >Контакты</a></li>
 		</ul>
 		<div id="mobile-button">
 			<div></div>
@@ -66,19 +66,21 @@
 			<div></div>
 		</div>
 
+
 		<div id="student" class="button-student">Я УЧЕНИК</div>
+		<!-- <a href="/profile"><div class="button-student">Я УЧЕНИК</div></a> -->
 		<a href="{{ url('zayavka') }}"><div id="new-student" class="button-new-student">ПОДАТЬ ЗАЯВКУ</div></a>
 	</div>
 
 
 	<div id="mobile-menu">
 		<ul>
-			<li><a href="index.html" >Главная</a></li>
-			<li><a href="#" >О школе</a></li>
-			<li><a href="courses.html" >Курсы</a></li>
-			<li><a href="#" >Партнерам</a></li>
-			<li><a href="news.html" >Новости</a></li>
-			<li><a href="contacts.html" >Контакты</a></li>
+			<li><a href="{{ url('/') }}" >Главная</a></li>
+			<li><a href="{{ url('/about') }}" >О школе</a></li>
+			<li><a href="{{ url('courses') }}" >Курсы</a></li>
+			<li><a href="{{ url('partners') }}" >Партнерам</a></li>
+			<li><a href="{{ url('news-list') }}" >Новости</a></li>
+			<li><a href="{{ url('contacts') }}" >Контакты</a></li>
 		</ul>
 	</div>
 

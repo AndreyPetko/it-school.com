@@ -21,7 +21,11 @@ Route::controller('admin/course', 'Admin\CourseController');
 Route::controller('admin/news', 'Admin\NewsController');
 Route::controller('admin/feedback', 'Admin\FeedbackController');
 Route::controller('admin/variables', 'Admin\VariableController');
+Route::controller('admin/homework', 'Admin\HomeworkController');
 Route::controller('admin', 'Admin\AdminController');
+
+
+Route::controller('profile', 'User\HomeController');
 
 
 

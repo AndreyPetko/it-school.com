@@ -86,7 +86,8 @@ class HomeController extends Controller
 
 
 	public function getContacts() {
-		return view('site.contacts');
+		$contactsText = Keyval::getByKey('Текст в контактах');
+		return view('site.contacts', compact('contactsText'));
 	}
 
 	public function getP($url) {
@@ -102,6 +103,25 @@ class HomeController extends Controller
 	public function getPartners() {
 		$page = Pages::where('url', 'partners')->first();
 		return view('site.staticPage', compact('page'));
+	}
+
+
+	public function getAddZayavka($course_id = 0) {
+		if($course_id) {
+			$courses = Session::get('courses');
+
+			if(!isset($courses)) {
+				$courses = [];
+			}
+
+			if(array_search($course_id,$courses) === false) {
+				$courses[] = $course_id;
+				Session::put('courses', $courses);
+				Session::save();
+			}
+		}
+
+		return Redirect::to('/zayavka');
 	}
 
 	public function getZayavka() {

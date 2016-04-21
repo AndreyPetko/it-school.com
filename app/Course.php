@@ -4,6 +4,7 @@ namespace App;
 use DB;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Course extends Model
 {
@@ -12,7 +13,7 @@ class Course extends Model
 
 
 	public function lessons() {
-		return $this->hasMany('App\Lesson');
+		return $this->hasMany('App\Lesson')->orderBy('position');
 	}
 
 
@@ -38,7 +39,7 @@ class Course extends Model
 			$courses = self::where('direction_id', $direction->id)->get();
 			if($courses) {
 				$direction['courses'] = $courses;
-			} else  {
+			} else {
 				unset($directions[$key]);
 			}
 		}
@@ -48,6 +49,32 @@ class Course extends Model
 
 	public static function totalPrice($coursesIds) {
 		return DB::table('courses')->whereIn('id', $coursesIds)->sum('price');
+	}
+
+	public static function getUserItems($user_id) {
+		return DB::table('courses')
+		->select(DB::raw('count(lessons.id) as lessons, courses.*, user_courses.current_lesson_id'))
+		->leftjoin('user_courses', 'user_courses.course_id', '=', 'courses.id')
+		->leftjoin('lessons', 'courses.id', '=', 'lessons.course_id')
+		->where('user_courses.user_id', $user_id)
+		->groupBy('courses.id')
+		->get();
+	}
+
+	public static function getProgress($course, $user_id) {
+		return (($course->current_lesson_id  - 1)/ $course->lessons) * 100;
+	}
+
+	public static function getOther($coursesId) {
+		return DB::table('courses')->whereNotIn('id', $coursesId)->get();
+	}
+
+	public function currentLesson() {
+		return DB::table('user_courses')->where('user_id', Auth::user()->id)->where('course_id', $this->id)->value('current_lesson_id');
+	}
+
+	public function getCourseProgress() {
+		$this->progress = ($this->currentLesson() - 1) / $this->lessons->count() * 100;
 	}
 
 

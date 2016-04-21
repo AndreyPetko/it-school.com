@@ -22,10 +22,15 @@
   </a>
 </li>
 
-
 <li>
   <a href="/admin/variables">
     <i class="fa fa-file-text-o"></i> <span>Переменные и страницы</span>
+  </a>
+</li>
+
+<li>
+  <a href="/admin/homework">
+    <i class="fa fa-home"></i> <span>Домашние задания</span>
   </a>
 </li>
 

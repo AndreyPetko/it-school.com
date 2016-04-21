@@ -66,7 +66,7 @@
                      Подробнее
                  </div>
              </a>
-             <a href="zayavka.html">
+             <a href="{{ url('add-zayavka/' . $course->id) }}">
                  <div class="course-buy">
                     Записаться на курс
                 </div>

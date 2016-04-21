@@ -4,7 +4,6 @@ namespace App;
 
 class Helper {
 
-
 	public static function toBool($item) {
 		if($item) {
 			$item = 1;
@@ -14,6 +13,10 @@ class Helper {
 
 		return $item;
 
+	}
+
+	public static function getExtension($filename) {
+		return end(explode(".", $filename));
 	}
 
 }

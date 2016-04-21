@@ -38,6 +38,11 @@ class FeedbackController extends Controller
 		return view('admin.feedback.orders', compact('orders'));
 	}
 
+	public function postOrderDelete() {
+		Order::find($this->request['order_id'])->delete();
+		return Redirect::back();
+	}
+
 	public function getSetOrderPaid($orderId) {
 		$order = Order::find($orderId);
 
@@ -47,7 +52,6 @@ class FeedbackController extends Controller
 		$user->name = $order->name;
 
 		$courses = $order->getCourses();
-
 
 		DB::beginTransaction();
 		$user->save();

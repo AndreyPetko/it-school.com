@@ -79,7 +79,13 @@
                     Активирована
                     @endif
                   </td>
-                  <td><button type="button" class="btn btn-block btn-danger btn-flat">Удалить</button></td>
+                  <td>
+                  <form action="/admin/feedback/order-delete" method="POST" onsubmit="return confirm('Вы точно хотите удалить товар: {{$order->name}} ?')">
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                      <input type="hidden" name="order_id" value="{{$order->id}}">
+                      <button type="submit" class="btn btn-block btn-danger btn-flat">Удалить</button>
+                    </form>
+                  </td>
                 </tr>
                 @endforeach
               </tbody>
