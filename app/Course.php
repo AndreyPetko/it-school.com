@@ -77,5 +77,9 @@ class Course extends Model
 		$this->progress = ($this->currentLesson() - 1) / $this->lessons->count() * 100;
 	}
 
+	public function getLessons() {
+		return DB::table('lessons')->where('course_id', $this->id)->lists('name', 'id');
+	}
+
 
 }

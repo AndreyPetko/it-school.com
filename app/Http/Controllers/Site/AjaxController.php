@@ -13,8 +13,6 @@ class AjaxController extends Controller
 	public function getCurCourseDelete($id) {
 		$courses = Session::get('courses');
 
-
-
 		unset($courses[array_search($id,$courses)]);
 
 		Session::put('courses', $courses);
@@ -26,7 +24,6 @@ class AjaxController extends Controller
 
 	public function getCurCourseAdd($id) {
 		$courses = Session::get('courses');
-
 
 		if($courses && array_search($id,$courses) !== false) {
 			return 0;
@@ -46,5 +43,9 @@ class AjaxController extends Controller
 	public function getCurrentTotal() {
 		$courses = Session::get('courses');
 		return Course::totalPrice($courses);
+	}
+
+	public function getCourseLessons($courseId) {
+		return Course::find($courseId)->getLessons();
 	}
 }

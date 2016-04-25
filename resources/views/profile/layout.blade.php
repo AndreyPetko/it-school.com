@@ -43,7 +43,7 @@
        </a>
 
 
-       <a href="./obsugdenie.html">
+       <a href="{{ url('/profile/discussions') }}">
          <div class="menu-item">
           <div class="new-info">1</div>
           Обсуждения
@@ -145,5 +145,6 @@
 </div>
 <script src="{{ url('plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
 <script src="{{ url('dist/js/profile.js') }}"></script>
+@yield('js')
 </body>
 </html>

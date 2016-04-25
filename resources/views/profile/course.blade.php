@@ -77,7 +77,9 @@
 						№{{$key + 1}} {{$lesson->name}}
 					</div>
 					<div class="lesson-mark good">
-						5
+					@if($lesson->mark)
+						{{$lesson->mark}}
+					@endif
 					</div>
 					<div class="lesson-message hidden-xs">
 						<img src="{{ url('/profile_images/mail.png') }}" alt="">

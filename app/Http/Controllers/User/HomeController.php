@@ -22,6 +22,7 @@ use App\Lesson;
 use App\Message;
 use App\Helper;
 use App\UserLesson;
+use App\Discussion;
 
 class HomeController extends Controller
 {
@@ -58,6 +59,7 @@ class HomeController extends Controller
 
 
 		foreach ($lessons as $lesson) {
+			$lesson->getMark(Auth::user()->id);
 			if($lesson->position > $course->currentLesson()) {
 				$lesson->unavail = 1;
 			}
@@ -131,6 +133,13 @@ class HomeController extends Controller
 
 		$userLesson->addHomework($filename, $this->request['comment']);
 		return Redirect::back();
+	}
+
+	public function getDiscussions() {
+		$courses = Course::all();
+		$discussions = Discussion::all();
+
+		return view('profile.discussions', compact('courses', 'discussions'));
 	}
 
 

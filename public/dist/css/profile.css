@@ -510,11 +510,10 @@
     line-height: 40px;
 }
 
-.disc-input input{
-    border: 3px solid #e28500;
-    height: 29px;
-    margin-top: 9px;
-    width: 100%;
+.disc-input select{
+    border: 0px solid #e28500;
+    height: 19px;
+    margin-top: 15px;
 }
 
 .disc-textarea textarea {
