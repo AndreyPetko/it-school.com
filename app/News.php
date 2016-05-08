@@ -17,7 +17,7 @@ class News extends Model
 		->leftjoin('comments', 'news.id', '=', 'comments.item_id')
 		->orderBy('id', 'desc')
 		->groupBy('news.id')
-		->paginate(3);
+		->paginate(4);
 	}
 
 

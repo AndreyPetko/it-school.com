@@ -25,6 +25,12 @@ class Authenticate
             }
         }
 
+
+        if(Auth::user()->blocked) {
+            Auth::logout();
+            return redirect()->guest('/blocked');
+        }
+
         return $next($request);
     }
 }

@@ -34,12 +34,37 @@
     color: #ffffff;
 }
 
+.discussion-course-list a {
+    color: black;
+}
+
 .menu a {
-    color: white;    
+    color: white;
 }
 
 .menu a:hover {
     text-decoration: none;
+}
+
+
+.course-success-word, .course-success-mark span  {
+    text-align: center;
+    color: white;
+    font-family: Roboto;
+    font-weight: bolder;
+    line-height: 33px;
+}
+
+.check {
+    position: absolute;
+    right: 30px;
+    margin-top: 10px;
+}
+
+.course-success-mark {
+    text-align: center;
+    color: white;
+    font-family: Roboto;
 }
 
 .menu-item {
@@ -47,6 +72,11 @@
     padding-right: 10px;
     display: inline-block;
     /*    float: left;*/
+}
+
+
+.new-answer-row {
+    margin-top: 10px;
 }
 
 .menu-item:hover {
@@ -105,8 +135,9 @@
 
 .course-title {
     color: #010000;
-    font: 300 16px / 24px Roboto;
+    font: 300 16px / 20px Roboto;
     text-align: center;
+    min-height: 50px;
     margin-top: 40px;
 }
 
@@ -189,7 +220,7 @@
 }
 
 .footer-social {
-    width: 180px;
+    width: 220px;
     margin: 10px auto;
 }
 
@@ -278,9 +309,21 @@
     margin-top: 10px;
 }
 
+.new-avatar label {
+    cursor: pointer;
+}
+
+.new-avatar input {
+    display: none;
+}
+
 .avatar {
     text-align: center;
     margin-top: 26px;
+}
+
+.avatar img {
+    max-width: 100%;
 }
 
 .my-label {
@@ -293,6 +336,7 @@
 }
 
 .my-input input {
+    text-indent: 10px;
     width: 100%;
     height: 44px;
     border: 2px solid #e1e1e1;
@@ -399,11 +443,62 @@
     background-color: #007236;
 }
 
+.normal {
+    background-color: #D97107;
+}
+
+.bad {
+    background-color: red;
+}
+
+
+.complete-message {
+    text-align: center;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.complete-stars {
+    text-align: center;
+}
+
+.complete-stars select {
+    width: 70%;
+    height: 30px;
+}
+
+.complete-review {
+    text-align: center;
+}
+
+
+.complete-review textarea {
+    width: 70%;
+    height: 100px;
+    resize: none;
+}
+
+.complete-submit input {
+    border: 0px;
+    background-color: #e28500;
+    color: #ffffff;
+    text-align: center;
+    font: 400 14px / 35px Roboto;
+    height: 35px;
+    width: 70%;
+    margin-left: 15%;
+}
+
 .ask-question {
     cursor: pointer;
     border: 3px solid #e28500;
     height: 48px;
     margin-top: 10px;
+}
+
+.ask-question a {
+    color: black;
 }
 
 .ask-image {
@@ -514,11 +609,17 @@
     border: 0px solid #e28500;
     height: 19px;
     margin-top: 15px;
+    width: 100%;
+}
+
+.disc-input input {
+    width: 100%;
+    margin-bottom: 3px;
 }
 
 .disc-textarea textarea {
     width: 100%;
-    height: 80px;
+    height: 70px;
     resize: none;
     border: 2px solid #e1e1e1;
 }

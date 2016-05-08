@@ -42,54 +42,60 @@
 				<div class="disc-label">Выберите курс</div>
 				<div class="disc-label">Выберите урок</div>
 			</div>
-			<div class="col-md-3">
-				<div class="disc-input">
-					<select id="course">
-						<option>Выберите курс</option>
-						@foreach($courses as $course)
-						<option value="{{$course->id}}">{{$course->name}}</option>
-						@endforeach
-					</select>
+			<form method="POST" action="{{ url('/profile/discussions/add') }}">
+				{{csrf_field()}}
+				<div class="col-md-3">
+					<div class="disc-input">
+						<select name="course_id" id="course">
+							<option>Выберите курс</option>
+							@foreach($courses as $course)
+							<option value="{{$course->id}}">{{$course->name}}</option>
+							@endforeach
+						</select>
+					</div>
+					<div class="disc-input">
+						<select name="lesson_id" id="lesson" disabled>
+							<option value="0">Выберите урок</option>
+						</select>
+					</div>
 				</div>
-				<div class="disc-input">
-				<select id="lesson" disabled>
-						<option>Выберите урок</option>
-						@foreach($courses as $course)
-						<option value="{{$course->id}}">{{$course->name}}</option>
-						@endforeach
-					</select>
+				<div class="col-md-4">
+					<div class="disc-input">
+						<input name="title" placeholder="Введите заголовок"></input>
+					</div>
+					<div class="disc-textarea">
+						<textarea name="text" placeholder="Задайте вопрос" ></textarea>
+					</div>
 				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="disc-textarea">
-					<textarea name="" placeholder="Задайте вопрос" ></textarea>
+				<div class="col-md-2 form-submit disc-submit">
+					<button type="submit">Отправить</button>
 				</div>
-			</div>
-			<div class="col-md-2 form-submit disc-submit">
-				<button>Отправить</button>
-			</div>
+			</form>
 		</div>
 
 		<div class="add-disc-line"></div>
 
-		<div class="row mt10">
+		<div class="row mt10 discussion-course-list">
 			<div class="col-md-4">
 				<div class="title">Темя обсуждения</div>
 
-
 				@foreach($courses as $course)
 
-				<div class="course-item">
-					{{$course->name}}
-				</div>
+				<a href="{{ url('profile/discussions?course_id=' . $course->id) }}">
+					<div class="course-item">
+						{{$course->name}}
+					</div>
+				</a>
 
 				@if(count($course->lessons))
 				<div class="themes-list">
 					@foreach($course->lessons as $lesson)
-					<div class="themes-item">
-						<div class="themes-item-icon"></div>
-						<div class="themes-item-text">{{$lesson->name}}</div>
-					</div>
+					<a href="{{ url('/profile/discussions?lesson_id=' . $lesson->id) }}">
+						<div class="themes-item">
+							<div class="themes-item-icon"></div>
+							<div class="themes-item-text">{{$lesson->name}}</div>
+						</div>
+					</a>
 					@endforeach
 				</div>
 				@endif
@@ -100,7 +106,7 @@
 			<div class="col-md-8">
 				<div class="disc-list">
 					@foreach($discussions as $discussion)
-					<a href="./one-obsugdenie.html">
+					<a href="{{ url('profile/discussions/single/' . $discussion->id) }}">
 						<div class="disc-item">
 							<div class="disc-title">
 								{{$discussion->title}}
@@ -109,18 +115,14 @@
 								{{$discussion->created_at->format('d.m.y')}}
 							</div>
 							<div class="disc-date hidden-xs">
-								Ответов(3)
+								Ответов({{$discussion->answers}})
 							</div>
 						</div>
 					</a>
 					@endforeach
 
 				</div>
-				<div class="disc-paginator">
-					<div class="disc-paginator-item">1</div>
-					<div class="disc-paginator-item disc-paginator-item-active">2</div>
-					<div class="disc-paginator-item">3</div>
-				</div>
+				@include('pagination.default', ['paginator' => $discussions])
 			</div>
 		</div>
 

@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded",function(){
 
-	document.getElementById('student').addEventListener('click', function(){
-		document.getElementById('auth-block').style.display = 'block';
-	});
+	// document.getElementById('student').addEventListener('click', function(){
+	// 	document.getElementById('auth-block').style.display = 'block';
+	// });
 
 
-	document.getElementById('auth-close').addEventListener('click', function(){
-		console.log(document.getElementById('auth-block'));
-		document.getElementById('auth-block').style.display = 'none';
-	});
+	// document.getElementById('auth-close').addEventListener('click', function(){
+	// 	console.log(document.getElementById('auth-block'));
+	// 	document.getElementById('auth-block').style.display = 'none';
+	// });
 
 
 
@@ -121,20 +121,61 @@ if(arrows[0]){
 	var arrowLeft = document.getElementById('arrow-slider-left');
 	var arrowRigth = document.getElementById('arrow-slider-rigth');
 	var divSlider = document.getElementById('slider-inside');
-	arrowRigth.addEventListener('click', function(){
-		marginNow = divSlider.style.marginLeft;
-		divSlider.style.cssText = "  margin-left:-800px;";
-		arrowRigth.style.cssText = "cursor:default; fill:#a9b3dc";
-		arrowLeft.style.cssText = "cursor:pointer; fill:#4D5897";
 
-	})
-	arrowLeft.addEventListener('click', function(){
+	var items = document.getElementsByClassName('course-item-slider');
+	length = items.length;
+
+	// alert(length);
+
+	clicks = 0;
+
+	maxClicks = length - 3;
+
+	arrowLeft.style.cssText = "cursor:default; fill:#a9b3dc";
+
+	if(maxClicks > 0 ) {
+		arrowRigth.addEventListener('click', function(){
+			if(clicks == maxClicks) {
+				return false;
+			}
+
+			if(clicks == maxClicks -1) {
+				arrowRigth.style.cssText = "cursor:default; fill:#a9b3dc";
+			}
+
+			marginNow = divSlider.style.marginLeft;
+
+			margin = 400*(clicks + 1);
+
+			divSlider.style.cssText = "margin-left:-" + margin + "px;";
 
 
-		divSlider.style.cssText = "  margin-left:0px;";
-		arrowLeft.style.cssText = "cursor:default; fill:#a9b3dc";
-		arrowRigth.style.cssText = "cursor:pointer; fill:#4D5897";
-	})
+			arrowLeft.style.cssText = "cursor:pointer; fill:#4D5897";
+			clicks++;
+		});
+		arrowLeft.addEventListener('click', function(){
+			if(clicks == 0) {
+				return false;
+			}
+
+			if(clicks == 1) {
+				arrowLeft.style.cssText = "cursor:default; fill:#a9b3dc";
+			}
+
+			margin = 400*(clicks - 1);
+
+
+			divSlider.style.cssText = "  margin-left:-" + margin + "px;";
+			
+			arrowRigth.style.cssText = "cursor:pointer; fill:#4D5897";
+			clicks--;
+		});
+	} else {
+		arrowRigth.style.display = 'none';
+		arrowLeft.style.display = 'none';
+	}
+
+
 }
 // --------------slider courses--------------
 // --------------arrow up start--------------
@@ -150,17 +191,17 @@ window.onscroll = function() {
 		arrowUp.style.display ="block";
 		// if(irina !== 'undefined') {
 			if (typeof(irina) != 'undefined') {
-			irina.style.opacity = "100";
+				irina.style.opacity = "100";
+			}
 		}
+		else{
+			arrowUp.style.display ="none";
+		};
+
 	}
-	else{
-		arrowUp.style.display ="none";
-	};
-
-}
 
 
-arrowUp.addEventListener('click', function(){
+	arrowUp.addEventListener('click', function(){
 		// $('body').scrollTop(0);
 		var body = $("html, body");
 		body.stop().animate({scrollTop:0}, '500', 'swing');
@@ -169,3 +210,18 @@ arrowUp.addEventListener('click', function(){
 
 	// --------------arrow up end--------------
 });
+
+
+
+
+windowClose = document.getElementById('close-window');
+
+
+
+if(windowClose) {
+	windowClose.addEventListener('click', function(){
+		document.getElementById('window').style.display = 'none';
+	});
+}
+
+

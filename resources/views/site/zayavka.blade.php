@@ -2,7 +2,14 @@
 
 
 @section('js')
+
+
+<link rel="stylesheet" type="text/css" href="{{ url('datetimepicker/jquery.datetimepicker.css') }}">
+<script type="text/javascript" src="{{ url('datetimepicker/build/jquery.datetimepicker.full.js') }}"></script>
+<script src="{{ url('dist/js/jquery.validate.min.js') }}"></script>
+
 <script src="{{ url('dist/js/zayavka.js') }}"></script>
+
 @stop
 
 @section('pageContent')
@@ -38,7 +45,14 @@
 			@endforeach
 
 		</div>
+
+
 		<div class="col-md-6 col-md-offset-1">
+			@if(Session::get('emptyOrder'))
+			<div class="empty-order">
+				Выберите хотя бы один курс для оформления заявки
+			</div>
+			@endif
 			<div class="choose-course-title">
 				ВЫБРАННЫЕ КУРСЫ
 			</div>
@@ -47,12 +61,15 @@
 				@include('site.components.bid-item', array('course'=> $currentCourse))
 				@endforeach
 			</div>
+
+			@if(!Auth::check())
 			<div class="choose-course-title mt50">
 				ИНФОРМАЦИЯ ОБ УЧЕНИКЕ
 			</div>
+			@endif
 
 
-			<form method="POST">
+			<form method="POST" id="zayavka-form">
 				{{csrf_field()}}
 				<div class="row">
 
@@ -61,44 +78,51 @@
 							Фамилия
 						</div>
 						<div class="bid-form-input col-md-10">
-							<input type="text" name="surname">
+							<input type="text" name="surname" @if(Auth::check()) disabled value="{{Auth::user()->surname}}" @endif>
 						</div>
 						<div class="bid-form-label col-md-10">
-							Имя
+							Имя*
 						</div>
 						<div class="bid-form-input col-md-10">
-							<input type="text" name="name">
+							<input type="text" name="name" id="name" @if(Auth::check()) disabled value="{{Auth::user()->name}}" @endif>
 						</div>
 						<div class="bid-form-label col-md-10">
 							Отчество
 						</div>
 						<div class="bid-form-input col-md-10">
-							<input type="text" name="patronymic">
+							<input type="text" name="patronymic" @if(Auth::check()) disabled value="{{Auth::user()->patronymic}}" @endif>
 						</div>
 						<div class="bid-form-label col-md-10">
-							Email
+							Email*
 						</div>
 						<div class="bid-form-input col-md-10">
-							<input type="text" name="email">
+							<input type="text" name="email" @if(Auth::check()) disabled value="{{Auth::user()->email}}" @endif>
 						</div>
 						<div class="bid-form-label col-md-10">
 							Skype
 						</div>
 						<div class="bid-form-input col-md-10">
-							<input type="text" name="skype">
+							<input type="text" name="skype" @if(Auth::check()) disabled value="{{Auth::user()->skype}}" @endif>
 						</div>
 						<div class="bid-form-label col-md-10">
 							Дата рождения
 						</div>
 						<div class="bid-form-input col-md-10">
-							<input type="date" name="birthday">
+							<input type="date" id="datetimepicker" name="birthday" @if(Auth::check()) disabled value="{{Auth::user()->birthday}}" @endif>
 						</div>
 						<div class="bid-form-label col-md-10">
 							Город
 						</div>
 						<div class="bid-form-input col-md-10">
-							<input type="text" name="city"></input>
+							<input type="text" name="city" @if(Auth::check()) disabled value="{{Auth::user()->city}}" @endif></input>
 						</div>
+
+
+						@if(Auth::check())
+						<input name="user_id" type="hidden" value="{{ Auth::id() }}"></input>
+						@endif
+
+
 						<input type="hidden" id="totalprice" name="totalprice" value="{{$totalprice}}"></input>
 
 						<div class="bid-form-totalprice col-md-10 mt10">

@@ -24,8 +24,8 @@ class Course extends Model
 			GROUP BY courses.id');
 	}
 
-	public static function getTop($count) {
-		return self::orderBy('rate', 'desc')->take($count)->get();
+	public static function getTop($count, $notId = 0) {
+		return self::orderBy('rate', 'desc')->where('id', '!=' , $notId)->take($count)->get();
 	}
 
 	public function scopeUrl($query, $url) {
@@ -80,6 +80,19 @@ class Course extends Model
 	public function getLessons() {
 		return DB::table('lessons')->where('course_id', $this->id)->lists('name', 'id');
 	}
+
+	public function countLessons() {
+		return DB::table('lessons')->where('course_id', $this->id)->count('id');
+	}
+
+	public static function getRealLessonId($userCourse) {
+		return DB::table('lessons')->where('course_id', $userCourse->id)->where('position', $userCourse->current_lesson_id)->value('id');
+	}
+
+	public function getCourseComplete($userId) {
+		$this->complete = DB::table('user_courses')->where('user_id', $userId)->where('course_id', $this->id)->value('complete');
+	}
+
 
 
 }

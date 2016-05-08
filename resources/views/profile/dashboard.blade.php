@@ -21,7 +21,7 @@
 							<div class="course-current-progress" style="width: {{$userCourse->progress}}%">
 							</div>
 						</div>
-						<a href="/profile/lesson/">
+						<a href="/profile/lesson/{{$userCourse->lesson_id}}">
 							<div class="course-current-lesson">
 								Текущий урок №{{$userCourse->current_lesson_id}}
 							</div>
@@ -35,7 +35,7 @@
 		@foreach($courses as $course)
 		<div class="col-lg-3 col-md-6">
 			<div class="course">
-				<a href="/profile/course/{{$course->url}}">
+				<a href="{{ url('course/' . $course->url ) }}">
 					<div class="course-logo">
 						<img src="{{ url('/images/' . $course->logo) }}" alt="">
 					</div>

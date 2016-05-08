@@ -67,7 +67,7 @@
 		</div>
 
 
-		<div id="student" class="button-student">Я УЧЕНИК</div>
+		<a href="/profile"><div class="button-student">Я УЧЕНИК</div></a>
 		<!-- <a href="/profile"><div class="button-student">Я УЧЕНИК</div></a> -->
 		<a href="{{ url('zayavka') }}"><div id="new-student" class="button-new-student">ПОДАТЬ ЗАЯВКУ</div></a>
 	</div>
@@ -97,13 +97,13 @@
 				</div>
 				<div class="col-md-10">
 					<div class="footer-links">
-						<div class="footer-link"><a href="index.html">Главная</a></div>
-						<div class="footer-link"><a href="news.html">Новости</a></div>
-						<div class="footer-link"><a href="">Партнерам</a></div>
-						<div class="footer-link"><a href="contacts.html">Контакты</a></div>
+						<div class="footer-link"><a href="/">Главная</a></div>
+						<div class="footer-link"><a href="/news-list">Новости</a></div>
+						<div class="footer-link"><a href="/partners">Партнерам</a></div>
+						<div class="footer-link"><a href="/contacts">Контакты</a></div>
 						<div class="footer-link"><a href="">Подписка на рассылку</a></div>
-						<div class="footer-link"><a href="">О школе</a></div>
-						<div class="footer-link"><a href="courses.html">Курсы</a></div>
+						<div class="footer-link"><a href="/about">О школе</a></div>
+						<div class="footer-link"><a href="/courses">Курсы</a></div>
 						<div class="footer-link"><a href="">Отзывы</a></div>
 						<div class="footer-link"><a href="">FAQ</a></div>
 						<div class="footer-link"><a href="">Способы оплаты</a></div>
@@ -127,6 +127,7 @@
 							<a href="#"><img src="{{ url('/site_images/icon-vk.png') }}" alt=""></a>
 							<a href="#"><img src="{{ url('/site_images/icon-ok.png') }}" alt=""></a>
 							<a href="#"><img src="{{ url('/site_images/icon-fb.jpg') }}" alt=""></a>
+							<a href="#"><img src="{{ url('/site_images/icon-utube.png') }}" alt=""></a>
 							<a href="#"><img src="{{ url('/site_images/icon-tw.jpg') }}" alt=""></a>
 						</div>
 					</div>

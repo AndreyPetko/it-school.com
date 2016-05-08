@@ -36,7 +36,8 @@
          </div>
        </a>
 
-       <a href="./konsultatsii.html">
+
+       <a href="{{ url('/profile/consultations') }}">
          <div class="menu-item">
            Консультации
          </div>
@@ -45,19 +46,26 @@
 
        <a href="{{ url('/profile/discussions') }}">
          <div class="menu-item">
-          <div class="new-info">1</div>
+          <div class="new-info">{{$consultationCount}}</div>
           Обсуждения
         </div>
       </a>
 
-      <div class="menu-item">
-        <div class="new-info">2</div>
-        Новости
-      </div>
+      <a href="{{ url('/news-list') }}">
+        <div class="menu-item">
+          Новости
+        </div>
+      </a>
 
-      <a href="./lichnui.html">
+      <a href="{{ url('/profile/personal') }}">
        <div class="menu-item">
          Личный кабинет
+       </div>
+     </a>
+
+     <a href="{{ url('/auth/logout') }}">
+       <div class="menu-item">
+         Выход
        </div>
      </a>
    </div>
@@ -140,6 +148,14 @@
 
   <div class="social-item">
     <img src="{{ url('/profile_images/icon-insta.png') }}" alt="">
+  </div>
+
+  <div class="social-item">
+    <img src="{{ url('/profile_images/icon-tv.png') }}" alt="">
+  </div>
+
+  <div class="social-item">
+    <img src="{{ url('/profile_images/icon-google.png') }}" alt="">
   </div>
 </div>
 </div>

@@ -5,5 +5,20 @@
 }
 
 .post p{
-    padding-left: 10px;
+	padding-left: 10px;
+}
+
+
+.my-content {
+	padding: 15px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+	/*background-color: white;*/
+}
+
+
+.info-table {
+	background-color: white;
 }

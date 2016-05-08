@@ -3,6 +3,7 @@
 namespace App;
 
 use DB;
+use App\Homework;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -14,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+    'name', 'email', 'password','phone', 'logo', 'blocked', 'surname', 'patronymic', 'skype', 'birthday', 'city'
     ];
 
     /**
@@ -23,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+    'password', 'remember_token',
     ];
 
     public function addCourses($courses) {
@@ -34,5 +35,63 @@ class User extends Authenticatable
                 'current_lesson_id' => 1
                 ]);
         }
+    }
+
+    public function lessonDelete($lessonId) {
+        $query = DB::table('user_lessons')
+        ->where('lesson_id', $lessonId)
+        ->where('user_id', $this->id);
+
+        $userLessonId = $query->value('id');
+
+        $homeworks = Homework::where('user_lesson_id', $userLessonId)->get();
+
+        foreach ($homeworks as $homework) {
+            $homework->deleteFile();
+            $homework->delete();
+        }
+
+        DB::table('lesson_messages')
+        ->where('lesson_id', $lessonId)
+        ->where('user_id', $this->id)
+        ->delete();
+
+        $query->delete();
+    }
+
+
+    public function courseDelete($course) {
+
+        $lessonIds = array_map(function($course){
+            return $course['id'];
+        }, $course->lessons->toArray());
+
+        foreach ($lessonIds as $lessonId) {
+            $this->lessonDelete($lessonId);
+        }
+
+        DB::table('user_courses')
+        ->where('user_id', $this->id)
+        ->where('course_id', $course->id)
+        ->delete();
+    }
+
+
+    public function deleteUser() {
+        $courseIds = DB::table('user_courses')
+        ->where('user_id', $this->id)
+        ->lists('course_id');
+
+        foreach ($courseIds as $courseId) {
+            $this->courseDelete(Course::find($courseId));
+        }
+
+        $this->block();
+    }
+
+
+    public function block() {
+        $this->blocked = 1;
+        $this->save();
     }
 }

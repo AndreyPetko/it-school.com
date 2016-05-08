@@ -15,7 +15,4 @@ class Bid extends Model
 		return self::orderBy('id', 'desc')->paginate(10);
 	}
 
-	public function setNameAttribute($name) {
-		$this->attribute['name'] = $name . '1';
-	}
 }

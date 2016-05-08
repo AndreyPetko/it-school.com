@@ -13,11 +13,27 @@ class Message extends Model
 
 
 	public function scopeCurrent($query,$user_id, $lesson_id) {
-		$query->where('user_id', $user_id)->where('lesson_id', $lesson_id)->orderBy('lesson_messages.created_at', 'desc');
+		$query->where('user_id', $user_id)->where('lesson_id', $lesson_id);
+	}
+
+	public function scopeIsAdmin($query, $bool) {
+		$query->where('admin', $bool);
 	}
 
 	public function scopeUserName($query) {
 		$query->leftjoin('users', 'users.id', '=', 'lesson_messages.user_id');
+	}
+
+	public function scopeSetReaded($query) {
+		$query->update(['readed' => 1]);
+	}
+
+	public function scopeNotReaded($query) {
+		$query->where(['readed' => 0]);
+	}
+
+	public function scopeUser($query, $userId) {
+		$query->where('user_id', $userId);
 	}
 
 }

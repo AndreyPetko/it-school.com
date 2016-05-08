@@ -21,6 +21,8 @@ class HomeworkController extends Controller
 
 	public function getIndex() {
 		$userLessons = UserLesson::withLessonInfo();
+		$userLessons = UserLesson::setMail($userLessons, 0);
+
 		return view('admin.homework.homeList', compact('userLessons'));
 	}
 
@@ -29,7 +31,9 @@ class HomeworkController extends Controller
 		$homeworks = $userLesson->getHomeworks();
 		$mark = $userLesson->mark;
 
-		$messages = Message::current($userLesson->user_id, $userLesson->lesson_id)->userName()->paginate(5);
+		Message::current($userLesson->user_id, $userLesson->lesson_id)->isAdmin(0)->setReaded();
+
+		$messages = Message::current($userLesson->user_id, $userLesson->lesson_id)->orderBy('lesson_messages.created_at', 'desc')->userName()->paginate(5);
 
 		return view('admin.homework.homeFiles', compact('homeworks', 'userLessonsId', 'mark', 'messages'));
 	}
@@ -57,7 +61,8 @@ class HomeworkController extends Controller
 		Message::create([
 			'user_id' => $userLesson->user_id,
 			'lesson_id' => $userLesson->lesson_id,
-			'message' => $this->request['message']
+			'message' => $this->request['message'],
+			'admin' => 1
 			]);
 
 		return Redirect::back();

@@ -34,3 +34,9 @@
   </a>
 </li>
 
+
+<li>
+  <a href="/admin/users">
+    <i class="fa fa-child"></i> <span>Пользователи</span>
+  </a>
+</li>

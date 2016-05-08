@@ -44,6 +44,11 @@
 							</div>
 
 							<div class="form-group">
+								<label for="text">Дополнительная информация:</label>
+								<textarea name="more_info" class="form-control" rows="10">{{$lesson->more_info}}</textarea>
+							</div>
+
+							<div class="form-group">
 								<label for="video_link">Номер урока:</label>
 								<input type="text" placeholder="Введите номер урока" class="form-control" name="position"  value="{{$lesson->position}}"/>
 							</div>

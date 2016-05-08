@@ -10,6 +10,16 @@ html{
 	
 
 }
+
+
+.empty-order {
+	color: red;
+	font-size: 16px;
+	font-family: Roboto;
+	margin-bottom: 20px;
+
+}
+
 .container{
 	max-width: 1200px;
 	margin:0 auto;
@@ -79,15 +89,15 @@ html{
 	margin-top: -10px;
 }
 #subMenu  a {
-	min-height: 40px;
+	min-height: 50px;
 	width: 300px;
 	background-color: rgba(64, 77, 160, 0.6);
 	display: block;
 	color: white;
 	text-align: left;
-	padding: 10px 0 10px 15px;
+	padding: 15px 0 10px 15px;
 	text-decoration: none;
-	margin-top: 5px;
+	margin-top: 3px;
 
 }
 #subMenu > ul {
@@ -103,11 +113,11 @@ html{
 
 
 .auth-block {
-	width: 40%;
-	margin-left: 30%;
+	width: 50%;
+	min-width: 250px;
+	margin:0 auto;
 	background: white;
 	z-index: 999;
-	border: 3px solid #007236;
 	font-family: Roboto;
 	padding-bottom: 10px;
 }
@@ -124,34 +134,35 @@ html{
 }
 
 .auth-label {
-	margin-left: 5px;
+	margin-left: 25px;
 	font-family: Roboto;
+	font-size: 14px;
+	line-height: 24px;
 }
 
 .auth-input input {
-	margin-left: 2.5%;
-	width: 95%;
-	height: 30px;
+	width: 100%;
+	height: 40px;
 	border: 2px solid #dddddd;
 }
 
 .auth-submit input {
-	margin-top: 10px;
-	margin-left: 10px;
-	border: 2px solid #d7d7d7;
-	background: white;
-	padding: 5px;
-	padding-left: 20px;
-	padding-right: 20px;
+	height: 45px;
+	float: right;
+	width: 40%;
+background-color: #e28500;
+color: #feffff;
+font: 400 16px Roboto;
+border: 2px solid #d7d7d7;
+cursor: pointer;
+margin-top: 20px;
 }
-
-.auth-close {
-	right: 10px;
-	position: absolute;
-	margin-top: 5px;
+.auth-fogotten-password{
+	float: left;
 	cursor: pointer;
+	line-height: 80px;
+margin-left: 20px;
 }
-
 
 .auth-submit input:hover {
 	background: #007236;
@@ -164,7 +175,27 @@ html{
 	font-family: Roboto;
 	margin-top: 10px;
 }
+.auth-to-study{
+	width: 50%;
+	min-width: 250px;
+	margin:0 auto;
+	text-align: center;
 
+}
+.auth-to-study h4{
+	background-color: #ebebeb;
+	line-height: 50px;
+	text-align: center;
+	text-transform: uppercase;
+}
+.auth-to-study a{
+	display: block;
+	border: 2px solid #ebebeb;
+	/*min-width: 350px;*/
+	line-height: 40px;
+	width: 40%;
+	margin: 0 auto;
+}
 /*-----------------------mobile menu nav--------------------------------------*/
 #mobile-menu{
 	height:0px;
@@ -652,6 +683,65 @@ html{
 }
 
 
+.sucess .course-title{
+	margin-bottom: 40px;
+}
+.sucess {
+	margin-bottom: 40px;
+}
+.sucess .course-title a{
+	color: #e28500;
+}
+.window-up{
+	padding-bottom: 20px;
+	position: absolute;
+	width: 50%;
+	min-width: 300px;
+	background-color: rgba(65, 85, 169, 0.95);
+	margin-left: 30%;
+    min-height: 200px;
+    border:solid 3px white;
+    text-align: center;
+    z-index: 9999;
+}
+.window-up .title-window{
+	background-color: #4155a9;
+	text-transform: uppercase;
+	color: white;
+	font-size: 25px;
+	line-height: 60px;
+
+	}
+	.window-up #close-window{
+		float: right;
+		cursor: pointer;
+		color: white;
+	font-size: 25px;
+	margin-right: 30px;
+
+	}
+
+.window-up .txt-window{
+	color: white;
+	font-size: 14px;
+	line-height: 20px;
+	padding: 20px;
+
+	}
+
+.window-up .more-info a{
+	margin-right: 40px;
+	margin-top: 20px;
+	float: none;
+	    max-width: 50%;
+    margin-left: 20%;
+
+
+}
+
+
+
+
 /*-----------------------end news--------------------------------------*/
 /*-----------------------start arrow-up--------------------------------------*/
 #arrow-up{
@@ -858,6 +948,40 @@ html{
 /*--------------------------start ANDREWWWW------------------------*/
 
 
+.review-item {
+	border-bottom: 3px solid #ebebeb;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	overflow: auto;
+}
+
+
+
+.review-logo {
+	line-height: 70px;
+}
+
+.review-logo img {
+	width: 100%;
+}
+
+.review-user {
+	font: 400 18px / 24px Roboto;
+}
+
+.review-text {
+	font: 400 14px / 24px Roboto;
+}
+
+.review-user {
+	display: inline-block;
+	text-indent: 15px;
+}
+
+.review-stars {
+	display: inline-block;
+	float: right;
+}
 
 
 .courses-title {
@@ -907,20 +1031,23 @@ html{
 }
 
 .course-stars {
-	
+	float: right;
+	height: 30px;
 	overflow: auto;
 }
 .course-stars img {
-	float: right;
 	
 }
+
+
+
 .course-title {
 	background-color: #374ca4;
 	height: 66px;
 	text-align: center;
 	color: #ffffff;
 	margin-top: 5px;
-	font: 400 18px / 66px Roboto;
+	font: 400 16px / 66px Roboto;
 }
 
 .course-text {
@@ -945,8 +1072,13 @@ html{
 	width: 38%;
 	display: inline-block;
 	cursor: pointer;
+	float: left;
 }
 
+
+.line  {
+	overflow: auto;
+}
 
 .course-more:hover {
 	background-color: #007236;
@@ -1471,6 +1603,7 @@ html{
 .novelty-text {
 	font-size: 16px;
 	font-family: Roboto;
+	margin-bottom: 40px
 }
 
 .novelty-image img{
@@ -1616,12 +1749,11 @@ html{
 }
 
 .comment-name {
-	color: grey;
+	color: #e28500;
 	line-height: 30px;
 }
 
 .comment-text {
-	border: 1px solid #e28500;
 	padding: 5px;
 	font-size: 12px;
 	font-family: Roboto;

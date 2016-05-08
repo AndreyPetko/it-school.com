@@ -13,6 +13,8 @@ use App\Feedback;
 use App\Order;
 use App\User;
 use DB;
+use App\UserOrder;
+use App\Review;
 
 class FeedbackController extends Controller
 {
@@ -24,8 +26,17 @@ class FeedbackController extends Controller
 
 
 	public function getIndex() {
-		$bids = Bid::items();
-		return view('admin.feedback.bidList', compact('bids'));
+		$orders = Order::where('user_id', 0)->get();
+		$userOrders = UserOrder::withUserInfo()->get();
+
+		$orders = $orders->merge($userOrders);
+
+		$orders = $orders->sortByDesc('created_at');
+
+		$orders->values()->all();
+
+
+		return view('admin.feedback.orders', compact('orders'));
 	}
 
 	public function getFeedback() {
@@ -33,9 +44,15 @@ class FeedbackController extends Controller
 		return view('admin.feedback.feedbackList', compact('feedbacks'));
 	}
 
-	public function getOrders() {
-		$orders = Order::latest()->get();
-		return view('admin.feedback.orders', compact('orders'));
+	public function getReviews() {
+		$reviews = Review::mySelect()->withCourse()->withUser()->get();
+		return view('admin.feedback.reviewsList', compact('reviews'));
+	}
+
+
+	public function getLesson() {
+		$bids = Bid::items();
+		return view('admin.feedback.bidList', compact('bids'));
 	}
 
 	public function postOrderDelete() {
@@ -46,21 +63,25 @@ class FeedbackController extends Controller
 	public function getSetOrderPaid($orderId) {
 		$order = Order::find($orderId);
 
-		$user = new User();
-		$user->email = $order->email;
-		$user->password = bcrypt('123');
-		$user->name = $order->name;
+		if(!$order->user_id) {
+			$user = new User();
+			$user->email = $order->email;
+			$user->password = bcrypt('123');
+			$user->name = $order->name;
+			$user->surname = $order->surname;
+			$user->patronymic = $order->patronymic;
+			$user->skype = $order->skype;
+			$user->birthday = $order->birthday;
+			$user->city = $order->city;
+			$user->save();
+		} else {
+			$user = User::find($order->user_id);
+		}
 
 		$courses = $order->getCourses();
 
-		DB::beginTransaction();
-		$user->save();
-
 		$user->addCourses($courses);
-
-
 		$order->update(['paid' => 1 ]);
-		DB::commit();
 
 		return Redirect::back();
 	}

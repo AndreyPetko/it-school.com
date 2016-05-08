@@ -41,7 +41,19 @@
 				</a>
 			</div>
 		</div>
-		<div class="col-md-2 col-md-offset-3 col-xs-12 lesson-page-mark">
+
+
+		@if($lesson->more_info)
+		<div class="col-md-3 col-xs-6">
+			<div class="lesson-part ">
+				<a href="{{ url('profile/lesson-more/' . $lesson->id) }}">
+					Дополнительная информация
+				</a>
+			</div>
+		</div>
+		@endif
+
+		<div class="col-md-2 col-xs-12 lesson-page-mark">
 			@if($mark)
 			Оценка: <span>{{$mark}}</span>
 			@endif

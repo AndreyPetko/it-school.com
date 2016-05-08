@@ -48,11 +48,7 @@
 					Цена: <span>{{$course->price}}р</span>
 				</div>
 				<div class="course-page-stars">
-					<img src="{{ url('/site_images/star.png') }}" alt="">
-					<img src="{{ url('/site_images/star.png') }}" alt="">
-					<img src="{{ url('/site_images/star.png') }}" alt="">
-					<img src="{{ url('/site_images/star.png') }}" alt="">
-					<img src="{{ url('/site_images/star.png') }}" alt="">
+					@include('site.components.stars', ['stars' => $course->stars])
 				</div>
 				<div class="course-page-rate">
 					Рейтинг: 
@@ -83,6 +79,80 @@
 			</div>
 		</div>
 	</div>
+
+
+	@if(count($reviews))
+	<div class="courses-title">
+		ОТЗЫВЫ НАШИХ СТУДЕНТОВ
+	</div>
+	@endif
+
+	<div class="review-list">
+
+		@foreach($reviews as $review)
+		<div class="row">
+			<div class="review-item">
+				<div class="col-md-1 col-xs-3 col-md-offset-1">
+					<div class="review-logo">
+						@if($review->logo)
+						<img src="{{ url('user_logos/' . $review->logo	) }}">
+						@else
+							<img src="{{ url('/profile_images/112965409_suychik.png') }}">
+						@endif
+					</div>
+				</div>
+				<div class="col-md-9 col-xs-9">
+					<div class="row">
+						<div class="review-user">
+							{{$review->name}}
+						</div>
+
+						<div class="review-stars">
+							@if($review->stars >= 1)
+							<img src="{{ url('site_images/stars.png') }}">
+							@else
+							<img src="{{ url('site_images/star-empty.png') }}">
+							@endif
+
+							@if($review->stars >= 2)
+							<img src="{{ url('site_images/stars.png') }}">
+							@else
+							<img src="{{ url('site_images/star-empty.png') }}">
+							@endif
+
+							@if($review->stars >= 3)
+							<img src="{{ url('site_images/stars.png') }}">
+							@else
+							<img src="{{ url('site_images/star-empty.png') }}">
+							@endif
+
+							@if($review->stars >= 4)
+							<img src="{{ url('site_images/stars.png') }}">
+							@else
+							<img src="{{ url('site_images/star-empty.png') }}">
+							@endif
+
+							@if($review->stars >= 5)
+							<img src="{{ url('site_images/stars.png') }}">
+							@else
+							<img src="{{ url('site_images/star-empty.png') }}">
+							@endif
+
+						</div>
+					</div>
+					<div class="row mt10">
+						<div class="col-xs-12 review-text">
+							{!!$review->review!!}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		@endforeach
+
+	</div>
+
+
 	<div class="courses-title">
 		РЕКОМЕНДУЕМ
 	</div>
@@ -92,16 +162,12 @@
 			<div class="course-item">
 				<a href="{{ url('/course/' . $topCourse->url)}}">
 					<div class="course-logo">
-					<img src="{{ url('/images/' . $topCourse->logo) }}" alt="">
+						<img src="{{ url('/images/' . $topCourse->logo) }}" alt="">
 					</div>
 				</a>
 				<div class="row">
 					<div class="course-stars">
-						<img src="{{ url('/site_images/star.png') }}" alt="">
-						<img src="{{ url('/site_images/star.png') }}" alt="">
-						<img src="{{ url('/site_images/star.png') }}" alt="">
-						<img src="{{ url('/site_images/star.png') }}" alt="">
-						<img src="{{ url('/site_images/star.png') }}" alt="">
+						@include('site.components.stars', ['stars' => $topCourse->stars])
 					</div>
 				</div>
 

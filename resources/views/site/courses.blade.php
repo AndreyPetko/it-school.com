@@ -38,11 +38,7 @@
                 </a>
                 <div class="row">
                     <div class="course-stars">
-                        <img src="{{ url('/site_images/star.png') }}" alt="">
-                        <img src="{{ url('/site_images/star.png') }}" alt="">
-                        <img src="{{ url('/site_images/star.png') }}" alt="">
-                        <img src="{{ url('/site_images/star.png') }}" alt="">
-                        <img src="{{ url('/site_images/star.png') }}" alt="">
+                        @include('site.components.stars', ['stars' => $course->stars])
                     </div>
                 </div>
 

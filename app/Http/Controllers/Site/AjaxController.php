@@ -46,6 +46,9 @@ class AjaxController extends Controller
 	}
 
 	public function getCourseLessons($courseId) {
-		return Course::find($courseId)->getLessons();
+		$course = Course::find($courseId);
+		if($course && $course->countLessons()) {
+			return $course->getLessons();
+		}
 	}
 }

@@ -6,6 +6,22 @@
 
 @section('content')
 
+
+
+@if(Session::get('bidSuccess'))
+<div id="window" class="window-up">
+	<div id="close-window">x</div>
+	<div class="clear"></div>
+	<div class="title-window">
+		СПАСИБО
+	</div>
+	<div class="txt-window">
+		Ваша заявка на бесплатный урок была успешно отправлена
+	</div>
+	<div class="more-info"><a href="#">Кнопка</a></div>
+</div>
+@endif
+
 <div id="main-header">
 	<div class="container">
 		<div class="row">
@@ -88,12 +104,11 @@ viewBox="0 0 18 57" width="17px" xml:space="preserve">
 				</div>
 			</a>
 
-			<div class="course-stars">
-				<img src="{{ url('/site_images/star.png') }}" alt="">
-				<img src="{{ url('/site_images/star.png') }}" alt="">
-				<img src="{{ url('/site_images/star.png') }}" alt="">
-				<img src="{{ url('/site_images/star.png') }}" alt="">
-				<img src="{{ url('/site_images/star.png') }}" alt="">
+
+			<div class="line">
+				<div class="course-stars">
+					@include('site.components.stars', ['stars' => $course->stars])
+				</div>
 			</div>
 
 			<a href="{{ url('/course/' . $course->url)}}">
@@ -139,11 +154,7 @@ viewBox="0 0 18 57" width="17px" xml:space="preserve">
 				</a>
 
 				<div class="course-stars">
-					<img src="{{ url('/site_images/star.png') }}" alt="">
-					<img src="{{ url('/site_images/star.png') }}" alt="">
-					<img src="{{ url('/site_images/star.png') }}" alt="">
-					<img src="{{ url('/site_images/star.png') }}" alt="">
-					<img src="{{ url('/site_images/star.png') }}" alt="">
+					@include('site.components.stars', ['stars' => $course->stars])
 				</div>
 
 
@@ -290,26 +301,7 @@ viewBox="0 0 18 57" width="17px" xml:space="preserve">
 			</div>
 		</div>
 
-		<div class="news">
-			<div class="container">
-				<div class="row lead-title"><h2>НОВОСТИ</h2></div>
-				<div class="row">
-					@foreach($news as $newItem)
-					<div class="col-md-3 col-sm-6">
-						<a href="/novelty/{{$newItem->url}}">
-							<div class="image-news" style="background-image: url(../../news_images/{{$newItem->image}});"></div>
-							<div class="title-bg"><div class="title-bg-inside">{{$newItem->name}}</div></div>
-						</a>
-						<p>
-							{{$newItem->description}}
-						</p>
-						<div class="more-info"><a href="/novelty/{{$newItem->url}}">Узнать больше</a></div>
-					</div>
-					@endforeach
 
-				</div>
-				<div class="row"><a href="/news-list"><div class="button-to-all">Все новости</div></a></div>
+		@include('site.components.newsBlock', ['news' => $news])
 
-			</div>
-		</div>
 		@stop

@@ -4,10 +4,19 @@ $(document).ready(function(){
 
 
 		$.get('/ajax/course-lessons/' + $(this).val(), function(data){
-			// for (var i = data.length - 1; i >= 0; i--) {
-				// alert(data.2);
-			// }
-			
+			$('#lesson').empty();
+			if(!data) {
+				$('#lesson')
+				.append($("<option></option>")
+					.attr("value", '0')
+					.text('Нет уроков')); 
+			}
+			$.each(data, function(key, value) {
+				$('#lesson')
+				.append($("<option></option>")
+					.attr("value",key)
+					.text(value)); 
+			});
 		})
 	});
 });

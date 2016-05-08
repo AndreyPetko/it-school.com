@@ -18,6 +18,10 @@ use App\Sendmail;
 use App\Pages;
 use Session;
 use App\Order;
+use App\UserOrder;
+use App\CourseSaler;
+use App\Review;
+use App\Repositories\ReviewRepository;
 
 class HomeController extends Controller
 {
@@ -34,6 +38,10 @@ class HomeController extends Controller
 		$mainText = Keyval::getByKey('Текст на главной');
 		$giftText = Keyval::getByKey('Подарок');
 		$giftText2 = Keyval::getByKey('Подарок2');
+
+		foreach ($courses as $course) {
+			$course->stars = (new ReviewRepository( Review::all()))->getCourseStars($course->id);
+		}
 
 		return view('site.index', compact('courses', 'news', 'mainText', 'giftText', 'giftText2'));
 	}
@@ -75,13 +83,28 @@ class HomeController extends Controller
 	public function getCourses() {
 		$directions = Direction::all();
 		$courses = Course::all();
+
+		foreach ($courses as $course) {
+			$course->stars = (new ReviewRepository( Review::all()))->getCourseStars($course->id);
+		}
+
 		return view('site.courses', compact('directions', 'courses'));
 	}
 
 	public function getCourse($url) {
-		$topCourses = Course::getTop(3);
 		$course = Course::url($url)->first();
-		return view('site.coursePage', compact('course', 'topCourses'));
+		$topCourses = Course::getTop(3, $course->id);
+		$reviews = Review::where('course_id', $course->id)->withUser()->get();
+
+		$course->stars =  (new ReviewRepository( Review::all() ))->getCourseStars($course->id);
+
+
+		foreach ($topCourses as $topCoursesItem) {
+			$topCoursesItem->stars = (new ReviewRepository( Review::all()))->getCourseStars($topCoursesItem->id);
+		}
+
+
+		return view('site.coursePage', compact('course', 'topCourses', 'reviews'));
 	}
 
 
@@ -136,10 +159,35 @@ class HomeController extends Controller
 
 	public function postZayavka() {
 		$coursesId = Session::get('courses');
+
+		if(empty($coursesId)) {
+			return Redirect::back()->with('emptyOrder', 1);
+		}
+
 		$courses = Course::whereIn('id', $coursesId)->get();
-		Order::createItem($this->request, $courses);
+
+		if(isset($this->request['user_id'])) {
+			$order = new UserOrder;
+		} else {
+			$order = new Order;
+		}
+
+		$saler = new CourseSaler($order, $this->request, $courses);
+		$saler->create();
+
 		Session::put('courses', []);
-		return Redirect::back();
+		return Redirect::to('/success');
+	}
+
+
+	public function getBlocked() {
+		return view('site.blocked');
+	}
+
+	public function getSuccess() {
+		$news = News::getLast();
+
+		return view('site.success', compact('news'));
 	}
 
 }

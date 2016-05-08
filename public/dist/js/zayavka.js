@@ -1,5 +1,13 @@
 $(document).ready(function(){
 
+	var today = new Date();
+	$.datetimepicker.setLocale('ru');
+	$('#datetimepicker').datetimepicker({
+		timepicker:false,
+		format:'Y/m/d',
+		startDate:  new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+	});
+
 	$(document).on('click', '.bid-delete-button', function(){
 		id = $(this).data('courseid');
 		$(this).parent().parent().hide();
@@ -27,5 +35,28 @@ $(document).ready(function(){
 
 		});
 
+	});
+
+
+	$('#zayavka-form').validate({
+		rules: {
+			name: {
+				required: true,
+			},
+			email: {
+				required:true,
+				email: true
+			}
+
+		},
+		messages: {
+			name: {
+				required: "Вы не указали ваше имя",
+			},
+			email: {
+				required: "Вы не указали email",
+				email: "Введите правильный email"
+			}
+		},
 	});
 });

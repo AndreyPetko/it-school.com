@@ -41,7 +41,19 @@
 				</a>
 			</div>
 		</div>
-		<div class="col-md-2 col-md-offset-3 col-xs-12 lesson-page-mark">
+
+
+		@if($lesson->more_info)
+		<div class="col-md-3 col-xs-6">
+			<div class="lesson-part ">
+				<a href="{{ url('profile/lesson-more/' . $lesson->id) }}">
+					Дополнительная информация
+				</a>
+			</div>
+		</div>
+		@endif
+
+		<div class="col-md-2 col-xs-12 lesson-page-mark">
 			@if($mark)
 			Оценка: <span>{{$mark}}</span>
 			@endif
@@ -118,7 +130,11 @@
 					<div class="row">
 						<div class="col-md-offset-1 col-xs-2">
 							<div class="user-logo">
+								@if($message->admin)
 								<img src="{{ url('/profile_images/112965409_suychik.png') }}" alt="">
+								@else
+								<img src="{{ url('/user_logos/' . Auth::user()->logo) }}">
+								@endif
 							</div>
 							<div class="user-name">
 								@if($message->admin)
@@ -166,113 +182,10 @@
 			</div>
 		</div>
 		<div class="col-lg-3 col-md-4">
-			<div class="title">
-				Обсуждения
-			</div>
-			<div class="ask-question">
-				<div class="ask-image">
-					<img src="{{ url('/profile_images/question.png') }}" alt="">
-				</div>
-				<div class="ask-text">
-					Задать вопрос
-				</div>
-			</div>
-
-			<div class="discussion">
-				<div class="discussion-title">
-					Заголовок обсуждения
-				</div>
-				<div class="discussion-bottom">
-					<div class="discussion-date">
-						14.11.15
-					</div>
-					<div class="disscution-answers">
-						Ответов(3)
-					</div>
-				</div>
-			</div>
-			<div class="discussion">
-				<div class="discussion-title">
-					Заголовок обсуждения
-				</div>
-				<div class="discussion-bottom">
-					<div class="discussion-date">
-						14.11.15
-					</div>
-					<div class="disscution-answers">
-						Ответов(3)
-					</div>
-				</div>
-			</div>
-			<div class="discussion">
-				<div class="discussion-title">
-					Заголовок обсуждения
-				</div>
-				<div class="discussion-bottom">
-					<div class="discussion-date">
-						14.11.15
-					</div>
-					<div class="disscution-answers">
-						Ответов(3)
-					</div>
-				</div>
-			</div>
-			<div class="discussion">
-				<div class="discussion-title">
-					Заголовок обсуждения
-				</div>
-				<div class="discussion-bottom">
-					<div class="discussion-date">
-						14.11.15
-					</div>
-					<div class="disscution-answers">
-						Ответов(3)
-					</div>
-				</div>
-			</div>
-			<div class="discussion">
-				<div class="discussion-title">
-					Заголовок обсуждения
-				</div>
-				<div class="discussion-bottom">
-					<div class="discussion-date">
-						14.11.15
-					</div>
-					<div class="disscution-answers">
-						Ответов(3)
-					</div>
-				</div>
-			</div>
-			<div class="discussion">
-				<div class="discussion-title">
-					Заголовок обсуждения
-				</div>
-				<div class="discussion-bottom">
-					<div class="discussion-date">
-						14.11.15
-					</div>
-					<div class="disscution-answers">
-						Ответов(3)
-					</div>
-				</div>
-			</div>
-			<div class="discussion">
-				<div class="discussion-title">
-					Заголовок обсуждения
-				</div>
-				<div class="discussion-bottom">
-					<div class="discussion-date">
-						14.11.15
-					</div>
-					<div class="disscution-answers">
-						Ответов(3)
-					</div>
-				</div>
-			</div>
+			@include('profile.components.discussion-block', ['discussions' => $discussions])
 		</div>
-	</div>
 
-</div>
+	</div>
 </div>
 
 @stop

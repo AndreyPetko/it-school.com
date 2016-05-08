@@ -23,6 +23,12 @@ use App\Message;
 use App\Helper;
 use App\UserLesson;
 use App\Discussion;
+use App\MessagesRepository;
+use App\User;
+use App\DiscussionsRepository;
+use App\Security;
+use App\Review;
+use Illuminate\Pagination\Paginator;
 
 class HomeController extends Controller
 {
@@ -38,12 +44,24 @@ class HomeController extends Controller
 		$user_id = Auth::user()->id;
 		$userCourses = Course::getUserItems($user_id);
 
-		$userCoursesId = [];
+		$userCourseId = [];
 
-		foreach ($userCourses as $userCourse) {
-			$userCourse->progress = Course::getProgress($userCourse, $user_id);
+		foreach ($userCourses as $key => $userCourse) {
 			$userCourseId[] = $userCourse->id;
+
+			$course = Course::find($userCourse->id);
+			$course->getCourseComplete($user_id);
+
+			if($userCourse->lessons && $course->complete == 0) {
+
+				$userCourse->progress = Course::getProgress($userCourse, $user_id);
+				$userCourse->lesson_id = Course::getRealLessonId($userCourse);
+
+			} else {
+				unset($userCourses[$key]);
+			}
 		}
+
 
 		$courses = Course::getOther($userCourseId);
 
@@ -54,21 +72,35 @@ class HomeController extends Controller
 	public function getCourse($url) {
 		$course = Course::url($url)->first();
 		$course->getCourseProgress();
+		$course->getCourseComplete(Auth::id());
 
 		$lessons = $course->lessons;
 
+		$userId = Auth::user()->id;
 
 		foreach ($lessons as $lesson) {
-			$lesson->getMark(Auth::user()->id);
+			$lesson->getMark($userId);
 			if($lesson->position > $course->currentLesson()) {
 				$lesson->unavail = 1;
 			}
+
+			$lesson->mail = Message::current($userId, $lesson->id)->isAdmin(1)->notReaded()->count();
 		}
 
-		return view('profile.course', compact('course', 'lessons'));
+		$discussions = Discussion::where('course_id', $course->id)->limit(7)->get();
+		$discussionsList = new DiscussionsRepository($discussions);
+		$discussions = $discussionsList->setCountAnswers();
+
+		$review = Review::current(Auth::id(), $course->id)->first();
+
+		return view('profile.course', compact('course', 'lessons', 'discussions', 'review'));
 	}
 
 	public function getLesson($id) {
+		if(!Security::check($id)) {
+			return Redirect::to('/profile');
+		}
+
 		$lesson = Lesson::find($id);
 
 		$userLesson = UserLesson::getInstance(Auth::user()->id, $id);
@@ -83,8 +115,31 @@ class HomeController extends Controller
 	}
 
 	public function getLessonHomework($id) {
+		if(!Security::check($id)) {
+			return Redirect::to('/profile');
+		}
+
+
 		$userId = Auth::user()->id;
+
+
+		$pages = Message::current($userId, $id)->paginate(5);
+		$lastPage = $pages->lastPage();
+
+
+		if(!isset($_GET['page'])) {
+			Paginator::currentPageResolver(function() use ($lastPage) {
+				return $lastPage;
+			});
+		}
+
+
+		Message::current($userId, $id)->isAdmin(1)->setReaded();
+
 		$messages = Message::current($userId, $id)->paginate(5);
+
+
+
 		$lesson = Lesson::find($id);
 
 		$userLesson = UserLesson::getInstance($userId, $id);
@@ -98,10 +153,47 @@ class HomeController extends Controller
 		}
 
 
-		return view('profile.lesson-homework', compact('lesson', 'messages', 'files', 'mark'));
+		$discussions = Discussion::where('lesson_id', $id)->limit(7)->get();
+		$discussionsList = new DiscussionsRepository($discussions);
+		$discussions = $discussionsList->setCountAnswers();
+
+
+		return view('profile.lesson-homework', compact('lesson', 'messages', 'files', 'mark', 'discussions'));
+	}
+
+
+	public function getLessonMore($id) {
+		if(!Security::check($id)) {
+			return Redirect::to('/profile');
+		}
+
+		if(!Security::check($id)) {
+			return Redirect::to('/profile');
+		}
+
+		$lesson = Lesson::find($id);
+
+		$userLesson = UserLesson::getInstance(Auth::user()->id, $id);
+
+		if($userLesson) {
+			$mark = $userLesson->getMark();
+		} else {
+			$mark = 0;
+		}
+
+		return view('profile.lesson-more', compact('lesson', 'mark'));
 	}
 
 	public function postAddLessonMessage() {
+		$created = UserLesson::current(Auth::id(), $this->request['lesson_id'])->count('id');
+
+		if(!$created) {
+			UserLesson::create([
+				'user_id' => Auth::id(),
+				'lesson_id' => $this->request['lesson_id'],
+				]);
+		}
+
 		$message = new Message;
 		$message->message = $this->request['message'];
 		$message->user_id = Auth::user()->id;
@@ -135,14 +227,29 @@ class HomeController extends Controller
 		return Redirect::back();
 	}
 
-	public function getDiscussions() {
-		$courses = Course::all();
-		$discussions = Discussion::all();
+	public function getConsultations() {
+		$userId = Auth::user()->id;
+		$userLessons = UserLesson::consultations($userId)->get();
+		$userLessons = UserLesson::setMail($userLessons, 1);
 
-		return view('profile.discussions', compact('courses', 'discussions'));
+		$discussions = Discussion::latest()->take(7)->get();
+		$discussionsList = new DiscussionsRepository($discussions);
+		$discussions = $discussionsList->setCountAnswers();
+
+
+		return view('profile.consultations', compact('userLessons', 'discussions'));
 	}
 
 
+	public function postAddReview() {
 
+		$review = Review::firstOrNew(['course_id' => $this->request['course_id'], 'user_id' => Auth::id()]);
+
+		$review->stars = $this->request['stars'];
+		$review->review = $this->request['review'];
+		$review->save();
+
+		return Redirect::back();
+	}
 
 }
