@@ -124,13 +124,14 @@
 .course-logo {
     padding-top: 27px;
     text-align: center;
-    height: 150px;
+    min-height: 150px;
     line-height: 150px;
 }
 
 
 .course-logo img {
     width: 60%;
+    /*max-height: 150px;*/
 }
 
 .course-title {
@@ -329,6 +330,7 @@
 .my-label {
     font: 300 14px  Roboto;
     line-height: 46px;
+    text-align: right;
 }
 
 .my-input {

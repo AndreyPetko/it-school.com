@@ -28,6 +28,7 @@ Route::controller('admin/feedback', 'Admin\FeedbackController');
 Route::controller('admin/variables', 'Admin\VariableController');
 Route::controller('admin/homework', 'Admin\HomeworkController');
 Route::controller('admin/users', 'Admin\UserController');
+Route::controller('admin/discussion', 'Admin\DiscussionController');
 Route::controller('admin', 'Admin\AdminController');
 
 

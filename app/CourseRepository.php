@@ -37,6 +37,39 @@ class CourseRepository {
 		return $this->course->all();
 	}
 
+
+	public function sortByRate() {
+		$this->courseList = $this->all();
+
+		foreach ($this->courseList as $course) {
+			$course->rate = $course->getCourseRate();
+		}
+
+		$this->toArray();
+
+		usort($this->courseList, function($a, $b){
+			if ($a->rate == $b->ratae) {
+				return 0;
+			}
+			return ($a->rate < $b->rate) ? 1 : -1;
+		});
+
+
+
+		return $this;
+	}
+
+
+	public function toArray() {
+		$list = [];
+		foreach ($this->courseList as $course) {
+			$list[] = $course;
+		}
+
+		$this->courseList = $list;
+	}
+
+
 	public function getProgressAndLesson() {
 
 		foreach ($this->courseList as $course) {
@@ -54,7 +87,12 @@ class CourseRepository {
 		return $this;
 	}
 
-	public function get() {
+	public function get($count = null) {
+
+		if($count) {
+			$this->courseList = array_slice($this->courseList, 0, $count);
+		}
+
 		return $this->courseList;
 	}
 

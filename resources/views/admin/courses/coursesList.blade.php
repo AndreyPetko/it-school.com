@@ -16,7 +16,7 @@
 			<a href="/admin/course/add"><button type="button" class="btn btn-block btn-primary btn-flat add-product-button">Добавить курс</button></a>
 		</div>
 		<div class="col-md-3">
-			<a href="/admin/course/directions"><button type="button" class="btn btn-block btn-primary btn-flat add-product-button">Спискок направлений</button></a>
+			<a href="/admin/course/directions"><button type="button" class="btn btn-block btn-primary btn-flat add-product-button">Список направлений</button></a>
 		</div>
 	</div>
 </section>

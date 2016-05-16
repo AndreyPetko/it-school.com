@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 
 use Session;
+use App\User;
 use App\Course;
 
 class AjaxController extends Controller
@@ -50,5 +51,10 @@ class AjaxController extends Controller
 		if($course && $course->countLessons()) {
 			return $course->getLessons();
 		}
+	}
+
+
+	public function getChangeUserSlider() {
+		User::find($_GET['userId'])->setSlider($_GET['checked']);
 	}
 }

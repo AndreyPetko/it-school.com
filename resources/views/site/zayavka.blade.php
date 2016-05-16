@@ -98,12 +98,21 @@
 						<div class="bid-form-input col-md-10">
 							<input type="text" name="email" @if(Auth::check()) disabled value="{{Auth::user()->email}}" @endif>
 						</div>
+
 						<div class="bid-form-label col-md-10">
 							Skype
 						</div>
 						<div class="bid-form-input col-md-10">
 							<input type="text" name="skype" @if(Auth::check()) disabled value="{{Auth::user()->skype}}" @endif>
 						</div>
+
+						<div class="bid-form-label col-md-10">
+							Телефон
+						</div>
+						<div class="bid-form-input col-md-10">
+							<input type="text" name="phone" @if(Auth::check()) disabled value="{{Auth::user()->phone}}" @endif>
+						</div>
+
 						<div class="bid-form-label col-md-10">
 							Дата рождения
 						</div>

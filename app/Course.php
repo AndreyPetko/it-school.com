@@ -5,6 +5,7 @@ use DB;
 
 use Illuminate\Database\Eloquent\Model;
 use Auth;
+use App\Review;
 
 class Course extends Model
 {
@@ -30,6 +31,23 @@ class Course extends Model
 
 	public function scopeUrl($query, $url) {
 		$query->where('url', $url);
+	}
+
+
+	public function getCourseRate() {
+		$reviews = Review::courses($this->id)->get();
+
+		if(!count($reviews)) {
+			return 5;
+		}
+
+		$sum = 0;
+
+		foreach($reviews as $review) {
+			$sum += $review->stars;
+		}
+
+		return $sum / count($reviews);
 	}
 
 

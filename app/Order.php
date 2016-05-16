@@ -10,7 +10,7 @@ use App\Repositories\OrderCourseRepository;
 class Order extends Model implements OrderTypes
 {
 	protected $table = 'orders';
-	protected $fillable = ['name', 'surname', 'patronymic', 'email', 'skype', 'birthday', 'totalprice', 'city', 'paid'];
+	protected $fillable = ['name', 'surname', 'patronymic', 'email', 'skype', 'birthday', 'totalprice', 'city', 'paid', 'phone'];
 
 	public function createItem($request, $courses) {
 		$id = self::create($request)->id;

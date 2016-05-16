@@ -37,6 +37,13 @@
 </section>
 
 <section class="content">
+
+	<div class="row">
+		<div class="col-md-3">
+			<a href="/admin/variables/page-add"><button type="button" class="btn btn-block btn-primary btn-flat add-product-button">Добавить страницу</button></a>
+		</div>
+	</div>
+
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="box">
@@ -47,12 +54,18 @@
 					<table  class="table table-bordered table-hover">
 						<tr>
 							<th>Название</th>
-							<!-- <th>Удалить</th> -->
+							<th>Удалить</th>
 						</tr>
 						@foreach($pages as $page)
 						<tr>
 							<td><a href="/admin/variables/page-edit/{{$page->id}}">{{$page->title}}</a></td>
-							<!-- <td>Удалить</td> -->
+							<td class="small-delete">
+								<form action="/admin/variables/page-delete" method="POST" onsubmit="return confirm('Вы точно хотите удалить страницу: {{$page->title}} ?')">
+									<input type="hidden" name="_token" value="{{csrf_token()}}">
+									<input type="hidden" name="page_id" value="{{$page->id}}">
+									<button type="submit" class="btn btn-block btn-danger btn-flat">Удалить</button>
+								</form>
+							</td>
 						</tr>
 						@endforeach
 					</table>

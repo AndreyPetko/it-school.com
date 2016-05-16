@@ -26,37 +26,17 @@
         <div class="box-header with-border">
           <h3 class="box-title">Заявки на урок</h3>
 
-          <div class="box-tools pull-right">
+          <!-- <div class="box-tools pull-right">
             <div class="has-order">
               <input type="text" class="form-control input-sm" placeholder="Search Mail">
               <span class="glyphicon glyphicon-search form-control-order"></span>
             </div>
-          </div>
+          </div> -->
           <!-- /.box-tools -->
         </div>
         <!-- /.box-header -->
         <div class="box-body no-padding">
-          <div class="mailbox-controls">
-            <!-- Check all button -->
-            <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
-            </button>
-            <div class="btn-group">
-              <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-              <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-              <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
-            </div>
-            <!-- /.btn-group -->
-            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-            <div class="pull-right">
-              1-50/200
-              <div class="btn-group">
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-              </div>
-              <!-- /.btn-group -->
-            </div>
-            <!-- /.pull-right -->
-          </div>
+
           <div class="table-responsive mailbox-messages">
             <table class="table table-hover table-striped">
               <thead>
@@ -64,6 +44,9 @@
                 <th>skype</th>
                 <th>Обшая стоимость</th>
                 <th>Дата</th>
+                <th>Статус</th>
+                <th>Подробнее</th>
+                <th>Удалить</th>
               </thead>
               <tbody>
                 @foreach($orders as $order)
@@ -80,7 +63,12 @@
                     @endif
                   </td>
                   <td>
-                  <form action="/admin/feedback/order-delete" method="POST" onsubmit="return confirm('Вы точно хотите удалить товар: {{$order->name}} ?')">
+                  <a href="/admin/feedback/single-order/{{$order->id}}">
+                      Подробнее
+                    </a>
+                  </td>
+                  <td>
+                    <form action="/admin/feedback/order-delete" method="POST" onsubmit="return confirm('Вы точно хотите удалить товар: {{$order->name}} ?')">
                       <input type="hidden" name="_token" value="{{ csrf_token() }}">
                       <input type="hidden" name="order_id" value="{{$order->id}}">
                       <button type="submit" class="btn btn-block btn-danger btn-flat">Удалить</button>
@@ -95,29 +83,35 @@
           <!-- /.mail-box-messages -->
         </div>
         <!-- /.box-body -->
-        <div class="box-footer no-padding">
-          <div class="mailbox-controls">
-            <!-- Check all button -->
-            <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
-            </button>
-            <div class="btn-group">
-              <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-              <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-              <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
-            </div>
-            <!-- /.btn-group -->
-            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-            <div class="pull-right">
-              1-50/200
-              <div class="btn-group">
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
-                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
-              </div>
-              <!-- /.btn-group -->
-            </div>
-            <!-- /.pull-right -->
-          </div>
-        </div>
+
+
+
+        <ul class="pagination">
+
+
+
+          @for ($i = 1; $i <= $count; $i++)
+          @if($i == $page)
+          <li class="active">
+            <span>
+              {{$i}}
+            </span>
+          </li>
+          @else
+          <li>
+            <a href="/admin/feedback?page={{$i}}">
+              {{$i}}
+            </a>
+          </li>
+          @endif
+          @endfor
+
+
+
+        </ul>
+
+
+
       </div>
       <!-- /. box -->
     </div>

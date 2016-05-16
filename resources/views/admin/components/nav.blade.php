@@ -40,3 +40,9 @@
     <i class="fa fa-child"></i> <span>Пользователи</span>
   </a>
 </li>
+
+<li>
+  <a href="/admin/discussion">
+    <i class="fa fa-envelope-o"></i> <span>Дискусии</span>
+  </a>
+</li>

@@ -5,7 +5,7 @@
 
 	<section class="content-header">
 		<h1>
-			Изменить значение страницы
+			Обновить сообшение:
 		</h1>
 	</section>
 
@@ -16,29 +16,16 @@
 
 				<div class="box box-warning">
 					<div class="box-header with-border">
-						<h3 class="box-title">Форма редактирования страницы</h3>
+						<h3 class="box-title">Форма обновления сообшения</h3>
 					</div>
 					<!-- /.box-header -->
 					<div class="box-body">
 						<form method="POST" action="" enctype="multipart/form-data">
 							{{csrf_field()}}
-
 							<div class="form-group">
-								<label for="description">Заголовок:</label>
-								<input name="title" class="form-control" id="name" value="{{$page->title}}"></input>
+								<label for="name">Текст</label>
+								<textarea name="review">{!!$review->review!!}</textarea>
 							</div>
-
-							<div class="form-group">
-								<label for="description">Url:</label>
-								<input name="url" class="form-control" id="url" value="{{$page->url}}"></input>
-							</div>
-
-
-							<div class="form-group">
-								<label for="description">Текст:</label>
-								<textarea name="text" class="form-control">{!!$page->text!!}</textarea>
-							</div>
-
 
 
 							<div class="form-group">

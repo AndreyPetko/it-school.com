@@ -94,4 +94,15 @@ class User extends Authenticatable
         $this->blocked = 1;
         $this->save();
     }
+
+
+    public function setSlider($checked) {
+        $this->slider = $checked;
+        $this->save();
+    }
+
+
+    public function scopeSliderUsers($query) {
+        $query->where('slider', 1);
+    }
 }

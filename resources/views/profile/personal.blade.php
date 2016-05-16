@@ -51,16 +51,36 @@
 						<form method="post" action="/profile/personal/update">
 							{{csrf_field()}}
 							<div class="row">
+								<div class="col-md-2 col-md-offset-1 my-label">Фамилия:</div>
+								<div class="col-md-8 my-input"><input name="surname" value="{{$user->surname}}" type="text"></div>
+							</div>
+							<div class="row">
 								<div class="col-md-2 col-md-offset-1 my-label">Имя:</div>
 								<div class="col-md-8 my-input"><input name="name" value="{{$user->name}}" type="text"></div>
+							</div>
+							<div class="row">
+								<div class="col-md-2 col-md-offset-1 my-label">Отчество:</div>
+								<div class="col-md-8 my-input"><input name="patronymic" value="{{$user->patronymic}}" type="text"></div>
 							</div>
 							<div class="row">
 								<div class="col-md-2 col-md-offset-1 my-label">Email:</div>
 								<div class="col-md-8 my-input"><input name="email" value="{{$user->email}}" type="text"></div>
 							</div>
 							<div class="row">
+								<div class="col-md-2 col-md-offset-1 my-label">Skype:</div>
+								<div class="col-md-8 my-input"><input name="skype" value="{{$user->skype}}" type="text"></div>
+							</div>
+							<div class="row">
 								<div class="col-md-2 col-md-offset-1 my-label">Телефон:</div>
 								<div class="col-md-8 my-input"><input name="phone" value="{{$user->phone}}" type="text"></div>
+							</div>
+							<div class="row">
+								<div class="col-md-2 col-md-offset-1 my-label">Родился:</div>
+								<div class="col-md-8 my-input"><input name="birthday" value="{{$user->birthday}}" type="text"></div>
+							</div>
+							<div class="row">
+								<div class="col-md-2 col-md-offset-1 my-label">Город:</div>
+								<div class="col-md-8 my-input"><input name="city" value="{{$user->city}}" type="text"></div>
 							</div>
 							<div class="row form-submit">
 								<div class="col-md-3 col-md-offset-8">

@@ -35,7 +35,7 @@
 						@foreach($users as $user)
 						<tr>
 							<td><a href="/admin/users/single/{{$user->id}}">{{$user->name}}</a></td>
-							<td>
+							<td class="small-delete">
 								<form action="/admin/users/delete" method="POST" onsubmit="return confirm('Вы точно хотите удалить пользователя: {{$user->name}} ?')">
 									<input type="hidden" name="_token" value="{{ csrf_token() }}">
 									<input type="hidden" name="user_id" value="{{$user->id}}">

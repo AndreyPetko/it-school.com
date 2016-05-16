@@ -24,7 +24,11 @@ class Review  extends Model {
 
 
 	public function scopeMySelect($query) {
-		$query->select('course_review.*', 'courses.name as courseName', 'users.name as userName');
+		$query->select('course_review.*', 'courses.name as courseName', 'courses.url as url', 'users.name as userName');
+	}
+
+	public function scopeCourses($query, $course_id) {
+		$query->where('course_id', $course_id);
 	}
 
 }

@@ -2,6 +2,7 @@
 
 namespace App;
 use DB;
+use App\DiscussionMessage;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -20,8 +21,25 @@ class Discussion extends Model
 			return self::where('course_id', (int)$get['course_id'])->orderBy('created_at', 'desc')->paginate(10);
 		}
 
-
 		return self::orderBy('created_at', 'desc')->paginate(10);
+	}
+
+	public function scopeWithCourseAndLessonAndCountMessages($query) {
+		$query->select(DB::raw('*, courses.name as courseName, lessons.name as lessonName, discussions.id as id, count(discussion_messages.id) as countMessages'))
+		->leftjoin('courses', 'courses.id', '=', 'discussions.course_id')
+		->leftjoin('lessons', 'lessons.id', '=', 'discussions.lesson_id')
+		->leftjoin('discussion_messages', 'discussions.id', '=', 'discussion_messages.discussion_id')
+		->groupBy('discussions.id');
+	}
+
+
+	public function scopeDesc($query) {
+		$query->orderBy('discussions.created_at', 'desc');
+	}
+
+
+	public function deleteMessages() {
+		DiscussionMessage::deleteByDiscussionId($this->id);
 	}
 
 }

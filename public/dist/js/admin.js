@@ -3,11 +3,25 @@ $(document).ready(function(){
 
 
 
-
 	$( "#name" ).keyup(function() {
 		val = $(this).val();
 		val=val.replace(new RegExp(" ",'g'),'-');
 		$("#url").val(transliterate(val));
+	});
+
+
+
+
+
+	$('#user-slider-checkbox').change(function(){
+		var userId = $('#userId').val();
+		var checked = 0;
+
+		if($(this).is(':checked')) {
+			checked = 1;
+		}
+
+		$.get('/ajax/change-user-slider?checked=' + checked + '&userId=' + userId);
 	});
 
 		//Если с английского на русский, то передаём вторым параметром true.

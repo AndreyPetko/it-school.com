@@ -225,3 +225,67 @@ if(windowClose) {
 }
 
 
+// --------------slider student--------------
+var arrows = document.getElementsByClassName("arrows");
+
+if(arrows[0]){
+
+
+	var arrowLeftStudent = document.getElementById('arrow-student-left');
+	var arrowRigthStudent = document.getElementById('arrow-student-rigth');
+	var divSliderStudent = document.getElementById('student-slider-inside');
+
+	var itemsStudent = document.getElementsByClassName('course-item-slider');
+	lengthStudent = itemsStudent.length;
+
+	clicksStudent = 0;
+	maxClicksStudent = lengthStudent - 3;
+	arrowLeftStudent.style.cssText = "cursor:default; fill:#a9b3dc";
+
+	if(maxClicksStudent > 0 ) {
+		arrowRigthStudent.addEventListener('click', function(){
+			if(clicksStudent == maxClicksStudent) {
+				return false;
+			}
+
+			if(clicksStudent == maxClicksStudent - 1) {
+				arrowRigthStudent.style.cssText = "cursor:default; fill:#a9b3dc";
+			}
+
+			marginNow = divSliderStudent.style.marginLeft;
+
+			margin = 235*(clicksStudent + 1);
+
+			divSliderStudent.style.cssText = "margin-left:-" + margin + "px;";
+
+
+			arrowLeftStudent.style.cssText = "cursor:pointer; fill:#4D5897";
+			clicksStudent++;
+		});
+		arrowLeftStudent.addEventListener('click', function(){
+			if(clicksStudent == 0) {
+				return false;
+			}
+
+			if(clicksStudent == 1) {
+				arrowLeftStudent.style.cssText = "cursor:default; fill:#a9b3dc";
+			}
+
+			margin = 235*(clicksStudent - 1);
+
+
+			divSliderStudent.style.cssText = "  margin-left:-" + margin + "px;";
+			
+			arrowRigthStudent.style.cssText = "cursor:pointer; fill:#4D5897";
+			clicksStudent--;
+		});
+	} else {
+		arrowRigthStudent.style.display = 'none';
+		arrowLeftStudent.style.display = 'none';
+	}
+
+
+}
+// --------------slider student--------------
+
+

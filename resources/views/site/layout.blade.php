@@ -50,7 +50,7 @@
 					<a href="{{ url('/course/' . $menuCourse->url) }}"><li>{{$menuCourse->name}}</li></a>
 					@endforeach
 				</ul>
-				<a href="{{ url('/courses') }}"  class="subMenuA" > <li>{{$direction->name}}</li></a>
+				<a href="{{ url('/courses?def=' . $direction->id) }}"  class="subMenuA" > <li>{{$direction->name}}</li></a>
 				@endforeach
 
 
@@ -117,7 +117,7 @@
 				<div class="row">
 					<div class="col-md-6 col-sm-12">
 						<div class="copyright">
-							IT школа Ирины Бузиковой. Все права защишены.
+							IT-школа Ирины Бузиковой. Все права защишены.
 						</div>
 					</div>
 					<div class="col-md-6 col-sm-12">

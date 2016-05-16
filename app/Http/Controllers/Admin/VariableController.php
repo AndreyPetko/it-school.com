@@ -26,6 +26,7 @@ class VariableController extends Controller
 		return view('admin.variables.varsList', compact('vars', 'pages'));
 	}
 
+
 	public function getEdit($key) {
 		$varItem = Keyval::getByKey($key);
 		return view('admin.variables.varEdit', compact('varItem', 'key'));
@@ -41,9 +42,23 @@ class VariableController extends Controller
 		return view('admin.variables.pageEdit', compact('page'));
 	}
 
+	public function getPageAdd() {
+		return view('admin.variables.pageAdd');
+	}
+
+	public function postPageAdd() {
+		Pages::create($this->request);
+		return Redirect::to('admin/variables');
+	}
+
 	public function postPageEdit($id) {
 		Pages::find($id)->update($this->request);
 		return Redirect::to('admin/variables');
+	}
+
+	public function postPageDelete() {
+		Pages::find($this->request['page_id'])->delete();
+		return Redirect::back();
 	}
 
 }

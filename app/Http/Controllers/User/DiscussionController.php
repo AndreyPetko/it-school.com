@@ -68,7 +68,7 @@ class DiscussionController extends Controller
 
 		$messages = DiscussionMessage::where('discussion_messages.id', '!=', $firstMessage->messageId)
 		->where('discussion_id', $discussionId)
-		->orderBy('discussion_messages.id', 'desc')
+		->orderBy('discussion_messages.id')
 		->withUser()
 		->paginate(5);
 

@@ -35,18 +35,45 @@ class FeedbackController extends Controller
 
 		$orders->values()->all();
 
+		if(!isset($_GET['page'])) {
+			$page = 1;
+		} else {
+			$page = $_GET['page'];
+		}
 
-		return view('admin.feedback.orders', compact('orders'));
+		$perpage = 10;
+
+		$count = count($orders) / $perpage;
+		$count = (int)$count + 1;
+
+		$orders = $orders->forPage($page, $perpage);
+
+		return view('admin.feedback.orders', compact('orders', 'count', 'perpage', 'page'));
 	}
 
 	public function getFeedback() {
-		$feedbacks = Feedback::latest()->get();
+		$feedbacks = Feedback::latest()->paginate(10);
 		return view('admin.feedback.feedbackList', compact('feedbacks'));
 	}
 
 	public function getReviews() {
-		$reviews = Review::mySelect()->withCourse()->withUser()->get();
+		$reviews = Review::mySelect()->withCourse()->withUser()->paginate(10);
 		return view('admin.feedback.reviewsList', compact('reviews'));
+	}
+
+	public function getReviewEdit($id) {
+		$review = Review::find($id);
+		return view('admin.feedback.reviewEdit', compact('review'));
+	}
+
+	public function postReviewEdit($id) {
+		Review::find($id)->update(['review' => $this->request['review']]);
+		return Redirect::to('/admin/feedback/reviews');
+	}
+
+	public function getReviewDelete($id) {
+		Review::find($id)->delete();
+		return Redirect::back();
 	}
 
 
@@ -73,6 +100,7 @@ class FeedbackController extends Controller
 			$user->skype = $order->skype;
 			$user->birthday = $order->birthday;
 			$user->city = $order->city;
+			$user->phone = $order->phone;
 			$user->save();
 		} else {
 			$user = User::find($order->user_id);
@@ -84,5 +112,19 @@ class FeedbackController extends Controller
 		$order->update(['paid' => 1 ]);
 
 		return Redirect::back();
+	}
+
+
+	public function getSingleOrder($id) {
+		$order = Order::find($id);
+		$orderCoursesIds = $order->getCourses();
+		$orderCourses = Course::whereIn('id', $orderCoursesIds)->get();
+
+		if($order->user_id) {
+			$order->user = User::find($order->user_id);
+		}
+
+
+		return view('admin.feedback.singleOrder', compact('order', 'orderCourses'));
 	}
 }

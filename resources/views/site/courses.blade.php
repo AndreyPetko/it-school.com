@@ -7,6 +7,9 @@
 @stop
 
 @section('pageContent')
+@if($defaultId)
+<input type="hidden" id="default-id" value="direc-{{$defaultId}}"></input>
+@endif
 <!--   content-->
 <div class="container">
 
@@ -17,11 +20,15 @@
         
         <div class="row categories-list">
             <div class="col-md-2 category-list-active col-sm-4 col-xs-6 category-button" id="all">
-                Все категории
+                <div>
+                    Все категории
+                </div>
             </div>
             @foreach($directions as $direction)
             <div class="col-md-2 col-sm-4 col-xs-6 category-button" id="direc-{{$direction->id}}">
-                {{$direction->name}}
+                <div>
+                    {{$direction->name}}
+                </div>
             </div>
             @endforeach
         </div>

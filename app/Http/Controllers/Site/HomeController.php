@@ -22,6 +22,8 @@ use App\UserOrder;
 use App\CourseSaler;
 use App\Review;
 use App\Repositories\ReviewRepository;
+use App\CourseRepository;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -33,17 +35,25 @@ class HomeController extends Controller
 
 
 	public function getIndex() {
-		$courses = Course::getTop(5);
+		$courses = (new CourseRepository(new Course))->sortByRate()->get(5);
+
 		$news = News::getLast();
 		$mainText = Keyval::getByKey('Текст на главной');
 		$giftText = Keyval::getByKey('Подарок');
 		$giftText2 = Keyval::getByKey('Подарок2');
+		$lessonText = Keyval::getByKey('Получите урок');
+
+		$sliderUsers = User::sliderUsers()->get();
 
 		foreach ($courses as $course) {
 			$course->stars = (new ReviewRepository( Review::all()))->getCourseStars($course->id);
 		}
 
-		return view('site.index', compact('courses', 'news', 'mainText', 'giftText', 'giftText2'));
+
+		$progressPages = Pages::progressPagesUrl()->lists('url','id');
+
+
+		return view('site.index', compact('courses', 'news', 'mainText', 'giftText', 'giftText2', 'lessonText', 'sliderUsers', 'progressPages'));
 	}
 
 
@@ -88,7 +98,13 @@ class HomeController extends Controller
 			$course->stars = (new ReviewRepository( Review::all()))->getCourseStars($course->id);
 		}
 
-		return view('site.courses', compact('directions', 'courses'));
+		if(isset($_GET['def'])) {
+			$defaultId = $_GET['def'];
+		} else {
+			$defaultId = '';
+		}
+
+		return view('site.courses', compact('directions', 'courses', 'defaultId'));
 	}
 
 	public function getCourse($url) {
@@ -188,6 +204,12 @@ class HomeController extends Controller
 		$news = News::getLast();
 
 		return view('site.success', compact('news'));
+	}
+
+
+	public function getPage($url) {
+		$page = Pages::where('url', $url)->first();
+		return view('site.staticPage', compact('page'));
 	}
 
 }

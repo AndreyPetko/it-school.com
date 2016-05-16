@@ -7,36 +7,8 @@
 
 
 <div class="container">
-	<div class="row contacts-info">
-		<div class="col-md-1 col-xs-12">
-			<img src="{{ url('/site_images/icon-mail.png') }}" alt="">
-		</div>
-		<div class="col-md-2 col-xs-12 contacts-text">
-			<div>
-				mymail@mail.ru
-			</div>
-		</div>
 
-		<div class="col-md-1 col-md-offset-1 col-xs-12">
-			<img src="{{ url('/site_images/icon-phone.png') }}" alt="">
-		</div>
-		<div class="col-md-2 col-xs-12 contacts-text">
-			<div>
-				555-5555
-				<br>
-				555-5555
-			</div>
-		</div>
-		<div class="col-md-1 col-md-offset-1 col-xs-12">
-			<img src="{{ url('/site_images/icon-skype.png') }}" alt="">
-		</div>
-		<div class="col-md-2  col-xs-12 contacts-text">
-			<div>
-				myskype
-			</div>
-		</div>
-	</div>
-	<div class="row mt80">
+	<div class="row">
 		<div class="col-md-4">
 
 			<div class="contacts-form">
@@ -61,12 +33,35 @@
 				</form>
 			</div>
 		</div>
-		<div class="col-md-7 col-md-offset-1 contacts-page-text">
-			<div class="contacts-logo col-md-4">
-				<img src="{{ url('/site_images/logo-copy.png') }}" alt="">
+		<div class="col-md-7 col-md-offset-1">
+
+			<div class="row contacts-info">
+				<div class="col-md-2 col-xs-12">
+					<img src="{{ url('/site_images/icon-mail.png') }}" alt="">
+				</div>
+				<div class="col-md-3 col-xs-12 contacts-text">
+					<div>
+						dbuzikova@gmail.com
+					</div>
+				</div>
+
+				<div class="col-md-2 col-md-offset-1  col-xs-12">
+					<img src="{{ url('/site_images/icon-skype.png') }}" alt="">
+				</div>
+				<div class="col-md-3 col-xs-12 contacts-text">
+					<div>
+						idbuzikova
+					</div>
+				</div>
 			</div>
-			<div class="contacts-text-block col-md-8">
-				{!!$contactsText!!}
+
+			<div class="row contacts-page-text mt20">
+				<div class="contacts-logo col-md-4">
+					<img src="{{ url('/site_images/logo-copy.png') }}" alt="">
+				</div>
+				<div class="contacts-text-block col-md-8">
+					{!!$contactsText!!}
+				</div>
 			</div>
 		</div>
 	</div>
