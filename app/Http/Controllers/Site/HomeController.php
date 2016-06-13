@@ -226,8 +226,24 @@ class HomeController extends Controller
 	}
 
 
-	public function postPay() {
-		print_r($_POST);
+
+	public function getSuccessPay() {
+		$news = News::getLast();
+		return view('site.success-pay');
 	}
+
+
+	public function postPay() {
+		$orderId = $_POST['ik_pm_no'];
+		$status = $_POST['ik_inv_st'];
+
+		if($status == 'success') {
+			$order = Order::find($orderId);
+			$order->activate(new User());
+			return Redirect::to('/success-pay');
+		}
+	}
+
+
 
 }

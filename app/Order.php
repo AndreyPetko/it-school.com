@@ -27,4 +27,28 @@ class Order extends Model implements OrderTypes
 	public function scopeUnpaid($query) {
 		$query->where('paid', 0);
 	}
+
+
+	public function activate($user) {
+
+		if(!$this->user_id) {
+			$user->email = $this->email;
+			$user->password = bcrypt('123');
+			$user->name = $this->name;
+			$user->surname = $this->surname;
+			$user->patronymic = $this->patronymic;
+			$user->skype = $this->skype;
+			$user->birthday = $this->birthday;
+			$user->city = $this->city;
+			$user->phone = $this->phone;
+			$user->save();
+		} else {
+			$user = $user::find($this->user_id);
+		}
+
+		$courses = $this->getCourses();
+
+		$user->addCourses($courses);
+		$this->update(['paid' => 1 ]);
+	}
 }

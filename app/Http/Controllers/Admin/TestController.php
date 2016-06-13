@@ -10,7 +10,7 @@ use Redirect;
 use App\Question;
 use App\Answer;
 use App\QuestionsRepository;
-
+use App\UserTest;
 
 
 class TestController extends Controller
@@ -20,8 +20,6 @@ class TestController extends Controller
 		$this->request = Request::all();
 		unset($this->request['_token']);
 	}
-
-
 
 	public function getIndex() {
 		$tests = Test::withLesson()->get();
@@ -149,7 +147,11 @@ class TestController extends Controller
 	}
 
 
+	public function getUsers() {
+		$userTests = UserTest::withTestAndUser()->complete()->desc()->paginate(10);
 
+		return view('admin.tests.usersList', compact('userTests'));
+	}
 
 
 

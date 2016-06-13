@@ -89,28 +89,7 @@ class FeedbackController extends Controller
 
 	public function getSetOrderPaid($orderId) {
 		$order = Order::find($orderId);
-
-		if(!$order->user_id) {
-			$user = new User();
-			$user->email = $order->email;
-			$user->password = bcrypt('123');
-			$user->name = $order->name;
-			$user->surname = $order->surname;
-			$user->patronymic = $order->patronymic;
-			$user->skype = $order->skype;
-			$user->birthday = $order->birthday;
-			$user->city = $order->city;
-			$user->phone = $order->phone;
-			$user->save();
-		} else {
-			$user = User::find($order->user_id);
-		}
-
-		$courses = $order->getCourses();
-
-		$user->addCourses($courses);
-		$order->update(['paid' => 1 ]);
-
+		$order->activate(new User());
 		return Redirect::back();
 	}
 

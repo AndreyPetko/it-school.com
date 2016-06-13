@@ -15,6 +15,10 @@
 		<div class="col-md-3">
 			<a href="/admin/tests/add"><button type="button" class="btn btn-block btn-primary btn-flat add-product-button">Добавить тест</button></a>
 		</div>
+
+		<div class="col-md-3">
+			<a href="/admin/tests/users"><button type="button" class="btn btn-block btn-primary btn-flat add-product-button">Тесты пользователей</button></a>
+		</div>
 	</div>
 </section>
 
