@@ -46,3 +46,10 @@
     <i class="fa fa-envelope-o"></i> <span>Дискусии</span>
   </a>
 </li>
+
+
+<li>
+  <a href="/admin/tests">
+    <i class="fa fa-check"></i> <span>Тесты</span>
+  </a>
+</li>

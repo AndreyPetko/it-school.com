@@ -97,14 +97,35 @@ if(courseListItem){
 	}
 	for(i=0; i < courseListItem.length; i++){
 		courseListItem[i].addEventListener("click", function(){
-			clear();
 			var courseSubmenu = this.nextSibling.nextSibling.childNodes;
-			for(i=0; i < courseSubmenu.length; i++){
-				if (courseSubmenu[i].tagName == 'DIV'){
+
+
+
+			for (var i = courseSubmenu.length - 1; i >= 0; i--) {
+				if(courseSubmenu[i].tagName == 'DIV') {
+					block = courseSubmenu[i];
+					break;
+				}
+			}
+
+
+			str = block.style.height;
+			height = str.substring(0, str.length - 2);
+
+			clear();
+
+			if(height == '50') {
+				return false;
+			}
+
+			for(i=0; i < courseSubmenu.length; i++) {
+				if (courseSubmenu[i].tagName == 'DIV') {
 					courseSubmenu[i].style.cssText = "height:50px; margin-top:5px; border: 2px solid white;";
 				}
 			}
 			this.style.cssText = "background-color: #d7d7d7;";
+
+
 		})
 
 	}

@@ -98,15 +98,13 @@
 				<div class="col-md-10">
 					<div class="footer-links">
 						<div class="footer-link"><a href="/">Главная</a></div>
-						<div class="footer-link"><a href="/news-list">Новости</a></div>
+						<div class="footer-link"><a href="/about">О школе</a></div>
+						<div class="footer-link"><a href="/page/publichnaya-oferta">Публичная оферта</a></div>
+						<div class="footer-link"><a href="/page/politika-konfidenczialbnosti">Политика конфиденциальности</a></div>
+						<div class="footer-link"><a href="/page/faq">FAQ</a></div>
+						<div class="footer-link"><a href="/page/sposoby-oplaty">Способы оплаты</a></div>
 						<div class="footer-link"><a href="/partners">Партнерам</a></div>
 						<div class="footer-link"><a href="/contacts">Контакты</a></div>
-						<div class="footer-link"><a href="">Подписка на рассылку</a></div>
-						<div class="footer-link"><a href="/about">О школе</a></div>
-						<div class="footer-link"><a href="/courses">Курсы</a></div>
-						<div class="footer-link"><a href="">Отзывы</a></div>
-						<div class="footer-link"><a href="">FAQ</a></div>
-						<div class="footer-link"><a href="">Способы оплаты</a></div>
 					</div>
 				</div>
 			</div>

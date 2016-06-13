@@ -26,3 +26,16 @@
 .small-delete {
 	width: 20%;
 }
+
+
+#answer-item {
+	display: none;
+}
+
+.delete-answer {
+	float: right;
+}
+
+.delete-answer  a {
+	color: red;
+}

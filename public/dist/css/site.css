@@ -11,9 +11,6 @@ html{
 
 }
 
-
-
-
 .empty-order {
 	color: red;
 	font-size: 16px;
@@ -113,7 +110,6 @@ html{
 }
 
 
-
 .auth-block {
 	width: 50%;
 	min-width: 250px;
@@ -134,7 +130,12 @@ html{
 	position: fixed;
 	margin-top: 200px;
 }
-
+.auth-block img {
+	float: right;
+}
+#sova{
+	cursor: pointer;
+}
 .auth-label {
 	margin-left: 25px;
 	font-family: Roboto;
@@ -146,12 +147,16 @@ html{
 	width: 100%;
 	height: 40px;
 	border: 2px solid #dddddd;
+	text-indent: 10px;
 }
-
+.auth-out-form-div{
+	width: 70%;
+	float: left;
+}
 .auth-submit input {
 	height: 45px;
-	float: right;
-	width: 40%;
+	float: left;
+	width: 30%;
 	background-color: #e28500;
 	color: #feffff;
 	font: 400 16px Roboto;
@@ -193,11 +198,18 @@ html{
 .auth-to-study a{
 	display: block;
 	border: 2px solid #ebebeb;
-	/*min-width: 350px;*/
 	line-height: 40px;
 	width: 40%;
 	margin: 0 auto;
+	color: black;
 }
+.auth-to-study a:hover{
+	background-color: #e28500;
+	color: white;
+	text-decoration: none;
+}
+
+
 /*-----------------------mobile menu nav--------------------------------------*/
 #mobile-menu{
 	height:0px;
@@ -758,15 +770,28 @@ html{
 }
 
 
-.sucess .course-title{
+.success .course-title{
 	margin-bottom: 40px;
 }
-.sucess {
+.success {
 	margin-bottom: 40px;
 }
-.sucess .course-title a{
+.success .course-title a{
 	color: #e28500;
 }
+
+.pay input {
+	display: block;
+	width: 400px;
+	height: 40px;
+	background: green;
+	line-height: 40px;
+	font-family: Roboto;
+	text-align: center;
+	color: white;
+	margin: 0 auto;
+}
+
 .window-up{
 	padding-bottom: 20px;
 	position: absolute;
@@ -908,6 +933,13 @@ html{
 	}
 	.one-student{
 		width: 90%;
+	}
+
+	.auth-block img{
+		display: none;
+	}
+	.auth-out-form-div{
+		width: 100%;
 	}
 
 
@@ -1230,7 +1262,7 @@ html{
 .footer-link {
 	display: inline-block;
 	/*    padding: 31px;*/
-	width: 160px;
+	width: 200px;
 }
 
 .footer-social {
@@ -1356,7 +1388,8 @@ html{
 .course-name {
 	margin-left: 20px;
 	display: inline-block;
-	font: 400 14px / 35px Roboto;
+	width: 70%;
+	font: 400 14px / 20px Roboto;
 }
 
 .course-list-item2 {

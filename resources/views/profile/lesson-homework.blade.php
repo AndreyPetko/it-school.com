@@ -4,6 +4,13 @@
 
 @section('content')
 
+
+
+
+@if(Session::get('largeFile'))
+
+@endif
+
 <div class="breadcrumbs">
 	<div class="breadcrumb-home">
 		<img src="{{ url('/profile_images/home-icon.png') }}" alt="">
@@ -53,11 +60,19 @@
 		</div>
 		@endif
 
+
+		@if($mark && $mark >= 3)
 		<div class="col-md-2 col-xs-12 lesson-page-mark">
-			@if($mark)
 			Оценка: <span>{{$mark}}</span>
-			@endif
 		</div>
+		@endif
+
+
+		@if($mark && $mark < 3)
+		<div class="col-md-2 col-xs-12 lesson-page-mark bad-lesson-page-mark">
+			Оценка: <span>{{$mark}}</span>
+		</div>
+		@endif
 	</div>
 
 	<div class="row">
@@ -69,8 +84,18 @@
 	</div>
 
 	<div class="row">
-		<div class="col-lg-2 visible-lg">
-			<img src="{{ url('/profile_images/sov/sova-4.png') }}" alt="">
+		<div class="col-lg-2 visible-lg max100">
+			@if($mark == '')
+			<img id="sova" src="{{ url('/profile_images/sov/sova-4.png') }}" alt="">
+			@endif
+
+			@if($mark >= 3)
+			<img  id="sova" src="{{ url('/profile_images/sov/sova-6.png') }}" alt="">
+			@endif
+
+			@if($mark != '' && $mark < 3)
+			<img id="sova" src="{{ url('/profile_images/sov/sova-5.png') }}" alt="">
+			@endif
 		</div>
 		<div class="col-lg-7 col-md-8">
 			<div class="title">
@@ -79,7 +104,7 @@
 
 			<div class="row">
 				<div class="col-sm-2 hidden-xs">
-					@if($mark)
+					@if($mark && $mark >= 3)
 					<div class="mt20">
 						<img src="{{ url('/profile_images/check-mark-3-xxl.png') }}" alt="">
 					</div>
@@ -96,10 +121,15 @@
 							<div class="themes-item-text filename">@if($file->comment) {{$file->comment}} @else Новый файл @endif</div>
 						</div>
 						@endforeach
+
+						@if(Session::get('largeFile'))
+						<div class="large-file-error">
+							Слишком большой файл
+						</div>
+						@endif
 					</div>
-					
+
 					<div class="send-more">
-						<!-- <button>Отправить еще</button> -->
 						<form method="post" action="/profile/add-homework" enctype="multipart/form-data" class="file-input">
 							{{csrf_field()}}
 							<input type="hidden" value="{{$lesson->id}}" name="lesson_id"></input>
@@ -114,12 +144,36 @@
 						</form>
 					</div>
 
-				</div>
-				<div class="col-xs-3 lesson-page-mark-bot">
-					@if($mark)
-					Оценка <span>{{$mark}}</span>
+
+
+					@if($test)
+					@if($test->userTest)
+					<a href="/profile/test/{{$test->id}}/restart">
+						<div class="test-button">
+							Пройти тест повторно ({{$test->userTest->mark}}/{{$test->userTest->current_position - 1}})
+						</div>
+					</a>
+					@else
+					<a href="/profile/test/{{$test->id}}">
+						<div class="test-button">
+							Пройти тест
+						</div>
+					</a>
 					@endif
+					@endif
+
 				</div>
+				@if($mark && $mark >= 3)
+				<div class="col-xs-3 lesson-page-mark-bot good-mark">
+					Оценка <span>{{$mark}}</span>
+				</div>
+				@endif
+
+				@if($mark && $mark < 3)
+				<div class="col-xs-3 lesson-page-mark-bot bad-mark">
+					Оценка <span>{{$mark}}</span>
+				</div>
+				@endif
 			</div>
 			<div class="one-disc-line mt10"></div>
 

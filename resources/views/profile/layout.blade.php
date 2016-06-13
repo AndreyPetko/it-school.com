@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<input type="hidden" value="{{csrf_token()}}" id="token"></input>
  <div class="header-line"></div>
  <div class="container">
    <div class="header">
@@ -161,6 +162,7 @@
 </div>
 <script src="{{ url('plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
 <script src="{{ url('dist/js/profile.js') }}"></script>
+<script src="{{ url('dist/js/sova.js') }}"></script>
 @yield('js')
 </body>
 </html>

@@ -12,7 +12,7 @@ class Homework extends Model
 	protected $fillable = ['user_lesson_id', 'file_path', 'comment'];
 
 	public function deleteFile() {
-		if(file_exists(public_path() . '/homework_files/' . $this->file_path)) {
+		if(file_exists(public_path() . '/homework_files/' . $this->file_path)  && $this->file_path !== '') {
 			unlink(public_path() . '/homework_files/' .  $this->file_path);
 		}
 	}

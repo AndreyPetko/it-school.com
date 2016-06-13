@@ -553,5 +553,7 @@
 
     <script src="{{ url('dist/js/admin.js') }}"></script>
 
+    @yield('js')
+
   </body>
   </html>

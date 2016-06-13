@@ -14,14 +14,14 @@ class Discussion extends Model
 
 	public static function getByFilter($get) {
 		if(isset($get['lesson_id'])) {
-			return self::where('lesson_id', (int)$get['lesson_id'])->orderBy('created_at', 'desc')->paginate(10);
+			return self::where('lesson_id', (int)$get['lesson_id'])->orderBy('created_at', 'desc')->paginate(20);
 		}
 
 		if(isset($get['course_id'])) {
-			return self::where('course_id', (int)$get['course_id'])->orderBy('created_at', 'desc')->paginate(10);
+			return self::where('course_id', (int)$get['course_id'])->orderBy('created_at', 'desc')->paginate(20);
 		}
 
-		return self::orderBy('created_at', 'desc')->paginate(10);
+		return self::orderBy('created_at', 'desc')->paginate(20);
 	}
 
 	public function scopeWithCourseAndLessonAndCountMessages($query) {

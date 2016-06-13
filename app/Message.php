@@ -36,5 +36,4 @@ class Message extends Model
 		$query->where('user_id', $userId);
 	}
 
-
 }

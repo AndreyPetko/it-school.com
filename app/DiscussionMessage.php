@@ -23,4 +23,8 @@ class DiscussionMessage extends Model
 		self::where('discussion_id', $id)->delete();
 	}
 
+	public function setOwls() {
+		$this->text = preg_replace('/:sov(\d\d?):/', '<img src="/smiles/s\1.png">', $this->text);
+	}
+
 }

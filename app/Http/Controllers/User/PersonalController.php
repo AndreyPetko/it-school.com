@@ -43,6 +43,11 @@ class PersonalController extends Controller
 	}
 
 	public function postChangeLogo() {
+
+		if(empty($this->request)) {
+			return Redirect::back()->with('largeFile', 1);
+		}
+
 		if(Request::hasFile('logo') && Request::file('logo')->isValid()) {
 			$extension =  Request::file('logo')->getClientOriginalExtension();
 			$filename = uniqid() . '.' . $extension;

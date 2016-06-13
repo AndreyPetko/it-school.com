@@ -29,7 +29,25 @@ Route::controller('admin/variables', 'Admin\VariableController');
 Route::controller('admin/homework', 'Admin\HomeworkController');
 Route::controller('admin/users', 'Admin\UserController');
 Route::controller('admin/discussion', 'Admin\DiscussionController');
+
+
+Route::controller('admin/tests', 'Admin\TestController');
+Route::controller('admin/tests/questions', 'Admin\QuestionController');
+
+
+Route::controller('admin/ajax', 'Admin\AjaxController');
+
 Route::controller('admin', 'Admin\AdminController');
+
+
+
+Route::get('/profile/test/{testId}/question', 'User\TestController@getQuestion');
+Route::post('/profile/test/{testId}/question', 'User\TestController@postQuestion');
+Route::get('/profile/test/{id}/finish', 'User\TestController@getFinish');
+Route::get('/profile/test/{id}/restart', 'User\TestController@getRestart');
+
+Route::get('/profile/test/{id}', 'User\TestController@getIndex');
+
 
 
 Route::controller('profile/personal', 'User\PersonalController');
@@ -49,6 +67,7 @@ Route::get('auth/logout', 'Auth\AuthController@logout');
 Route::controller('/ajax', 'Site\AjaxController');
 
 Route::group(['nocsrf' => true], function(){
+	Route::post('/pay', 'Site\HomeController@pay');
 	Route::get('/file/upload', 'FileController@upload');
 	Route::post('/file/upload', 'FileController@upload');
 });

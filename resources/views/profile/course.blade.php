@@ -31,7 +31,7 @@
 
 <div class="content">
 	<div class="col-lg-2 visible-lg">
-		<img src="{{ url('/profile_images/%D1%81%D0%BE%D0%B2%D0%B03.png') }}" alt="">
+		<img id="sova" src="{{ url('/profile_images/%D1%81%D0%BE%D0%B2%D0%B03.png') }}" alt="">
 	</div>
 	<div class="col-lg-7 col-md-8">
 		<div class="row">

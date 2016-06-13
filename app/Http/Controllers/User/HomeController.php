@@ -29,6 +29,8 @@ use App\DiscussionsRepository;
 use App\Security;
 use App\Review;
 use Illuminate\Pagination\Paginator;
+use App\Test;
+use App\UserTest;
 
 class HomeController extends Controller
 {
@@ -120,6 +122,12 @@ class HomeController extends Controller
 		}
 
 
+		$test = Test::where('lesson_id', $id)->first();
+
+		if($test) {
+			$test->userTest = UserTest::current(Auth::id(), $test->id)->first();
+		}
+
 		$userId = Auth::user()->id;
 
 
@@ -158,7 +166,7 @@ class HomeController extends Controller
 		$discussions = $discussionsList->setCountAnswers();
 
 
-		return view('profile.lesson-homework', compact('lesson', 'messages', 'files', 'mark', 'discussions'));
+		return view('profile.lesson-homework', compact('lesson', 'messages', 'files', 'mark', 'discussions', 'test'));
 	}
 
 
@@ -207,11 +215,17 @@ class HomeController extends Controller
 	public function postAddHomework() {
 		$filename = '';
 
+		if(empty($this->request)) {
+			return Redirect::back()->with('largeFile', 1);
+		}
+
+
 		if(Request::hasFile('file') && Request::file('file')->isValid()) {
 			$extension =  Request::file('file')->getClientOriginalExtension();
 			$filename = uniqid() . '.' . $extension;
 			Request::file('file')->move('homework_files', $filename);
 		}
+
 
 		$userLesson = UserLesson::getInstance(Auth::user()->id, $this->request['lesson_id']);
 
@@ -251,5 +265,6 @@ class HomeController extends Controller
 
 		return Redirect::back();
 	}
+
 
 }

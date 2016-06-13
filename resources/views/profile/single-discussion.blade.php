@@ -1,5 +1,9 @@
 @extends('profile.layout')
 
+@section('js')
+<script src="{{ url('dist/js/smiles.js')}} "></script>
+@stop
+
 
 @section('content')
 
@@ -21,7 +25,7 @@
 <div class="content">
 	<div class="col-lg-9 col-md-8">
 		<div class="title">
-			{{$discussion->title}}
+			{!!$discussion->title!!}
 		</div>
 
 		<div class="row">
@@ -39,7 +43,7 @@
 			</div>
 			<div class="col-xs-8">
 				<div class="one-disc-text">
-					{{$firstMessage->text}}
+					{!!$firstMessage->text!!}
 				</div>
 			</div>
 			<div class="col-xs-2">
@@ -70,11 +74,11 @@
 				<div class="row">
 					<div class="col-md-offset-1 col-xs-2">
 						<div class="user-logo">
-						@if(!$message->logo)
+							@if(!$message->logo)
 							<img src="{{ url('/profile_images/112965409_suychik.png') }}" alt="">
-						@else
+							@else
 							<img src="{{ url('user_logos/' . $message->logo) }}">
-						@endif
+							@endif
 						</div>
 						<div class="user-name">
 							{{$message->name}}
@@ -83,7 +87,7 @@
 					</div>
 					<div class="col-sm-7 col-xs-9">
 						<div class="one-disc-text">
-							{{$message->text}}
+							{!!$message->text!!}
 						</div>
 						<div class="one-disc-date visible-xs">
 							{{ $message->created_at->format('d.m.y') }}
@@ -98,9 +102,7 @@
 			</div>
 			@endforeach
 
-
 		</div>
-
 
 		@include('pagination.default', ['paginator' => $messages])
 
@@ -110,10 +112,30 @@
 			<div class="row">
 				<div class="new-answer-row">
 					<div class="col-md-8 col-md-offset-1 answer-area">
-						<textarea name="text" placeholder="Введите сообщение"></textarea>
+						<textarea name="text" placeholder="Введите сообщение" id="discussionText"></textarea>
 					</div>
 					<div class="col-md-2 form-submit">
 						<button type="submit">Отправить</button>
+					</div>
+				</div>
+			</div>
+			<div class="row smiles">
+				<div class="row">
+				<div class="col-md-8 col-md-offset-1">
+						<div class="row">
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s1.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s2.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s3.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s4.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s5.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s6.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s7.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s8.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s9.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s10.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s11.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s12.png') }}"></div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -127,9 +149,6 @@
 				</div>
 			</div>
 		</div>
-<!-- 		<div class="title">
-			Обсуждения к этому уроку
-		</div> -->
 
 		@include('profile.components.discussion-block', [ 'discussions' => $discussions ])
 

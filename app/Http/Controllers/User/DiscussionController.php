@@ -72,9 +72,16 @@ class DiscussionController extends Controller
 		->withUser()
 		->paginate(5);
 
+
+
 		$discussions = Discussion::where('course_id', $discussion->course_id)->limit(7)->get();
 		$discussionsList = new DiscussionsRepository($discussions);
 		$discussions = $discussionsList->setCountAnswers();
+
+
+		foreach ($messages as $message) {
+			$message->setOwls();
+		}
 
 		return view('profile.single-discussion', compact('discussion', 'firstMessage', 'messages', 'discussions'));
 	}

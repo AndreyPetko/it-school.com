@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Session;
 use App\User;
 use App\Course;
+use App\Feedback;
 
 class AjaxController extends Controller
 {
@@ -56,5 +57,11 @@ class AjaxController extends Controller
 
 	public function getChangeUserSlider() {
 		User::find($_GET['userId'])->setSlider($_GET['checked']);
+	}
+
+
+	public function postFeedbackAdd() {
+		Feedback::create(['email' => $_POST['email'], 'text' => $_POST['text']]);
+		return 1;
 	}
 }

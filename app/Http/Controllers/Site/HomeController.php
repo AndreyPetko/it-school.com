@@ -192,7 +192,12 @@ class HomeController extends Controller
 		$saler->create();
 
 		Session::put('courses', []);
-		return Redirect::to('/success');
+
+		$order = Order::orderBy('created_at', 'desc')->first();
+		$lastInsertId = $order->id;
+
+
+		return Redirect::to('/success')->with('lastInsertId', $lastInsertId);
 	}
 
 
@@ -203,13 +208,26 @@ class HomeController extends Controller
 	public function getSuccess() {
 		$news = News::getLast();
 
-		return view('site.success', compact('news'));
+		$order_id = Session::get('lastInsertId');
+
+		if($order_id) {
+			$order = Order::find($order_id);
+			return view('site.success', compact('news', 'order'));
+		} else {
+			return Redirect::to('/');
+		}
+
 	}
 
 
 	public function getPage($url) {
 		$page = Pages::where('url', $url)->first();
 		return view('site.staticPage', compact('page'));
+	}
+
+
+	public function postPay() {
+		print_r($_POST);
 	}
 
 }

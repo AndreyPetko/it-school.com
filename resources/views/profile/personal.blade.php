@@ -38,6 +38,14 @@
 						<img src="{{ url('/user_logos/' . $user->logo) }}" alt="">
 						@endif
 					</div>
+
+
+					@if(Session::get('largeFile'))
+					<div class="large-file-error">
+						Слишком большой файл
+					</div>
+					@endif
+
 					<div class="new-avatar">
 						<form  method="post" action="{{ url('/profile/personal/change-logo') }}" id="change-logo" enctype="multipart/form-data">
 							{{csrf_field()}}

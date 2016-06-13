@@ -128,7 +128,7 @@
 
 	</div>
 	<div class="col-lg-2 visible-lg">
-		<img src="{{ url('/profile_images/sov/sova-1.png') }}" alt="">
+		<img id="sova" src="{{ url('/profile_images/sov/sova-1.png') }}" alt="">
 	</div>
 </div>
 </div>
