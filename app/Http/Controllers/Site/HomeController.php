@@ -68,7 +68,15 @@ class HomeController extends Controller
 	}
 
 	public function postSendmailAdd() {
-		Sendmail::create($this->request);
+		$item = Sendmail::where('email', $this->request['email'])->first();
+
+		// print_r($item);
+		// die();
+
+		if(empty($item)) {
+			Sendmail::create($this->request);
+		}
+
 		return Redirect::back()->with('sendmailSuccess', 1);
 	}
 
@@ -219,29 +227,37 @@ class HomeController extends Controller
 
 	}
 
-
 	public function getPage($url) {
 		$page = Pages::where('url', $url)->first();
 		return view('site.staticPage', compact('page'));
 	}
 
 
-
 	public function getSuccessPay() {
 		$news = News::getLast();
-		return view('site.success-pay');
+		return view('site.success-pay', compact('news'));
 	}
 
-
-	public function postPay() {
+	public function pay() {
 		$orderId = $_POST['ik_pm_no'];
 		$status = $_POST['ik_inv_st'];
 
 		if($status == 'success') {
 			$order = Order::find($orderId);
 			$order->activate(new User());
-			return Redirect::to('/success-pay');
+			Sendmail::sendActivationMail($order->email, '123');
+			// return Redirect::to('/success-pay');
 		}
+	}
+
+	public function getUnsub($id) {
+		Sendmail::where('id', $id)->delete();
+		return Redirect::to('/success-unsub');
+	}
+
+
+	public function getSuccessUnsub() {
+		return view('site.success-unsub');
 	}
 
 

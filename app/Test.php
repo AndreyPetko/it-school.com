@@ -10,7 +10,7 @@ class Test extends Model
 {
 
 	protected $table = 'tests';
-	protected $fillable = ['name', 'lesson_id'];
+	protected $fillable = ['name', 'lesson_id', 'active', 'description'];
 
 
 	public function questionCount() {

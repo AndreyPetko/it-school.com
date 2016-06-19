@@ -1,11 +1,17 @@
 @extends('site.pageLayout')
 
+
+@section('header')
+    <title>Страница курса "{{$course->name}}"</title>
+@stop
+
+
 @section('pageContent')
 
 <!--   content-->
 <div class="container">
 	<div class="courses-title">
-		КУРСЫ
+		<h1>КУРСЫ</h1>
 	</div>
 	<div class="breadcrumbs">
 		<a href="/">
@@ -72,6 +78,20 @@
 			</div>
 		</div>
 	</div>
+
+
+	<!-- <div class="row">
+		<div class="course-tabs">
+			<div class="course-tab">
+				Описание
+			</div>
+
+			<div class="course-tab">
+				Программа курса
+			</div>
+		</div>
+	</div> -->
+
 	<div class="row mt20">
 		<div class="col-lg-12">
 			<div class="course-page-full-text">
@@ -154,7 +174,7 @@
 
 
 	<div class="courses-title">
-		РЕКОМЕНДУЕМ
+		<h2>РЕКОМЕНДУЕМ</h2>
 	</div>
 	<div class="row">
 		@foreach($topCourses as $topCourse)

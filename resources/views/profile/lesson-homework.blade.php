@@ -1,5 +1,8 @@
 @extends('profile.layout')
 
+@section('js')
+<script src="{{ url('dist/js/smiles.js')}} "></script>
+@stop
 
 
 @section('content')
@@ -146,7 +149,7 @@
 
 
 
-					@if($test)
+					@if($test && $test->active)
 					@if($test->userTest)
 					<a href="/profile/test/{{$test->id}}/restart">
 						<div class="test-button">
@@ -226,13 +229,33 @@
 					<input type="hidden" name="lesson_id" value="{{$lesson->id}}"></input>
 					<div class="new-answer-row">
 						<div class="col-md-11 col-md-offset-1 answer-area">
-							<textarea placeholder="Введите сообщение" name="message"></textarea>
+							<textarea placeholder="Введите сообщение" id="discussionText" name="message"></textarea>
 						</div>
 						<div class="col-md-3 col-md-offset-9 form-submit mt10">
 							<button type="submit">Отправить</button>
 						</div>
 					</div>
 				</form>
+			</div>
+			<div class="row smiles">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<div class="row">
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s1.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s2.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s3.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s4.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s5.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s6.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s7.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s8.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s9.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s10.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s11.png') }}"></div>
+							<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s12.png') }}"></div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="col-lg-3 col-md-4">

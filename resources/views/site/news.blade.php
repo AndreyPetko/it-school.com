@@ -1,12 +1,16 @@
 
 @extends('site.pageLayout')
 
+@section('header')
+<title>Новости</title>
+@stop
+
 
 @section('pageContent')
 
 
 <div class="courses-title">
-	НОВОСТИ
+	<h1>НОВОСТИ</h1>
 </div>
 
 
@@ -18,7 +22,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<a href="/novelty/{{$newItem->url}}">
-							<div class="news-title">
+							<div class="news-title-list">
 								{{$newItem->name}}
 							</div>
 						</a>
@@ -91,7 +95,9 @@
 				</div>
 			</form>
 
-			<div class="courses-title">РЕКОМЕНДУЕМ</div>
+			<div class="courses-title">
+				<h2>РЕКОМЕНДУЕМ</h2>
+			</div>
 			<div class="row">
 				@foreach($courses as $course)
 				<div class="col-md-12">

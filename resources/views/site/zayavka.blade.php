@@ -1,6 +1,10 @@
 @extends('site.pageLayout')
 
 
+@section('header')
+	<title>Страница заявки на курс</title>
+@stop
+
 @section('js')
 
 
@@ -16,7 +20,7 @@
 
 
 <div class="courses-title">
-	ПОДАТЬ ЗАЯВКУ НА КУРС
+	<h1>ПОДАТЬ ЗАЯВКУ НА КУРС</h1>
 </div>
 
 

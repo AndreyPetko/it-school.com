@@ -36,4 +36,8 @@ class Message extends Model
 		$query->where('user_id', $userId);
 	}
 
+	public function setOwls() {
+		$this->message = preg_replace('/:sov(\d\d?):/', '<img src="/smiles/s\1.png">', $this->message);
+	}
+
 }

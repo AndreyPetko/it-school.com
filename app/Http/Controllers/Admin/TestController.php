@@ -26,6 +26,20 @@ class TestController extends Controller
 		return view('admin.tests.list', compact('tests'));
 	}
 
+
+	public function getEdit($test_id) {
+		$test = Test::find($test_id);
+		$lessons = Lesson::all();
+		return view('admin.tests.edit', compact('test', 'lessons'));
+	}
+
+	public function postEdit($test_id) {
+		$this->request['active'] = isset($this->request['active']) ? 1 : 0;
+		Test::where('id', $test_id)->update($this->request);
+
+		return Redirect::to('/admin/tests');
+	}
+
 	public function getAdd() {
 		$lessons = Lesson::all();
 		return view('admin.tests.add', compact('lessons'));

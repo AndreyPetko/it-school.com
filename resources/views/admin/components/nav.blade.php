@@ -43,13 +43,23 @@
 
 <li>
   <a href="/admin/discussion">
-    <i class="fa fa-envelope-o"></i> <span>Дискусии</span>
+    <i class="fa fa-comments"></i> <span>Дискусии</span>
   </a>
 </li>
-
 
 <li>
   <a href="/admin/tests">
     <i class="fa fa-check"></i> <span>Тесты</span>
   </a>
+</li>
+
+<li class="treeview">
+  <a href="#">
+    <i class="fa fa-envelope-o"></i> <span>Email</span>
+    <i class="fa fa-angle-left pull-right"></i>
+  </a>
+  <ul class="treeview-menu">
+    <li><a href="/admin/email"><i class="fa fa-circle-o"></i>Отправить рассылку</a></li>
+    <li><a href="/admin/email/subscribers"><i class="fa fa-circle-o"></i>Подписчики</a></li>
+  </ul>
 </li>

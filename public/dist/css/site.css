@@ -1109,8 +1109,16 @@ html{
 }
 
 
-.courses-title {
+.courses-title h1, .courses-title h2{
 	font: 400 26px / 24px Roboto;
+	text-align: center;
+	margin-top: 42px;
+	margin-bottom: 40px;
+}
+
+
+.courses-title h2 {
+	font: 400 22px / 20px Roboto;
 	text-align: center;
 	margin-top: 42px;
 	margin-bottom: 40px;
@@ -1529,7 +1537,7 @@ html{
 	color:#fefefe;
 	cursor: pointer;
 }
-.news-title {
+.news-title h1, .news-title-list{
 	text-indent: 33px;
 	height: 48px;
 	background-color: #d7d7d7;
@@ -1537,6 +1545,7 @@ html{
 	text-decoration: none;
 	color: black;
 }
+
 
 
 .mt10 {

@@ -14,7 +14,7 @@
 <div class="row">
 	<div class="col-lg-12">
 		<div class="text-block">
-			<p>Добрый день, это страница начала теста "{{$test->name}}". Нажмите кнопку "Начать тест", чтобы продолжить.</p>
+			{!!$test->description!!}
 			<p>Информация о тесте:</p>
 			<p>Количество вопросов: {{$questionCount}}</p>
 		</div>

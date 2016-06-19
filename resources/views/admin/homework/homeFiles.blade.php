@@ -1,6 +1,10 @@
 @extends('admin.layout')
 
 
+@section('js')
+<script src="{{ url('dist/js/smiles-admin.js')}} "></script>
+@stop
+
 @section('content')
 
 <section class="content-header">
@@ -79,7 +83,27 @@
 					<input type="hidden" name="userLessonId" value="{{$userLessonsId}}"></input>
 					<div class="form-group">
 						<label for="name"></label>
-						<textarea name="message" id="name" class="form-control" rows="10"></textarea>
+						<textarea name="message" id="discussionText" class="form-control" rows="10"></textarea>
+					</div>
+					<div class="row smiles">
+						<div class="row">
+						<div class="col-md-8 col-md-offset-2">
+								<div class="row">
+									<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s1.png') }}"></div>
+									<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s2.png') }}"></div>
+									<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s3.png') }}"></div>
+									<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s4.png') }}"></div>
+									<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s5.png') }}"></div>
+									<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s6.png') }}"></div>
+									<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s7.png') }}"></div>
+									<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s8.png') }}"></div>
+									<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s9.png') }}"></div>
+									<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s10.png') }}"></div>
+									<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s11.png') }}"></div>
+									<div class="col-md-2 smile-item"><img src="{{ url('/smiles/s12.png') }}"></div>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary">Отправить</button>

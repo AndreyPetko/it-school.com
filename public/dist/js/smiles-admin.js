@@ -3,10 +3,8 @@ $(document).ready(function(){
 		index = $(this).index();
 		sov = index + 1;
 
-
 		sovStr = ' :sov' + sov + ': ';
-
 		textval = $('#discussionText').val();
-		$('#discussionText').val(textval + sovStr);
+		CKEDITOR.instances.discussionText.insertText(sovStr);
 	});
 });

@@ -71,6 +71,11 @@ class HomeController extends Controller
 	}
 
 
+	public function getCertificate() {
+		echo "1";
+	}
+
+
 	public function getCourse($url) {
 		$course = Course::url($url)->first();
 		$course->getCourseProgress();
@@ -146,7 +151,9 @@ class HomeController extends Controller
 
 		$messages = Message::current($userId, $id)->paginate(5);
 
-
+		foreach ($messages as $message) {
+			$message->setOwls();
+		}
 
 		$lesson = Lesson::find($id);
 
@@ -175,9 +182,7 @@ class HomeController extends Controller
 			return Redirect::to('/profile');
 		}
 
-		if(!Security::check($id)) {
-			return Redirect::to('/profile');
-		}
+
 
 		$lesson = Lesson::find($id);
 

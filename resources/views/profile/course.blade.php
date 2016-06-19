@@ -75,6 +75,11 @@
 				<div class="complete-submit">
 					<input type="submit"></input>
 				</div>
+
+
+				<div class="certificate-download">
+					<a href="/profile/certificate">Скачать сертификат</a>
+				</div>
 			</div>
 		</form>
 		@endif

@@ -4,6 +4,10 @@
 @section('js')
 @stop
 
+@section('header')
+	<title>ИТ-школа Ирины Бузиковой</title>
+@stop
+
 @section('content')
 
 

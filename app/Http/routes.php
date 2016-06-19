@@ -34,6 +34,7 @@ Route::controller('admin/discussion', 'Admin\DiscussionController');
 Route::controller('admin/tests', 'Admin\TestController');
 Route::controller('admin/tests/questions', 'Admin\QuestionController');
 
+Route::controller('admin/email', 'Admin\EmailController');
 
 Route::controller('admin/ajax', 'Admin\AjaxController');
 

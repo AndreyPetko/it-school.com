@@ -1,9 +1,13 @@
 @extends('site.pageLayout')
 
 
+@section('header')
+    <title>Контакты</title>
+@stop
+
 @section('pageContent')
 
-<div class="courses-title">КОНТАКТЫ</div>
+<div class="courses-title"><h1>КОНТАКТЫ</h1></div>
 
 
 <div class="container">

@@ -5,7 +5,7 @@
 
 
 <div class="courses-title">
-	СПАСИБО
+	<h1>СПАСИБО</h1>
 </div>
 <div class="container">
 	<div class="success">

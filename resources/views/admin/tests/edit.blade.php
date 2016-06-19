@@ -34,28 +34,32 @@
 							{{csrf_field()}}
 							<div class="form-group">
 								<label for="name">Название</label>
-								<input type="text" placeholder="Введите название направление" class="form-control" name="name" id="name" value="{{old('name')}}"/>
+								<input type="text" placeholder="Введите название направление" class="form-control" name="name" id="name" value="{{$test->name}}"/>
 							</div>
 
 							<div class="form-group">
 								<label>Выберите урок</label>
 								<select class="form-control" name="lesson_id">
 									@foreach($lessons as $lesson )
-									<option value="{{$lesson->id}}">{{$lesson->name}}</option>
+									<option @if($lesson->id == $test->lesson_id) selected @endif value="{{$lesson->id}}">{{$lesson->name}}</option>
 									@endforeach
 								</select>
 							</div>
 
-
 							<div class="form-group">
 								<label for="description">Описание:</label>
-								<textarea name="description"></textarea>
+								<textarea name="description">{!!$test->description!!}</textarea>
+							</div>
+
+							<div class="form-group">
+								<label>Активен:</label>
+								<input type="checkbox" @if($test->active) checked @endif name="active">
 							</div>
 
 							<div class="form-group">
 								<div class="row">
 									<div class="col-md-3">
-										<button type="submit" class="btn btn-block btn-primary btn-flat">Добавить</button>
+										<button type="submit" class="btn btn-block btn-primary btn-flat">Обновить</button>
 									</div>
 								</div>
 							</div>

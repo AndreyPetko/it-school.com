@@ -35,6 +35,10 @@ class HomeworkController extends Controller
 
 		$messages = Message::current($userLesson->user_id, $userLesson->lesson_id)->orderBy('lesson_messages.created_at', 'desc')->userName()->paginate(5);
 
+		foreach ($messages as $message) {
+			$message->setOwls();
+		}
+
 		return view('admin.homework.homeFiles', compact('homeworks', 'userLessonsId', 'mark', 'messages'));
 	}
 

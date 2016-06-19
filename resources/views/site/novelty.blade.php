@@ -1,6 +1,11 @@
 @extends('site.pageLayout')
 
 
+@section('header')
+	<title>{{$novelty->name}}</title>
+@stop
+
+
 @section('pageContent')
 
 <div class="container">
@@ -32,7 +37,7 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="news-title mt20">
-				{{$novelty->name}}
+				<h1>{{$novelty->name}}</h1>
 			</div>
 		</div>
 	</div>

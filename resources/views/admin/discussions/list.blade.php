@@ -26,6 +26,7 @@
 								<th>Курс</th>
 								<th>Урок</th>
 								<th>Сообшения</th>
+								<th>Перейти</th>
 								<th>Удалить</th>
 							</tr>
 							@foreach($discussions as $discussion)
@@ -46,6 +47,7 @@
 									@endif
 								</td>
 								<td>{{$discussion->countMessages}}</td>
+								<td><a target="_blank" href="/profile/discussions/single/{{$discussion->id}}">Перейти</a></td>
 								<td>
 									<form action="/admin/discussion/delete/{{$discussion->id}}" method="POST" onsubmit="return confirm('Вы точно хотите удалить дискусию?')">
 										<input type="hidden" name="_token" value="{{csrf_token()}}">

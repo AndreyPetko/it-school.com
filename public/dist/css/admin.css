@@ -9,13 +9,16 @@
 }
 
 
+.post img {
+	width: 50px;
+}
+
 .my-content {
 	padding: 15px;
 	margin-right: auto;
 	margin-left: auto;
 	padding-left: 15px;
 	padding-right: 15px;
-	/*background-color: white;*/
 }
 
 
@@ -39,3 +42,38 @@
 .delete-answer  a {
 	color: red;
 }
+
+
+.smiles img {
+	/*max-width: 100%;*/
+	width: 100%;
+	/*max-height: 50px;*/
+}
+.smiles {
+	text-align: center;
+	line-height: 77px;
+	margin-top: 10px;
+}
+
+.smile-item {
+	cursor: pointer;
+}
+
+
+.email-item {
+	float: left;
+}
+
+.email-item input {
+	margin: 3px;
+
+}
+
+.clear {
+	clear: both;
+}
+
+.mt20 {
+	margin-top: 20px;
+}
+

@@ -34,13 +34,14 @@
 						<tr>
 							<th>Название</th>
 							<th>Урок</th>
-							<!-- <th>Направление</th> -->
+							<th>Вопросы</th>
 							<th>Удалить</th>
 						</tr>
 						@foreach($tests as $test)
 						<tr>
-							<td><a href="/admin/tests/questions/{{$test->id}}">{{$test->name}}</a></td>
+							<td><a href="/admin/tests/edit/{{$test->id}}">{{$test->name}}</a></td>
 							<td>{{$test->lessonName}}</td>
+							<td><a href="/admin/tests/questions/{{$test->id}}">Вопросы</a></td>
 							<td>
 								<form action="/admin/tests/delete" method="POST" onsubmit="return confirm('Вы точно хотите удалить товар: {{$test->name}} ?')">
 									<input type="hidden" name="_token" value="{{ csrf_token() }}">

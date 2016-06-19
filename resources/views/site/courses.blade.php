@@ -1,6 +1,10 @@
 @extends('site.pageLayout')
 
 
+@section('header')
+    <title>Страница курсов</title>
+@stop
+
 @section('js')
 <script src="{{ url('dist/js/isetop.js') }}"></script>
 <script src="{{ url('dist/js/direction.js') }}"></script>
@@ -15,7 +19,7 @@
 
     <div class="content">
         <div class="courses-title">
-            КУРСЫ
+            <h1>КУРСЫ</h1>
         </div>
         
         <div class="row categories-list">
