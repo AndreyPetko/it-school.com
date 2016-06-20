@@ -1,0 +1,69 @@
+@font-face {
+	font-family: Pompadur; /* Имя шрифта */
+	src: url(https://fonts.googleapis.com/css?family=Roboto:400,300,700&subset=latin,cyrillic-ext); 
+}
+
+* {
+	font-family: Roboto;
+}
+
+
+.top {
+	width: 100%;
+}
+
+img {
+	max-width: 100%;
+}
+
+
+#left {
+	float: left;
+	width: 10.8%;
+}
+
+#right {
+	float: right;
+	width: 10.4%;
+}
+
+
+
+#name {
+	text-align: center;
+	color: green;
+	font-size: 40px;
+}
+
+#center {
+	width: 75%;
+	float: left;
+}
+
+
+#pass {
+	margin-top: 10px;
+	margin-left: 5%;
+	font-size: 16px;
+}
+
+
+.course-name {
+	color: blue;
+	width: 50%;
+	font-size: 20px;
+	margin-top: 20px;
+	text-align: center;
+	float: left;
+	padding-top: 100px;
+}
+
+.sov {
+	width: 50%;
+	float: left;
+}
+
+.sov img {
+	/*height: 100px;*/
+	/*width: 50%;*/
+}

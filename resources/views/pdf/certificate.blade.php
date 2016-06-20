@@ -9,71 +9,98 @@
 </head>
 <body>
 	<style type="text/css">
-
-		@page {
-			/*size: a4;*/
-			/*margin: 72px 76px;*/
-		}
-
-
 		html{
 			font-family: Roboto;
+			/*-webkit-transform: scale(0.5,0.5); /* Для Safari, Chrome, iOS */*/
+			/*margin-left: -50%;*/
+			/*margin-top: -50%;*/
 		}
-		#outside {
-			/*position: relative;*/
-			z-index: -1;
-		}
+		#outside{
+			
+			width: 2480px;
+			padding-bottom: 100px;
+			overflow: auto;
 
-		#outside img {
-			max-width: 100%;
 		}
-
 		#inside{
-			position: absolute;
-			z-index: 99;
+			
 			width: 100%;
 			text-align: center;
-			top: 800px;
-		}
 
+
+		}
 		h2{
-			font-size: 100px;
+			font-size: 150px;
 			color: #436D52;
 			font-weight: normal;
 			text-transform: uppercase;
 			line-height: 100px;
-		}
 
+		}
 		#name{
 
 		}
-
 		p{
 			color: #444873;
-			font-size: 60px;
-			/*margin-top: 450px;*/
+			font-size: 90px;
+			margin-top: 150px;
 			text-align: left;
 			width: 40%;
-			/*margin-left: 450px;*/
+			float: left;
+			margin-left: 250px;
+		}
+		#uspeh{
+			font-size: 60px;
+			margin-left: 250px;
+			text-align: left;
+			margin-top: 200px;
 		}
 		#date{
 			font-size: 50px;
-			/*margin-top: 600px;*/
+			margin-top: 150px;
 			text-align: left;
-			/*margin-left: 450px;*/
+			margin-left: 250px;
+			float: left;
+		}
+		#left{
+			float: left;
+			margin-top: -11px;
+		}
+		#sov{
+			float: left;
+			margin-top: 50px;	
+		}
+		#podpis{
+			float: left;
+			/*margin-top: 150px;*/
+		}
+		#right{
+			float: left;
+			margin-top: -11px;
+		}
+		#center{
+			float: left;
+			width: 1954px;
 		}
 
 	</style>
 	<div id="outside">
-		<img src="{{ url('/site_images/sertificat.jpg') }}">
+		<img src="{{ url('/site_images/sertificat-top.jpg')}}">
 		<div id="inside">
-			<div id="name">
-				<h2>Иванов</h2>
-				<h2>Иван</h2>
-			</div>
-			<p>Microsoft Word - 
-				текстовый редактор</p>
-				<div id="date">10.11.2016</div>
+			<div id="left"><img src="{{ url('/site_images/sertificat-left.jpg')}}"></div>
+			<div id="center">
+				<div id="name">
+					<h2>Иванов</h2>
+					<h2>Иван</h2>
+				</div>
+				<div id="uspeh">успешно прошел курс по программе</div>
+				<p>Microsoft Word - 
+					текстовый редактор</p>
+					<div id="sov"><img src="{{ url('/site_images/sertificat-sova.jpg')}}"></div>
+					<div id="date">10.11.2016</div>
+					<div id="podpis"><img src="{{ url('/site_images/sertificat-podpis.jpg')}}"></div>
+				</div>
+				<div id="right"><img src="{{ url('/site_images/sertificat-right.jpg')}}"></div>
 			</div>
 		</div>
 

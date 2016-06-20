@@ -91,7 +91,7 @@ class FeedbackController extends Controller
 	public function getSetOrderPaid($orderId) {
 		$order = Order::find($orderId);
 		$password = Helper::generatePassword(8);
-		$order->activate(new User(), $password);
+		$order->activate(new User(), $password, new Sendmail());
 		return Redirect::back();
 	}
 

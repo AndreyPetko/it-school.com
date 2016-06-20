@@ -21,6 +21,7 @@ use App\Order;
 use App\UserOrder;
 use App\CourseSaler;
 use App\Review;
+
 use App\Repositories\ReviewRepository;
 use App\CourseRepository;
 use App\User;
@@ -246,8 +247,7 @@ class HomeController extends Controller
 		if($status == 'success') {
 			$password = Help::generatePassword(8);
 			$order = Order::find($orderId);
-			$order->activate(new User(), $password);
-			Sendmail::sendActivationMail($order->email, $password);
+			$order->activate(new User(), $password, new Sendmail());
 		}
 	}
 

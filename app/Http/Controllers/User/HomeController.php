@@ -31,7 +31,8 @@ use App\Review;
 use Illuminate\Pagination\Paginator;
 use App\Test;
 use App\UserTest;
-use PDF;
+use mPDF;
+use View;
 
 class HomeController extends Controller
 {
@@ -73,14 +74,26 @@ class HomeController extends Controller
 
 
 	public function getCertificate() {
-		$data = [];
-		$pdf = PDF::loadView('pdf.certificate', $data);
-		return $pdf->download('certificate.pdf');
+		$html = view('pdf.certificate-new')->render();
+
+		$mpdf = new mPDF('utf-8', 'A4', '8', '', 10, 10, 7, 7, 10, 10); /*задаем формат, отступы и.т.д.*/
+
+		$stylesheet = file_get_contents(url('dist/css/certificate.css'));
+		$mpdf->WriteHTML($stylesheet, 1);
+
+		$mpdf->list_indent_first_level = 0; 
+		$mpdf->WriteHTML($html, 2); /*формируем pdf*/
+		$mpdf->Output('mpdf.pdf', 'I');
+
+		// $data = [];
+		// $pdf = PDF::loadView('pdf.certificate-new', $data);
+		// return $pdf->download('certificate.pdf');
+
 	}
 
 
 	public function getHi() {
-		return view('pdf.certificate');
+		return view('pdf.certificate-new');
 	}
 
 

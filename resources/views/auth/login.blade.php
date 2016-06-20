@@ -45,7 +45,7 @@
 		</form>
 	</div>
 
-	<img id="sova" src="http://it-school.com/profile_images/sov/sova-1.png" alt="Сова-помошник IT-школы Ирины Бузиковой">
+	<img id="sova" src="{{ url('profile_images/sov/sova-1.png') }}" alt="Сова-помошник IT-школы Ирины Бузиковой">
 
 
 </div>
