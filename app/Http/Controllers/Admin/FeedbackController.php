@@ -15,6 +15,7 @@ use App\User;
 use DB;
 use App\UserOrder;
 use App\Review;
+use App\Helper;
 
 class FeedbackController extends Controller
 {
@@ -89,7 +90,8 @@ class FeedbackController extends Controller
 
 	public function getSetOrderPaid($orderId) {
 		$order = Order::find($orderId);
-		$order->activate(new User());
+		$password = Helper::generatePassword(8);
+		$order->activate(new User(), $password);
 		return Redirect::back();
 	}
 

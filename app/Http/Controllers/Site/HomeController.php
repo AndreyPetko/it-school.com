@@ -24,6 +24,7 @@ use App\Review;
 use App\Repositories\ReviewRepository;
 use App\CourseRepository;
 use App\User;
+use App\Helper;
 
 class HomeController extends Controller
 {
@@ -243,10 +244,10 @@ class HomeController extends Controller
 		$status = $_POST['ik_inv_st'];
 
 		if($status == 'success') {
+			$password = Help::generatePassword(8);
 			$order = Order::find($orderId);
-			$order->activate(new User());
-			Sendmail::sendActivationMail($order->email, '123');
-			// return Redirect::to('/success-pay');
+			$order->activate(new User(), $password);
+			Sendmail::sendActivationMail($order->email, $password);
 		}
 	}
 
@@ -260,6 +261,14 @@ class HomeController extends Controller
 		return view('site.success-unsub');
 	}
 
+
+	public function getResetPassword() {
+		return view('auth.password');
+	}
+
+	public function getHome() {
+		return Redirect::to('/');
+	}
 
 
 }

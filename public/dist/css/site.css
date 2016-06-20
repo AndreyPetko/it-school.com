@@ -110,6 +110,21 @@ html{
 }
 
 
+.course-tab {
+	display: inline-block;
+	width: 35%;
+	text-align: center;
+	margin-top: 20px;
+	height: 40px;
+	line-height: 40px;
+	font-family: Roboto;
+	margin-left: 10%;
+	background: #007236;
+	color: white;
+	cursor: pointer;
+}
+
+
 .auth-block {
 	width: 50%;
 	min-width: 250px;
@@ -169,6 +184,10 @@ html{
 	cursor: pointer;
 	line-height: 80px;
 	margin-left: 20px;
+}
+
+.auth-fogotten-password a {
+	color: black;
 }
 
 .auth-submit input:hover {

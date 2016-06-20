@@ -29,11 +29,11 @@ class Order extends Model implements OrderTypes
 	}
 
 
-	public function activate($user) {
+	public function activate($user, $password) {
 
 		if(!$this->user_id) {
 			$user->email = $this->email;
-			$user->password = bcrypt('123');
+			$user->password = bcrypt($password);
 			$user->name = $this->name;
 			$user->surname = $this->surname;
 			$user->patronymic = $this->patronymic;
@@ -41,6 +41,7 @@ class Order extends Model implements OrderTypes
 			$user->birthday = $this->birthday;
 			$user->city = $this->city;
 			$user->phone = $this->phone;
+			$user->gen_password = $password;
 			$user->save();
 		} else {
 			$user = $user::find($this->user_id);

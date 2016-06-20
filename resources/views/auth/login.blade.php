@@ -16,7 +16,11 @@
 		Неправильный логин или пароль
 	</div>
 	@endif
-	<div class="courses-title">ВОЙТИ</div>
+	<div class="courses-title">
+		<h1>
+			ВОЙТИ
+		</h1>
+	</div>
 	<div class="auth-out-form-div">
 		<form method="POST" action="../auth/login">
 			<input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -36,7 +40,7 @@
 				<input type="submit" value="Войти">
 			</div>
 			<div class="auth-fogotten-password">
-				Забыли пароль
+				<a href="/reset-password">Забыли пароль</a>
 			</div>
 		</form>
 	</div>

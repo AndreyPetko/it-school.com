@@ -2,7 +2,12 @@
 
 
 @section('header')
-    <title>Страница курса "{{$course->name}}"</title>
+<title>Страница курса "{{$course->name}}"</title>
+@stop
+
+
+@section('js')
+<script type="text/javascript" src="{{url('dist/js/course-tabs.js')}}"></script>
 @stop
 
 
@@ -80,22 +85,28 @@
 	</div>
 
 
-	<!-- <div class="row">
+	<div class="row">
 		<div class="course-tabs">
-			<div class="course-tab">
+			<div class="course-tab" id="description-tab">
 				Описание
 			</div>
 
-			<div class="course-tab">
+			<div class="course-tab" id="program-tab">
 				Программа курса
 			</div>
 		</div>
-	</div> -->
+	</div>
 
 	<div class="row mt20">
-		<div class="col-lg-12">
+		<div class="col-lg-12" id="description">
 			<div class="course-page-full-text">
 				{!!$course->fullDescription!!}
+			</div>
+		</div>
+
+		<div class="col-lg-12" id="program">
+			<div class="course-page-full-text">
+				{!!$course->program!!}
 			</div>
 		</div>
 	</div>
@@ -117,7 +128,7 @@
 						@if($review->logo)
 						<img src="{{ url('user_logos/' . $review->logo	) }}">
 						@else
-							<img src="{{ url('/profile_images/112965409_suychik.png') }}">
+						<img src="{{ url('/profile_images/112965409_suychik.png') }}">
 						@endif
 					</div>
 				</div>

@@ -31,6 +31,7 @@ use App\Review;
 use Illuminate\Pagination\Paginator;
 use App\Test;
 use App\UserTest;
+use PDF;
 
 class HomeController extends Controller
 {
@@ -72,7 +73,14 @@ class HomeController extends Controller
 
 
 	public function getCertificate() {
-		echo "1";
+		$data = [];
+		$pdf = PDF::loadView('pdf.certificate', $data);
+		return $pdf->download('certificate.pdf');
+	}
+
+
+	public function getHi() {
+		return view('pdf.certificate');
 	}
 
 

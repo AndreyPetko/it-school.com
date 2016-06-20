@@ -47,6 +47,8 @@
 					</table>
 				</div>
 			</div>
+
+			<?php echo $userLessons->render(); ?>
 		</div>
 	</div>
 </section>

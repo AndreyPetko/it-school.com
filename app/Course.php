@@ -10,7 +10,7 @@ use App\Review;
 class Course extends Model
 {
 	protected $table = 'courses';
-	protected $fillable = ['name', 'logo', 'description', 'price', 'premium', 'direction_id', 'url', 'fullDescription'];
+	protected $fillable = ['name', 'logo', 'description', 'price', 'premium', 'direction_id', 'url', 'fullDescription', 'program'];
 
 
 	public function lessons() {

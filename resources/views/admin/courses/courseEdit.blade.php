@@ -57,6 +57,12 @@
 							<textarea name="fullDescription" class="form-control" rows="10">{!!$course->fullDescription!!}</textarea>
 						</div>
 
+
+						<div class="form-group">
+							<label for="description">Программа курса:</label>
+							<textarea name="program" class="form-control" rows="10">{!!$course->program!!}</textarea>
+						</div>
+
 						<div class="form-group">
 							<label>Изображение</label>
 							<input type="file" name="logo"></input>

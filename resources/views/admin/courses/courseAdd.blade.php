@@ -36,7 +36,7 @@
 								<label>Выберите направление</label>
 								<select name="direction_id" class="form-control">
 									@foreach($directions as $direction)
-										<option value="{{$direction->id}}">{{$direction->name}}</option>
+									<option value="{{$direction->id}}">{{$direction->name}}</option>
 									@endforeach
 								</select>
 							</div>
@@ -55,6 +55,12 @@
 							<div class="form-group">
 								<label for="description">Полное описание курса:</label>
 								<textarea name="fullDescription" class="form-control" rows="10"></textarea>
+							</div>
+
+
+							<div class="form-group">
+								<label for="description">Программа курса:</label>
+								<textarea name="program" class="form-control" rows="10"></textarea>
 							</div>
 
 							<div class="form-group">

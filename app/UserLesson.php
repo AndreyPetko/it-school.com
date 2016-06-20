@@ -41,7 +41,10 @@ class UserLesson extends Model
 		}
 
 
-		return $query->get();
+		$query->orderBy('id', 'desc');
+
+
+		return $query->paginate(10);
 	}
 
 	public function getHomeworks() {

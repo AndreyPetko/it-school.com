@@ -63,6 +63,11 @@
 				</tr>
 
 				<tr>
+					<td>Сгенерированый пароль</td>
+					<td>{{$user->gen_password}}</td>
+				</tr>
+
+				<tr>
 					<td>Наши ученики</td>
 					<td><input type="checkbox" id="user-slider-checkbox" @if($user->slider) checked @endif></input></td>
 				</tr>
