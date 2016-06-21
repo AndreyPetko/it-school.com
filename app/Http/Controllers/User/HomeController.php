@@ -131,6 +131,9 @@ class HomeController extends Controller
 
 		$lesson = Lesson::find($id);
 
+
+		$course = Course::find($lesson->course_id);
+
 		$userLesson = UserLesson::getInstance(Auth::user()->id, $id);
 
 		if($userLesson) {
@@ -139,7 +142,7 @@ class HomeController extends Controller
 			$mark = 0;
 		}
 
-		return view('profile.lesson', compact('lesson', 'mark'));
+		return view('profile.lesson', compact('lesson', 'mark', 'course'));
 	}
 
 	public function getLessonHomework($id) {
@@ -178,6 +181,8 @@ class HomeController extends Controller
 
 		$lesson = Lesson::find($id);
 
+		$course = Course::find($lesson->course_id);
+
 		$userLesson = UserLesson::getInstance($userId, $id);
 
 		if($userLesson) {
@@ -194,7 +199,7 @@ class HomeController extends Controller
 		$discussions = $discussionsList->setCountAnswers();
 
 
-		return view('profile.lesson-homework', compact('lesson', 'messages', 'files', 'mark', 'discussions', 'test'));
+		return view('profile.lesson-homework', compact('lesson', 'messages', 'files', 'mark', 'discussions', 'test', 'course'));
 	}
 
 

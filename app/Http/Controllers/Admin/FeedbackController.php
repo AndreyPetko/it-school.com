@@ -16,6 +16,7 @@ use DB;
 use App\UserOrder;
 use App\Review;
 use App\Helper;
+use App\Sendmail;
 
 class FeedbackController extends Controller
 {
@@ -91,7 +92,12 @@ class FeedbackController extends Controller
 	public function getSetOrderPaid($orderId) {
 		$order = Order::find($orderId);
 		$password = Helper::generatePassword(8);
-		$order->activate(new User(), $password, new Sendmail());
+		$order->activate(new User(), $password);
+
+		if(!$order->user_id) {
+			Sendmail::sendActivationMail($order->email, $password);
+		}
+
 		return Redirect::back();
 	}
 

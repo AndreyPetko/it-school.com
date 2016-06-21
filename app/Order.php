@@ -29,7 +29,7 @@ class Order extends Model implements OrderTypes
 	}
 
 
-	public function activate($user, $password, $sendmail) {
+	public function activate($user, $password) {
 
 		if(!$this->user_id) {
 			$user->email = $this->email;
@@ -43,8 +43,6 @@ class Order extends Model implements OrderTypes
 			$user->phone = $this->phone;
 			$user->gen_password = $password;
 			$user->save();
-
-			$sendmail::sendActivationMail($this->email, $password);
 		} else {
 			$user = $user::find($this->user_id);
 		}

@@ -1024,6 +1024,11 @@ html{
 	.iphone{
 		text-align: center;
 	}
+
+	.choose-course-title {
+		margin-top: 20px;
+	}
+
 }
 @media(max-width: 430px){
 	#irina .col-sm-8 img{

@@ -365,6 +365,11 @@
     display: inline-block;
 }
 
+
+.breadcrumb-item a {
+    color: black;
+}
+
 .title {
     margin-top: 5px;
     background-color: #464646;
@@ -628,6 +633,11 @@
 .course-sm-logo {
     text-align: right;
     line-height: 53px;
+}
+
+.course-sm-logo img {
+    max-width: 100%;
+    max-height: 53px;
 }
 
 .lesson-avail {

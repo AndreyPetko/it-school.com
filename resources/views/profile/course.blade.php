@@ -7,11 +7,11 @@
 	<div class="col-md-6">
 		<div class="breadcrumbs">
 			<div class="breadcrumb-home">
-				<img src="{{ url('/profile_images/home-icon.png') }}" alt="">
+				<a href="/profile"><img src="{{ url('/profile_images/home-icon.png') }}" alt=""></a>
 			</div>
 			<div class="breadcrumb-border"></div>
 			<div class="breadcrumb-item">
-				Консультации
+				{{$course->name}}
 			</div>
 		</div>
 	</div>
@@ -42,7 +42,7 @@
 			</div>
 			<div class="col-md-2 hidden-xs ">
 				<div class="course-sm-logo">
-					<img src="{{ url('/profile_images/logo_excel.png') }}" alt="">
+					<img src="{{ url('/images/' . $course->logo) }}">
 				</div>
 			</div>
 		</div>

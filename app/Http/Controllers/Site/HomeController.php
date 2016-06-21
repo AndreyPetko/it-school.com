@@ -21,7 +21,6 @@ use App\Order;
 use App\UserOrder;
 use App\CourseSaler;
 use App\Review;
-
 use App\Repositories\ReviewRepository;
 use App\CourseRepository;
 use App\User;
@@ -245,9 +244,13 @@ class HomeController extends Controller
 		$status = $_POST['ik_inv_st'];
 
 		if($status == 'success') {
-			$password = Help::generatePassword(8);
+			$password = Helper::generatePassword(8);
 			$order = Order::find($orderId);
-			$order->activate(new User(), $password, new Sendmail());
+			$order->activate(new User(), $password);
+
+			if(!$order->user_id) {
+				Sendmail::sendActivationMail($order->email, $password);
+			}
 		}
 	}
 
