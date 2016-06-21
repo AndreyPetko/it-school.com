@@ -112,13 +112,12 @@ html{
 
 .course-tab {
 	display: inline-block;
-	width: 35%;
+	width: 25%;
 	text-align: center;
 	margin-top: 20px;
 	height: 40px;
 	line-height: 40px;
 	font-family: Roboto;
-	margin-left: 10%;
 	background: #007236;
 	color: white;
 	cursor: pointer;
@@ -1006,6 +1005,10 @@ html{
 	.image-student {
 		height: 300px;
 	}
+	.course-tab {
+	width: 40%;
+	margin-left: 5%;	
+}
 }
 @media(max-width: 768px){
 	.advantages div div{
@@ -1249,7 +1252,7 @@ html{
 	color: #feffff;
 	font: 400 14px Roboto;
 	height: 46px;
-	line-height: 46px;
+	line-height: 42px;
 	text-align: center;
 	border: 2px solid #d7d7d7;
 	width: 60%;
@@ -1867,8 +1870,12 @@ html{
 	color: #feffff;
 	font: 400 16px Roboto;
 	height: 48px;
-	line-height: 48px;
+	line-height: 44px;
+	cursor: pointer;
 }
+.sub-button:hover {
+background-color: #b66b00;
+	}
 
 .sub-button-link a {
 	text-decoration: none;

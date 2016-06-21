@@ -114,7 +114,7 @@
 
 	@if(count($reviews))
 	<div class="courses-title">
-		ОТЗЫВЫ НАШИХ СТУДЕНТОВ
+		<h2>ОТЗЫВЫ НАШИХ СТУДЕНТОВ</h2>
 	</div>
 	@endif
 
