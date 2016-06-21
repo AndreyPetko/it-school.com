@@ -36,6 +36,7 @@ class HomeController extends Controller
 
 
 	public function getIndex() {
+		echo "1";
 		$courses = (new CourseRepository(new Course))->sortByRate()->get(5);
 
 		$news = News::getLast();
