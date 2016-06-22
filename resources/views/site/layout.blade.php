@@ -42,7 +42,7 @@
 			<li><a href="{{ url('/') }}" >Главная</a></li>
 			<li><a href="{{ url('about') }}" >О школе</a></li>
 			<li id="subMenuButton"><a href="{{ url('courses') }}" >Курсы</a></li>
-			<li><a href="{{ url('courses') }}" >Достижения</a></li>
+			<li><a href="{{ url('/page/Nashi-dostizheniya') }}" >Достижения</a></li>
 			<ul id="subMenu">
 
 				@foreach($menuDirections as $direction)
@@ -79,7 +79,7 @@
 			<li><a href="{{ url('/') }}" >Главная</a></li>
 			<li><a href="{{ url('/about') }}" >О школе</a></li>
 			<li><a href="{{ url('courses') }}" >Курсы</a></li>
-			<li><a href="{{ url('courses') }}" >Достижения</a></li>
+			<li><a href="{{ url('/page/Nashi-dostizheniya') }}" >Достижения</a></li>
 			<li><a href="{{ url('partners') }}" >Партнерам</a></li>
 			<li><a href="{{ url('news-list') }}" >Новости</a></li>
 			<li><a href="{{ url('contacts') }}" >Контакты</a></li>
