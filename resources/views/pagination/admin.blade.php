@@ -11,12 +11,12 @@
 		</span>
 	</li>
 	<li>
-		<a href="http://it-school.com/admin/news?page=2">
+		<a href="/admin/news?page=2">
 			2
 		</a>
 	</li> 
 	<li>
-		<a href="http://it-school.com/admin/news?page=2" rel="next">
+		<a href="/admin/news?page=2" rel="next">
 			»
 		</a>
 	</li>

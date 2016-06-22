@@ -1,4 +1,4 @@
 {!!$text!!}
 <br>
 <br>
-Отписаться: <a href="http://it-school.com/unsub/{{$id}}">Отписаться</a>
+Отписаться: <a href="http://it-school.ap.org.ua/unsub/{{$id}}">Отписаться</a>
