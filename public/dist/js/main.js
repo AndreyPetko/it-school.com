@@ -19,7 +19,7 @@ document.getElementById('mobile-button').addEventListener('click', function(){
 	// alert(mobMenu.style.height);
 
 	if(mobMenu.style.height == "0px") {
-		mobMenu.style.height = "224px"
+		mobMenu.style.height = "261px"
 	}
 	else{
 		mobMenu.style.height = "0px"
