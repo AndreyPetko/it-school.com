@@ -2,7 +2,7 @@
 
 
 @section('header')
-    <title>Страница курсов</title>
+<title>Страница курсов</title>
 @stop
 
 @section('js')
@@ -56,7 +56,9 @@
                 <div class="row">
                  <a href="/course/{{$course->url}}">
                      <div class="course-title">
-                        {{$course->name}}
+                         <div>
+                            {{$course->name}}
+                        </div>
                     </div>
                 </a>
             </div>

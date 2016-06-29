@@ -16,7 +16,7 @@
 <!--   content-->
 <div class="container">
 	<div class="courses-title">
-		<h1>КУРСЫ</h1>
+		<h1>{{$course->name}}</h1>
 	</div>
 	<div class="breadcrumbs">
 		<a href="/">
@@ -52,7 +52,7 @@
 		</div>
 		<div class="col-md-7">
 			<div class="course-page-title">
-				{{$course->name}}
+				Общая информация
 			</div>
 			<div class="row mt20">
 				<div class="course-page-price">
@@ -205,7 +205,9 @@
 				<div class="row">
 					<a href="{{ url('/course/' . $topCourse->url)}}">
 						<div class="course-title">
-							{{$topCourse->name}}
+							<div>
+								{{$topCourse->name}}
+							</div>
 						</div>
 					</a>
 				</div>

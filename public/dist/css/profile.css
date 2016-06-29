@@ -556,7 +556,7 @@
 .complete-review textarea {
     width: 70%;
     height: 100px;
-    resize: none;
+    /*resize: none;*/
 }
 
 .complete-submit input {
@@ -705,7 +705,7 @@
 .disc-textarea textarea {
     width: 100%;
     height: 70px;
-    resize: none;
+    /*resize: none;*/
     border: 2px solid #e1e1e1;
 }
 .disc-submit {
@@ -897,7 +897,7 @@
 
 .answer-area textarea {
     width: 100%;
-    resize: none;
+    /*resize: none;*/
     height: 56px;
     border: 2px solid #d7d7d7;
 }
@@ -1000,7 +1000,7 @@
 .file-input  textarea {
     width: 100%;
     border: 2px solid #d7d7d7;
-    resize: none;
+    /*resize: none;*/
 }
 
 .mt0  {

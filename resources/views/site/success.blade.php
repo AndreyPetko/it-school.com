@@ -11,7 +11,9 @@
 	<div class="success">
 		<div class="row">
 			<div class="course-title">
-				Ваша заявка отправлена успешно
+				<div>
+					Ваша заявка отправлена успешно
+				</div>
 			</div>
 		</div>
 

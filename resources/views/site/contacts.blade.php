@@ -40,19 +40,19 @@
 		<div class="col-md-7 col-md-offset-1">
 
 			<div class="row contacts-info">
-				<div class="col-md-2 col-xs-12">
+				<div class="col-lg-2 col-md-6 col-xs-6">
 					<img src="{{ url('/site_images/icon-mail.png') }}" alt="">
 				</div>
-				<div class="col-md-3 col-xs-12 contacts-text">
+				<div class="col-lg-3 col-md-6 col-xs-6 contacts-text">
 					<div>
-						dbuzikova@gmail.com
+						idbuzikova@gmail.com
 					</div>
 				</div>
 
-				<div class="col-md-2 col-md-offset-1  col-xs-12">
+				<div class="col-lg-2 col-lg-offset-1 col-xs-6 col-md-6">
 					<img src="{{ url('/site_images/icon-skype.png') }}" alt="">
 				</div>
-				<div class="col-md-3 col-xs-12 contacts-text">
+				<div class="col-lg-3 col-md-6 col-xs-6 contacts-text">
 					<div>
 						idbuzikova
 					</div>

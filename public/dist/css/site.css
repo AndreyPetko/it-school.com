@@ -960,6 +960,9 @@ html{
 		width: 100%;
 	}
 
+	.contacts-info div {
+		margin-top: 10px;
+	}
 
 }
 
@@ -973,6 +976,11 @@ html{
 	.main-title{
 		margin-top: 0px;
 	}
+
+	.contacts-info {
+		text-align: center;
+	}
+
 
 	#nav ul {
 		display: none;
@@ -1006,9 +1014,9 @@ html{
 		height: 300px;
 	}
 	.course-tab {
-	width: 40%;
-	margin-left: 5%;	
-}
+		width: 40%;
+		margin-left: 5%;	
+	}
 }
 @media(max-width: 768px){
 	.advantages div div{
@@ -1196,8 +1204,9 @@ html{
 	overflow: auto;
 }
 .course-stars img {
-	
 }
+
+
 
 
 
@@ -1207,7 +1216,15 @@ html{
 	text-align: center;
 	color: #ffffff;
 	margin-top: 5px;
-	font: 400 16px / 66px Roboto;
+	font: 400 16px Roboto;
+	display: table;
+	width: 100%;
+}
+
+.course-title div {
+	display: table-cell;
+	vertical-align: middle;
+	width: 100%;
 }
 
 .course-text {
@@ -1708,6 +1725,7 @@ html{
 }
 .contacts-text {
 	display: table;
+	text-align: left;
 }
 
 
@@ -1749,6 +1767,10 @@ html{
 	text-align: center;
 }
 
+.contacts-info div {
+	/*margin-top: 10px;*/
+}
+
 .contacts-page-text {
 	background: #ebebeb;
 	padding-top: 50px;
@@ -1776,8 +1798,18 @@ html{
 	margin-bottom: 40px
 }
 
+.novelty-text ul {
+	list-style-image: url('../../site_images/breadcrumbs-item.png');
+	margin-left: 20px;
+}
+
+.novelty-text img {
+	border: 2px solid #3c5f42;
+}
+
 .novelty-image img{
 	width: 200px;
+	border: 2px solid #3c5f42;
 }
 
 
@@ -1874,8 +1906,8 @@ html{
 	cursor: pointer;
 }
 .sub-button:hover {
-background-color: #b66b00;
-	}
+	background-color: #b66b00;
+}
 
 .sub-button-link a {
 	text-decoration: none;

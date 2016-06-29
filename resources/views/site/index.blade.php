@@ -5,7 +5,7 @@
 @stop
 
 @section('header')
-	<title>ИТ-школа Ирины Бузиковой</title>
+<title>ИТ-школа Ирины Бузиковой</title>
 @stop
 
 @section('content')
@@ -117,7 +117,9 @@ viewBox="0 0 18 57" width="17px" xml:space="preserve">
 
 			<a href="{{ url('/course/' . $course->url)}}">
 				<div class="course-title">
-					{{$course->name}}
+					<div>
+						{{$course->name}}
+					</div>
 				</div>
 			</a>
 

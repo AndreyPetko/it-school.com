@@ -67,12 +67,12 @@
 		</div>
 		<div class="col-md-3">
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-lg-4 col-md-12">
 					<div class="stay-logo max-img mt20">
 						<img src="{{ url('/site_images/staylogo.png') }}" alt="">
 					</div>
 				</div>
-				<div class="col-md-8">
+				<div class="col-lg-8 col-md-12">
 					<div class="stay-text mt20">
 						БУДЬ В КУРСЕ!
 					</div>
@@ -120,7 +120,9 @@
 						<div class="row">
 							<a href="/course/{{$course->url}}">
 								<div class="course-title">
-									{{$course->name}}
+									<div>
+										{{$course->name}}
+									</div>
 								</div>
 							</a>
 						</div>
