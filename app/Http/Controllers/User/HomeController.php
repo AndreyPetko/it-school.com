@@ -73,8 +73,12 @@ class HomeController extends Controller
 	}
 
 
-	public function getCertificate() {
-		$html = view('pdf.certificate-new')->render();
+	public function getCertificate($courseId) {
+		$user = Auth::user();
+		$course = Course::find($courseId);
+		$date = new \DateTime();
+
+		$html = view('pdf.certificate-new', ['user' => $user, 'course' => $course, 'date'=> $date->format('d.m.Y')])->render();
 
 		$mpdf = new mPDF('utf-8', 'A4', '8', '', 10, 10, 7, 7, 10, 10); /*задаем формат, отступы и.т.д.*/
 

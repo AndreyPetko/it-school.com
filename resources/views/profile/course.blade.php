@@ -78,7 +78,7 @@
 
 
 				<div class="certificate-download">
-					<a href="/profile/certificate">Скачать сертификат</a>
+					<a href="/profile/certificate/{{$course->id}}">Скачать сертификат</a>
 				</div>
 			</div>
 		</form>

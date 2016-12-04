@@ -14,7 +14,8 @@
 		<div id="left"><img src="{{ url('/site_images/sertificat-left.jpg')}}"></div>
 		<div id="center">
 			<div id="name" style="font-family:Arial">
-				Иванов <br> Иван
+				{{$user->name}} <br> {{$user->surname}}
+
 			</div>
 			<div id="pass" style="font-family:Arial">
 				успешно прошел курс про программе: 
@@ -22,7 +23,7 @@
 
 			<div class="row-name-sov">
 				<div class="course-name" style="font-family:Arial">
-					Microsoft Excel - редактор электронных таблиц
+					{{$course->name}}
 				</div>
 				<div class="sov">
 					<img src="{{ url('/site_images/sertificat-sova.jpg') }}">
@@ -34,7 +35,7 @@
 				<img src="{{ url('/site_images/sertificat-podpis.jpg')}}">
 			</div>
 			<div id="date" style="font-family:Arial">
-			11.22.1963
+				{{$date}}
 			</div>
 		</div>
 		<div id="right"><img src="{{ url('/site_images/sertificat-right.jpg')}}"></div>
